@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>「TS-Arch Linux」问题综述01</title>
+      <link href="/2023/06/09/TS_AL-01-allts01/"/>
+      <url>/2023/06/09/TS_AL-01-allts01/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这一系列博客用于记录我使用<code>Arch Linux</code>和<code>EndeavourOS</code>过程中遇到的问题和解决方案。</p><h2 id="0-在部分电脑上安装EndeavourOS时，选完安装方式后卡住"><a href="#0-在部分电脑上安装EndeavourOS时，选完安装方式后卡住" class="headerlink" title="0. 在部分电脑上安装EndeavourOS时，选完安装方式后卡住"></a>0. 在部分电脑上安装<code>EndeavourOS</code>时，选完安装方式后卡住</h2><h3 id="What-happened"><a href="#What-happened" class="headerlink" title="What happened"></a>What happened</h3><p>我在<code>ASUS 天选4</code>上安装<code>EndeavourOS</code>时，选完安装方式后就卡在了一个文字界面。其中第一行字是<code>ACPI BIOS ERROR (BUG): Could not resolve symbol [\_SB.PCI0.GPP2.WWAN], AE_NOT_FOUND (20221020/dswload2-162)</code>，最后一行是类似于<code>triggering uevents</code>的字样。</p><p>值得一提的是：</p><ol><li>这个镜像和我安装其他两台一直使用的电脑所使用的镜像是完全一样的（同一个文件）。</li><li>我尝试使用<code>Linux Mint</code>镜像安装，在安装时我看到过这一串同样的字符一闪而过，但是安装过程并没有卡住，可以成功进入安装界面。而我使用<code>Arch</code>的镜像安装时出现了像<code>Endeavour</code>一样的问题。</li><li>根据<code>Linux Mint</code>的表现，我猜测可能<code>Endeavour</code>已经在加载了，然而在等了半个小时后仍然没有任何反应。</li></ol><h3 id="How-do-I-solve-it"><a href="#How-do-I-solve-it" class="headerlink" title="How do I solve it"></a>How do I solve it</h3><p><code>ChatGPT4</code>给了以下3种方法，我逐一尝试后最终解决了问题。</p><ol><li>更新BIOS<ul><li>根据电脑型号，到官网下载最新的BIOS，更新BIOS</li></ul></li><li>禁用ACPI<ul><li>在启动参数最后加入<code>acpi=off</code></li></ul></li><li>使用nomodeset参数<ul><li>在启动参数最后加入<code>nomodeset</code></li></ul></li></ol><p>值得一提的是，通过搜索，我大概知道这是特定版本Linux内核的问题，于是我在安装<code>EndeavourOS</code>时也一并安装了<code>LTS</code>和<code>Zen</code>内核。（后面启动电脑时我似乎看到<code>Endeavour</code>使用了<code>Zen</code>内核）</p><h2 id="1-VSCode变成了默认文件管理器"><a href="#1-VSCode变成了默认文件管理器" class="headerlink" title="1. VSCode变成了默认文件管理器"></a>1. <code>VSCode</code>变成了默认文件管理器</h2><h3 id="What-happened-1"><a href="#What-happened-1" class="headerlink" title="What happened"></a>What happened</h3><p>我在使用<code>EndeavourOS</code>(DE:<code>Gnome</code>)，从<code>AUR</code>中安装了<code>visual-studio-code-bin</code>后，发现<code>VSCode</code>居然变成了我的默认文件管理器了！！？？</p><h3 id="How-do-I-solve-it-1"><a href="#How-do-I-solve-it-1" class="headerlink" title="How do I solve it"></a>How do I solve it</h3><p>找遍所有设置都没有找到相关的设置，最后向<code>New Bing</code>找到了解决方案：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xdg-mime default org.gnome.Nautilus.desktop inode/directory</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xdg-mime default org.gnome.Nautilus.desktop inode/directory application/x-gnome-saved-search</span><br></pre></td></tr></table></figure><p>相关文章：<a href="https://zhuanlan.zhihu.com/p/37877164">知乎</a></p><h3 id="Additions"><a href="#Additions" class="headerlink" title="Additions"></a>Additions</h3><p>然而，有时候用这种方式强制更改文件管理器可能会导致<code>Nautilus</code>启动极慢（有时需要几秒钟才能打开）。</p><p>因此，我安装了<code>nemo</code>，一种<code>Cinnamon</code>的文件管理器（同时也是<code>Nautlius</code>的分支）来替代<code>Nautilus</code>。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S nemo <span class="comment"># 安装nemo</span></span><br><span class="line">xdg-mime default nemo.desktop inode/directory application/x-gnome-saved-search <span class="comment"># 设置nemo为默认文件管理器</span></span><br></pre></td></tr></table></figure><h2 id="2-Gnome无法使用Gnome-Shell-Extension"><a href="#2-Gnome无法使用Gnome-Shell-Extension" class="headerlink" title="2. Gnome无法使用Gnome Shell Extension"></a>2. <code>Gnome</code>无法使用<code>Gnome Shell Extension</code></h2><h3 id="What-happened-2"><a href="#What-happened-2" class="headerlink" title="What happened"></a>What happened</h3><p>由于某次更新，<code>Gnome</code>不再能在<code>Gnome Tweak</code>中直接安装<code>Gnome Shell Extension</code>了。</p><p>正常来说，我们可以使用以下命令安装插件，之后就可以在<code>Gnome</code>官网<a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a>上安装插件了。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S gnome-shell-extensions</span><br></pre></td></tr></table></figure><p>这个方法有时不起效（具体体现为点击<code>Install</code>后，页面弹出窗口询问是否可以打开<code>xorg-open</code>，但是点击<code>OK</code>后，页面没有任何反应）。</p><p>的话，可以在谷歌浏览器中的插件<code>GNOME Shell integration</code>，之后就可以正常使用了。</p><p>但是有的时候因为不明原因，这个办法会失效。</p><h3 id="How-do-I-solve-it-2"><a href="#How-do-I-solve-it-2" class="headerlink" title="How do I solve it"></a>How do I solve it</h3><p>这是我的最终解决方案：</p><p>将<code>gnome-browser-connector</code>从<code>AUR</code>中安装。之后在<code>https://extensions.gnome.org/</code>安装插件时显示的文字有了变化。</p><h2 id="3-Gnome屏幕Scale只有整数值"><a href="#3-Gnome屏幕Scale只有整数值" class="headerlink" title="3. Gnome屏幕Scale只有整数值"></a>3. <code>Gnome</code>屏幕<code>Scale</code>只有整数值</h2><h3 id="What-happened-3"><a href="#What-happened-3" class="headerlink" title="What happened"></a>What happened</h3><p>在<code>Gnome</code>的<code>Settings - Display</code>中，<code>Scale</code>只有整数值（<code>100%</code>,<code>200%</code>），无法设置为<code>1.5</code>之类的值。</p><h3 id="How-do-I-solve-it-3"><a href="#How-do-I-solve-it-3" class="headerlink" title="How do I solve it"></a>How do I solve it</h3><p>我们可以使用以下命令来开启实验性功能，以设置特别的<code>Scale</code>的值：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gsettings <span class="built_in">set</span> org.gnome.mutter experimental-features <span class="string">&quot;[&#x27;scale-monitor-framebuffer&#x27;]&quot;</span> <span class="comment"># 开启experimental-features：缩放</span></span><br><span class="line">gsettings <span class="built_in">set</span> org.gnome.desktop.interface text-scaling-factor 1.3 <span class="comment"># 设置缩放值</span></span><br></pre></td></tr></table></figure><h2 id="4-Fcitx5的中文输入法不能使用全角标点"><a href="#4-Fcitx5的中文输入法不能使用全角标点" class="headerlink" title="4. Fcitx5的中文输入法不能使用全角标点"></a>4. <code>Fcitx5</code>的中文输入法不能使用全角标点</h2><p>TODO: 未解决</p><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> Butterfly </category>
+          
+          <category> 个人笔记 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> troubleshooting </tag>
+            
+            <tag> arch_linux </tag>
+            
+            <tag> EndeavourOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「Mint」02 zsh-更漂亮的terminal</title>
+      <link href="/2023/05/16/R_LM-02-zsh/"/>
+      <url>/2023/05/16/R_LM-02-zsh/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>上一节的结尾我提到这样一句话：</p><blockquote><p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧</p></blockquote><p>是的！使用<code>Linux</code>时我们经常需要在<code>terminal</code>中运行一些命令。</p><p>比如说：</p><ul><li><code>poweroff</code>：关机</li><li><code>reboot</code>：重启</li></ul><p>那么现在使用默认快捷键<code>Ctrl+Alt+T</code>打开你的terminal，看看它长什么样子。</p><blockquote><p>上一节： <a href="/2023/05/12/R_LM-01-grub/" title="「Mint」01 Grub-电脑启动引导">「Mint」01 Grub-电脑启动引导</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> Linux </category>
+          
+          <category> Linux Mint </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Linux Mint </tag>
+            
+            <tag> grub </tag>
+            
+            <tag> beautify </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「杂谈」玩游戏一定要勤存档！！！</title>
+      <link href="/2023/05/16/D_G-01-20230516/"/>
+      <url>/2023/05/16/D_G-01-20230516/</url>
+      
+        <content type="html"><![CDATA[<h2 id="发生什么事了？"><a href="#发生什么事了？" class="headerlink" title="发生什么事了？"></a>发生什么事了？</h2><p>昨晚玩<code>来自深渊</code>，刚刚探索到深界二层，准备渡穿过<code>横渡地狱</code>前往<code>监视基地</code>。</p><p>这一地段地形极其险峻，第二层的植物是倒着长的，这片区域的行进路线基本都是由巨树的枝交错形成的，也有一些足够粗壮的枝干可供攀爬。</p><p>探索一段时间后我终于发现了人工铺设的桥梁了，通过这段桥就可以到达监视基地所在的场景了。</p><p>然而，两只<code>黄泉火虫</code>埋伏在狭窄且阴暗的桥上。这<code>黄泉火虫</code>并不是什么强力的怪物，但是它们会在短暂的蓄力后旋转着发射可以推动敌人的声波进行攻击，在窄桥这种环境下极具威胁。</p><p>我第一次通过时只发现了一只，于是被它的同伴给了结了。</p><p>重新来过时又因为着急想要快速通过，也想节省武器耐久度，于是并没有去攻击它们。当然，以我的走位技术，我理所当然地又一次次被它们击落。</p><p>即便一次次失败，我居然还是没有在过桥前使用消耗品进行存档…（我咋就这么扣啊…）</p><p>最后，花了许久时间，终于成功来到了下一个场景…</p><h2 id="发生什么事了！"><a href="#发生什么事了！" class="headerlink" title="发生什么事了！"></a>发生什么事了！</h2><p>监视基地就在眼前，可谁知这时却触发了一个剧情！我必须要与<code>捕风猴</code>进行连续的战斗！但是我身上的补给已经见底，武器也即将损坏，只能勉强撑过第一场战斗，再无办法继续前行。</p><p>更惨的是，由于游戏在改变场景时会自动在<code>快速存档</code>这一栏位进行存档，我完全没有养成存档的习惯。最近一次的主动存档都是在游戏3h时的（现在已经是10+h了）。</p><p>所以最后我只能吃光所有补给，原路返回，万幸最后回到了奥斯城…</p><h2 id="又发生什么事了？？"><a href="#又发生什么事了？？" class="headerlink" title="又发生什么事了？？"></a>又发生什么事了？？</h2><p>有了这次的经验后我在出发前备好了许多食物以及备用武器。这一次我成功到达了<code>监视基地</code>。</p><p>我带着自信探索更深的区域，在我想要从一个洞口爬回来（唯一的返程路）时却发现以我目前的体力，从这里爬上去还差最后一点点体力。（对，直到这里我还是没学会存档…）</p><p>廉价的食物<code>虫肉</code>可以回复10点体力，正好可以拉我最后一把。然而我的身上并没有<code>虫肉</code>，只有一件<strong>很昂贵的</strong>罐装食品。除了体力外，它还可以恢复很多的体力，我实在不想将它浪费于此…</p><p>最后在多次尝试后，还是决定吃下罐头，虽然大材小用，但是不管怎么说也避免了坏档。</p><h2 id="So"><a href="#So" class="headerlink" title="So"></a>So</h2><p>所以说啊，玩游戏一定要记得<strong>存档！</strong>，<strong>存档！</strong>，<strong>存档！</strong></p><p>顺便吐槽一下：进入监视基地居然不能恢复状态！一口饭都不给我吃的吗:cry:</p><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 杂谈 </category>
+          
+          <category> 游戏 </category>
+          
+          <category> 来自深渊 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随想 </tag>
+            
+            <tag> NS </tag>
+            
+            <tag> 来自深渊 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「Mint」01 Grub-电脑启动引导</title>
+      <link href="/2023/05/12/R_LM-01-grub/"/>
+      <url>/2023/05/12/R_LM-01-grub/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><ul><li>注意：这里默认你刚刚安装了<code>Linux Mint</code>，具体安装方法请参考<a href="https://linuxmint-installation-guide.readthedocs.io/zh_CN/latest/">官方教程</a>。（小概率我会自己写一篇教程）</li></ul><p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p><p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p><p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p><h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p><ul><li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="comment"># 添加grub-customizer的下载源</span></span><br><span class="line">sudo apt update <span class="comment"># 更新源</span></span><br><span class="line">sudo apt install grub-customizer <span class="comment"># 安装grub-customizer</span></span><br></pre></td></tr></table></figure><p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p><ul><li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li></ul><h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p><p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p><p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p><p>这里就不具体演示单独修改了。</p><h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p><ul><li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li></ul><p><img src="/img/R_LM/01-01.png" alt="Gnome-look:Grub themes"></p><p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p><ul><li><a href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li><li><a href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li></ul><h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p><p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p><ul><li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li><li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="comment"># 克隆repo到本地&lt;path&gt;目录</span></span><br></pre></td></tr></table></figure><p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p><p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p><p><img src="/img/R_LM/01-02.png" alt="Mint Grub"></p><p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p><p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p><p><img src="/img/R_LM/01-03.jpg" alt="Mint Grub"></p><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p><p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p><p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p><p>Have fun! :wink:</p><blockquote><p>上一节： <a href="/2023/05/12/R_LM-00-Welcome/" title="「Mint」00 Welcome">「Mint」00 Welcome</a></p></blockquote><blockquote><p>下一节： <a href="/2023/05/16/R_LM-02-zsh/" title="「Mint」02 zsh-更漂亮的terminal">「Mint」02 zsh-更漂亮的terminal</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> Linux </category>
+          
+          <category> Linux Mint </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Linux Mint </tag>
+            
+            <tag> grub </tag>
+            
+            <tag> beautify </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「Mint」00 Welcome</title>
+      <link href="/2023/05/12/R_LM-00-Welcome/"/>
+      <url>/2023/05/12/R_LM-00-Welcome/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Welcome-to-Linux-Mint"><a href="#Welcome-to-Linux-Mint" class="headerlink" title="Welcome to Linux Mint"></a>Welcome to Linux Mint</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>这是一个有关Linux Mint的系列教程，目前主要计划包括以下内容：</p><ul><li>Linux Mint的安装（与卸载）：这一部分最后更新，因为官方已经提供了<a href="https://linuxmint-installation-guide.readthedocs.io/zh_CN/latest/">很详细的教程</a>了</li><li>Linux Mint的基本配置<ul><li><code>Grub</code>引导菜单（切换双系统）的美化</li><li><code>terminal</code>的美化</li><li>安装基本软件</li><li>安装中文输入法</li><li>安装驱动</li><li>TODO</li></ul></li></ul><h2 id="What-is-Linux-Mint"><a href="#What-is-Linux-Mint" class="headerlink" title="What is Linux Mint"></a>What is Linux Mint</h2><p><code>Linux Mint</code>是一个基于<code>Ubuntu</code>的Linux发行版。（<a href="https://linuxmint.com/">Linux Mint Official Website</a>）</p><blockquote><p>发行版（distribution）是指Linux内核与应用软件的集合，通常包含了Linux内核、GNU工具与图形桌面环境，以及大量应用软件。</p></blockquote><h2 id="Why-Linux-Mint"><a href="#Why-Linux-Mint" class="headerlink" title="Why Linux Mint"></a>Why Linux Mint</h2><h3 id="Friendly-to-Newbies"><a href="#Friendly-to-Newbies" class="headerlink" title="Friendly to Newbies"></a>Friendly to Newbies</h3><p><code>Linux Mint</code>是一个非常适合新手的Linux发行版，它提供了多种桌面环境供用户选择，其中<code>Cinnamon</code>桌面环境是一个非常类似于Windows的桌面环境，对于Windows用户来说，上手非常容易。</p><p>其官网上有着这样一句话：</p><blockquote><p>Give it a try. You’ll Love it!<br>Most of our users come from Windows and they never look back.</p></blockquote><p>(不过我们不一定非要“never look back”，毕竟有一些软件、游戏是Windows独有的，在需要的时候还是可以回到Windows的。只是<strong>如果你不体验一下Linux，你就永远不知道Linux有多好</strong>。)</p><h3 id="Stable-and-Powerful-Community"><a href="#Stable-and-Powerful-Community" class="headerlink" title="Stable and Powerful Community"></a>Stable and Powerful Community</h3><p>我想用<code>Arch</code>和<code>Linux Mint</code>来做一个比较。</p><p>虽然<code>Arch</code>（另一个Linux发行版）有着公认的最强大的wiki指南和一群十分厉害的用户组成的社区，你可以依靠它们解决你遇到的几乎任何问题，但是，解决问题也需要时间。</p><blockquote><p>“Yeah, I think Arch is best if you want to run all the latest packages and very experienced with Linux. But I only use Linux for work, so I need it to be stable and usable. Though I can fix most problems with the support of Arch wiki and their community, it takes time. So I finally chose Linux Mint, which is both great for experienced users and new users.”<br>——这是我一位使用了十年以上Linux Mint的朋友对我说的话。</p></blockquote><p>诚然，<code>Arch</code>的wiki和社区是非常强大的，但是，在你遇到问题的时候，你仍需要花费许多时间去解决它们，更何况<code>Arch</code>的入门门槛也比较高。而<code>Linux Mint</code>的社区也是非常强大的，并且由于它基于<code>Ubuntu</code>，所以你也可以在<code>Ubuntu</code>的社区寻找解决方案。（不过这并不是完全可行的，因为<code>Linux Mint</code>和<code>Ubuntu</code>的一些配置是不同的。）</p><h3 id="Easy-to-Install"><a href="#Easy-to-Install" class="headerlink" title="Easy to Install"></a>Easy to Install</h3><p><code>Linux Mint</code>提供了图形化的安装界面，你只需要简单地按照提示进行操作，就可以轻松地安装<code>Linux Mint</code>。</p><h3 id="Welcome-Screen"><a href="#Welcome-Screen" class="headerlink" title="Welcome Screen"></a>Welcome Screen</h3><p><code>Linux Mint</code>也提供了一个<code>welcome screen</code>窗口，用户可以通过它的引导来配置很多的基础功能（包括驱动、系统备份等）</p><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>总之，<code>Linux Mint</code>是一个非常适合新手的Linux发行版，希望你能在使用它的过程中感受<code>Linux</code>的魅力。</p><p>Have fun! :wink:</p><blockquote><p>下一节： <a href="/2023/05/12/R_LM-01-grub/" title="「Mint」01 Grub-电脑启动引导">「Mint」01 Grub-电脑启动引导</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> Linux </category>
+          
+          <category> Linux Mint </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> introduction </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Linux Mint </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」06 更换Hexo主题</title>
+      <link href="/2023/05/09/R_EB-06-Hexo-theme/"/>
+      <url>/2023/05/09/R_EB-06-Hexo-theme/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Hi"><a href="#Hi" class="headerlink" title="Hi"></a>Hi</h2><p>Yo~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> hexo_theme </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「TS」00 Troubleshooting系列简介</title>
+      <link href="/2023/05/09/TS-Introduction/"/>
+      <url>/2023/05/09/TS-Introduction/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这是一个专门用来记录我在建立博客网站过程中遇到的问题以及解决方案的系列。:sunglasses:</p><h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>当我们遇到问题时，我们通常会去搜索解决方案。</p><p>但是，我们往往不能直接找到适合自己情况的解决方案（过时的帖子、不清楚的描述等等）。</p><p>如果只是将各种帖子放到收藏夹里，那我们下一次遇到同样的问题时还是得花大量时间去浏览一个个帖子，然后再次拼凑出一个解决方案。</p><p>所以我觉得把这些解决方案整合并记录下来是一件很有意义的事情。:sunglasses:</p><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Let’s get started! :rocket:</p><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> TS </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> introduction </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> troubleshooting </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「TS-建站」01 Butterfly主题配置</title>
+      <link href="/2023/05/09/TS_EB-01-butterfly-config/"/>
+      <url>/2023/05/09/TS_EB-01-butterfly-config/</url>
+      
+        <content type="html"><![CDATA[<p>TODO:这篇文章应该归为另一类</p><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这里记录了我在配置Butterfly主题时遇到的一些问题以及解决方案，以及部分经验技巧的总结。</p><p>千万要记住，有问题看文档！</p><blockquote><p><a href="https://butterfly.js.org/">Butterfly主题文档</a><br><a href="https://butterfly.js.org/posts/4aa8abbe/">Butterfly主题文档-主题配置1</a></p></blockquote><h2 id="1-你需要安装渲染器"><a href="#1-你需要安装渲染器" class="headerlink" title="1. 你需要安装渲染器"></a>1. 你需要安装渲染器</h2><p><code>Butterfly</code>主题需要安装<code>hexo-renderer-pug</code>和<code>hexo-renderer-sass</code>渲染器，否则无法正常使用！</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-sass --save</span><br></pre></td></tr></table></figure><h2 id="2-配置文件的优先级"><a href="#2-配置文件的优先级" class="headerlink" title="2. 配置文件的优先级"></a>2. 配置文件的优先级</h2><p>每一个主题都有自己的配置文件，如<code>Butterfly</code>主题的配置文件是<code>_config.butterfly.yml</code>。</p><p>按<code>Butterfly</code>官方文档的推荐，我们可以把这个配置文件放在和<code>_config.yml</code>同级的目录下。</p><p>因为主题的配置文件的优先级高于<code>_config.yml</code>，我们进行的主题配置如果和<code>_config.yml</code>中的配置冲突，那么<code>Hexo</code>会优先使用主题配置文件中的配置。</p><h2 id="3-一些配置"><a href="#3-一些配置" class="headerlink" title="3. 一些配置"></a>3. 一些配置</h2><p>我们从最上面的配置开始，一点点看。</p><p>我会在觉得意义更大&#x2F;更有价值的配置标题前加上<code>*</code>。</p><h3 id="3-1-顶部导航栏"><a href="#3-1-顶部导航栏" class="headerlink" title="3.1 顶部导航栏"></a>3.1 顶部导航栏</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">nav:</span></span><br><span class="line">  <span class="attr">logo:</span> <span class="comment"># 顶部导航栏左侧的logo</span></span><br><span class="line">  <span class="attr">display_title:</span> <span class="literal">false</span> <span class="comment"># 是否在顶部导航栏显示网站标题</span></span><br><span class="line">  <span class="attr">fixed:</span> <span class="literal">false</span> <span class="comment"># 是否固定导航栏</span></span><br></pre></td></tr></table></figure><h3 id="3-2-导航栏目录"><a href="#3-2-导航栏目录" class="headerlink" title="3.2 *导航栏目录"></a>3.2 *导航栏目录</h3><p>导航栏的右侧可以添加目录。</p><p>格式：</p><blockquote><p>目录名: 目录链接 || 图标</p></blockquote><ul><li>目录名：目录名可以自定义（支持中文）</li><li>目录链接：目录链接<strong>必须以<code>/</code>开头，并以<code>/</code>结尾</strong>，且只能链接到内部页面</li><li>图标：图标可以使用<code>Font Awesome</code>的图标</li></ul><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">Home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">Archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="attr">Tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">Categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-folder-open</span></span><br><span class="line">  <span class="string">List||fas</span> <span class="attr">fa-list:</span></span><br><span class="line">    <span class="attr">Music:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">    <span class="attr">Movie:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line">  <span class="attr">Link:</span> <span class="string">/link/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-link</span></span><br><span class="line">  <span class="attr">About:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-heart</span></span><br></pre></td></tr></table></figure><ul><li>注意：这里链接跳转到的内部页面<strong>需要在<code>source</code>目录下单独创建</strong>，格式如下：</li></ul><p>如我想要创建一个<code>/music/</code>页面，那么我需要在<code>source</code>目录下创建一个<code>music</code>目录，然后在<code>music</code>目录下创建一个<code>index.md</code>文件，树状结构如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── <span class="built_in">source</span></span><br><span class="line">│   ├── music</span><br><span class="line">│   │   └── index.md</span><br></pre></td></tr></table></figure><p><code>index.md</code>文件的内容如下：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Music</span> <span class="comment"># 任意标题</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">xxxx-xx-xx</span> <span class="string">xx:xx:xx</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;music&quot;</span> <span class="comment"># 这里的type必须和menu中的目录名一致</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure><p>我们也可以直接用<code>hexo new page &lt;name&gt;</code>命令创建一个页面，然后在<code>source/&lt;name&gt;/index.md</code>中添加<code>type</code>属性。</p><p>值得一提的是，部分页面（<code>tags</code>和<code>categories</code>）在创建并配置好<code>type</code>后，会自动显示对应的内容。</p><p>而其他页面需要自己在<code>index.md</code>中添加内容。（TODO:不过<code>archives</code>似乎可以通过插件自动生成）</p><h3 id="3-3-Code-Blocks-代碼相關"><a href="#3-3-Code-Blocks-代碼相關" class="headerlink" title="3.3 Code Blocks (代碼相關)"></a>3.3 Code Blocks (代碼相關)</h3><h4 id="3-3-1-代码框的样式"><a href="#3-3-1-代码框的样式" class="headerlink" title="3.3.1 代码框的样式"></a>3.3.1 代码框的样式</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight_theme:</span> <span class="string">pale</span> <span class="string">night</span> <span class="comment">#  darker / pale night / light / ocean / mac / mac light / false</span></span><br><span class="line"><span class="attr">highlight_copy:</span> <span class="literal">true</span> <span class="comment"># copy button</span></span><br><span class="line"><span class="attr">highlight_lang:</span> <span class="literal">true</span> <span class="comment"># show the code language</span></span><br><span class="line"><span class="attr">highlight_shrink:</span> <span class="literal">false</span> <span class="comment"># true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button</span></span><br><span class="line"><span class="attr">highlight_height_limit:</span> <span class="literal">false</span> <span class="comment"># unit: px</span></span><br><span class="line"><span class="attr">code_word_wrap:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure><h4 id="3-3-2-Social-Settings-社交圖標設置"><a href="#3-3-2-Social-Settings-社交圖標設置" class="headerlink" title="3.3.2 Social Settings (社交圖標設置)"></a>3.3.2 Social Settings (社交圖標設置)</h4><p>这一部分配置的是侧边头像下面的社交图标。</p><p>如文档给出的示例，以<code>icon: link || the description || color</code>的形式添加即可。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># formal:</span></span><br><span class="line"><span class="comment">#   icon: link || the description || color</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line">  <span class="comment"># fab fa-github: https://github.com/xxxxx || Github || &#x27;#24292e&#x27;</span></span><br><span class="line">  <span class="comment"># fas fa-envelope: mailto:xxxxxx@gmail.com || Email || &#x27;#4a7dbe&#x27;</span></span><br></pre></td></tr></table></figure><h3 id="3-4-Image-圖片設置"><a href="#3-4-Image-圖片設置" class="headerlink" title="3.4 Image (圖片設置)"></a>3.4 Image (圖片設置)</h3><h4 id="3-4-1-网站图标"><a href="#3-4-1-网站图标" class="headerlink" title="3.4.1 网站图标"></a>3.4.1 网站图标</h4><p>浏览器标签页上的图标。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Favicon（網站圖標）</span></span><br><span class="line"><span class="attr">favicon:</span> <span class="comment"># 可以使用/img/xxxx.png，也可以是链接</span></span><br></pre></td></tr></table></figure><h4 id="3-4-2-头像"><a href="#3-4-2-头像" class="headerlink" title="3.4.2 头像"></a>3.4.2 头像</h4><p>侧边的头像。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Avatar (頭像)</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">img:</span> <span class="comment"># 可以使用/img/xxxx.png，也可以是链接</span></span><br><span class="line">  <span class="attr">effect:</span> <span class="literal">false</span> <span class="comment"># true时头像会一直旋转（有点逆天:sweat_smile:）</span></span><br></pre></td></tr></table></figure><h4 id="3-4-3-顶部图"><a href="#3-4-3-顶部图" class="headerlink" title="3.4.3 顶部图"></a>3.4.3 顶部图</h4><p>顶部图即网站首页（包括文章页面）顶部的大图。</p><p>这里直接引用官方的解释：</p><blockquote><p>官方文档：<br>如果不要显示顶部图，可直接配置 disable_top_img: true</p></blockquote><blockquote><p>顶部图的获取顺序，如果都没有配置，则不显示顶部图。<br>页面顶部图的获取顺序：<br>各自配置的 top_img &gt; 配置文件的 default_top_img<br>文章页顶部图的获取顺序：<br>各自配置的 top_img &gt; cover &gt; 配置文件的 default_top_img</p></blockquote><p>配置中的值：（注意：<code>tag_img</code>系列和<code>category_img</code>系列的配置是针对<strong>子页面</strong>的，并非主页）</p><table><thead><tr><th>配置</th><th>解释</th></tr></thead><tbody><tr><td>index_img</td><td>主页的 top_img</td></tr><tr><td>default_top_img</td><td>默认的 top_img，当页面的 top_img 没有配置时，会显示 default_top_img</td></tr><tr><td>archive_img</td><td>归档页面的 top_img</td></tr><tr><td>tag_img</td><td>tag 子页面 的 默认 top_img</td></tr><tr><td>tag_per_img</td><td>tag 子页面的 top_img，可配置每个 tag 的 top_img</td></tr><tr><td>category_img</td><td>category 子页面 的 默认 top_img</td></tr><tr><td>category_per_img</td><td>category 子页面的 top_img，可配置每个 category 的 top_img</td></tr></tbody></table><p>这里的配置参数接受：</p><ol><li>留空：即显示默认的顶部图</li><li>图片链接：网络链接或本地路径（<code>/img/xxxx.png</code>）</li><li>transparent：透明</li><li>false：不显示顶部图</li><li>颜色：包括<ul><li>HEX：<code>&#39;#000000&#39;</code> *需要用引号包裹</li><li>RGB：<code>rgb(255, 255, 255)</code> *需写全</li><li>单词：<code>red</code>、<code>aqua</code>等</li><li>渐变色：<code>&#39;linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)&#39;</code> *需要用引号包裹（&lt;-这个颜色还挺好看的）</li></ul></li></ol><p>这部分还有一些其他的配置，可以参考官方文档。</p><ul><li>如果又想方便又想美观的话，可以直接配置<code>index_img</code>和<code>default_top_img</code>即可。</li></ul><p>&#x2F;&#x2F; 2023.6.9 好像看官方文档完全够了耶。。。</p><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> TS </category>
+          
+          <category> Butterfly </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> hexo_theme </tag>
+            
+            <tag> troubleshooting </tag>
+            
+            <tag> theme_butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」05 Hexo中的Markdown特殊用法</title>
+      <link href="/2023/05/08/R_EB-05-Hexo-Markdown/"/>
+      <url>/2023/05/08/R_EB-05-Hexo-Markdown/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>在上一节中，我们已经将我们的博客网站部署到了<code>Github Page</code>上。</p><p>那么现在，我们需要做的事就是编写一些博客文章了。</p><p><code>Hexo</code>支持使用<code>Markdown</code>来编写博客文章，关于<code>Markdown</code>的基本用法在此就不多赘述。</p><p>这一节关键要看一些<code>Hexo</code>中的<code>Markdown</code>特殊用法。</p><h2 id="1-图片"><a href="#1-图片" class="headerlink" title="1. 图片"></a>1. 图片</h2><p><code>Hexo</code>中的图片引用与<code>Markdown</code>中的图片引用一样，都是使用<code>![]()</code>。</p><p>不过<code>Hexo</code>中<strong>本地引用</strong>的引用规则与<code>Markdown</code>中的引用规则有所不同。</p><h3 id="1-1-从source-x2F-pic文件夹中引用图片"><a href="#1-1-从source-x2F-pic文件夹中引用图片" class="headerlink" title="1.1 从source&#x2F;pic文件夹中引用图片"></a>1.1 从source&#x2F;pic文件夹中引用图片</h3><p>一般来讲，我们会在<code>markdown</code>文件的同级目录下创建一个<code>img</code>文件夹，然后将图片放在<code>img</code>文件夹中，然后在<code>markdown</code>文件中使用<code>![]()</code>来引用图片。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── blog01.md</span><br><span class="line">└── img</span><br><span class="line">    └── pic01.jpg</span><br></pre></td></tr></table></figure><p>如果我想在<code>blog01.md</code>中引用<code>img</code>文件夹中的<code>pic01.jpg</code>，那么我可以这样写：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">my picture</span>](<span class="link">img/pic01.jpg</span>)</span><br></pre></td></tr></table></figure><p>但是，很可惜，这种写法在<code>Hexo</code>中是<strong>无效的</strong>。</p><p>我们需要把路径改写为：（加上一个<code>/</code>）</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">my picture</span>](<span class="link">/img/pic01.jpg</span>)</span><br></pre></td></tr></table></figure><p>具体原因不详，不过由于<code>hexo g</code>命令会将<code>source</code>文件夹中的内容复制到<code>public</code>文件夹中，所以我们的图片是会转移到<code>public</code>文件夹中的。</p><h3 id="1-2-「替代方案1」开启post-asset-folder功能-复杂"><a href="#1-2-「替代方案1」开启post-asset-folder功能-复杂" class="headerlink" title="1.2 「替代方案1」开启post_asset_folder功能 - 复杂"></a>1.2 「替代方案1」开启<code>post_asset_folder</code>功能 - 复杂</h3><p><code>Hexo</code>配置文件中有一个默认关闭的功能<code>post_asset_folder</code>，它允许我们在<code>markdown</code>文件的同级目录下创建一个<code>同名文件夹</code>，然后将图片放在<code>同名文件夹</code>中，然后在<code>markdown</code>文件中使用<code>![]()</code>来引用图片。</p><p>然而，图片路径的写法与之前的不同，我们只能写图片的文件名。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── blog01.md</span><br><span class="line">└── blog01</span><br><span class="line">    └── pic01.jpg</span><br></pre></td></tr></table></figure><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">my picture</span>](<span class="link">pic01.jpg</span>)</span><br></pre></td></tr></table></figure><p>虽然终于可以显示图片了，但是如果我们为每一个博客都创建一个<code>同名文件夹</code>，那么我们的<code>source</code>文件夹会变得非常的杂乱（虽然我一开始也一直在用这种方法:sweat_smile:）。</p><h3 id="1-3-「替代方案2」使用public-img文件夹中的图片-推荐"><a href="#1-3-「替代方案2」使用public-img文件夹中的图片-推荐" class="headerlink" title="1.3 「替代方案2」使用public/img文件夹中的图片 - 推荐"></a>1.3 「替代方案2」使用<code>public/img</code>文件夹中的图片 - 推荐</h3><p>但是！就在刚刚（没错，就是为了写这一篇文章，我刚刚去测试了许多种图片引用方法），我发现我们的可以直接引用<code>public</code>文件夹中的图片！</p><p>这使用的是一种绝对引用，我们可以这样写：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">my picture</span>](<span class="link">/img/pic01.jpg</span>)</span><br></pre></td></tr></table></figure><p>这样的话我们只需要将图片放在<code>public/img</code>文件夹中，就可以方便地引用了。</p><blockquote><p>注意：<code>public</code>文件夹会被<code>hexo clean</code>清空。我的解决方案是创建一个脚本用于将复制我存储图片的文件夹到<code>public</code>文件夹中。<br>我把<code>hexo g</code>和这个脚本作为一个<code>alias</code>放在了<code>.zshrc</code>中，这样我每次<code>hexo g</code>的时候，图片就会自动复制到<code>public</code>文件夹中了。</p><p>（事实上我会先把文章写在博客文件夹的外面，然后用另一个脚本用于同步所有文章到<code>source</code>文件夹中。我还有一个用于同步<code>config</code>设置的脚本。当然，这些都不是完全必要的，我只是觉得这样更方便一些。）</p></blockquote><blockquote><ul><li><code>zsh</code>是一种类似于<code>Linux</code>默认终端<code>bash</code>的终端，而<code>.zshrc</code>即<code>zsh</code>的配置文件。</li><li><code>alias</code>是<code>Linux</code>中的一种特有的命令，它允许你在你使用的终端中创建一个自定义的命令（修改配置文件），让你更方便地使用你的命令（组合）。</li></ul></blockquote><h3 id="1-4-弊端"><a href="#1-4-弊端" class="headerlink" title="1.4 弊端"></a>1.4 弊端</h3><p>无论使用以上哪一种方法，都有一个弊端，那就是我们无法在<code>markdown</code>文件中预览图片。</p><p>不过既然我们最终都要将博客发布，那么我们完全可以使用<code>hexo s</code>预览其本地效果，这也方便我们检查博客在网页上的显示效果。</p><h3 id="1-5-非markdown语法的图片引用"><a href="#1-5-非markdown语法的图片引用" class="headerlink" title="1.5 非markdown语法的图片引用"></a>1.5 非<code>markdown</code>语法的图片引用</h3><p><code>Hexo</code>还有一种以<code>&#123;% asset_img [图片名] [图片描述] %&#125;</code>的方式来引用图片的方法，但是这种方法在<code>markdown</code>文件中是无效的，只能在<code>html</code>文件中使用，所以我不喜欢这种方法。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img pic01.jpg my picture %&#125;</span><br></pre></td></tr></table></figure><h2 id="2-如何使用emoji"><a href="#2-如何使用emoji" class="headerlink" title="2. 如何使用emoji"></a>2. 如何使用<code>emoji</code></h2><p>我平时使用<code>VSCode</code>来编写<code>markdown</code>文件，有时也会在里面加一些<code>emoji</code>。:smile:</p><p>平时在逛<code>Github</code>的时候，你也能在一些<code>README.md</code>文件中看到一些<code>emoji</code>。:books:</p><p>我本以为既然我们使用了<code>Github Page</code>，那么我们也可以在我们的博客中使用<code>emoji</code>，但是我发现并不是这样的。:sweat:</p><p>我在网上搜索了一下，给出的解决方案是：</p><ol><li>卸载原有的<code>hexo-renderer-marked</code>插件</li><li>安装<code>markdown-it-emoji</code>和<code>hexo-renderer-markdown-it</code>插件</li></ol><h3 id="2-1-卸载与安装插件"><a href="#2-1-卸载与安装插件" class="headerlink" title="2.1 卸载与安装插件"></a>2.1 卸载与安装插件</h3><p>在你的博客根目录下，使用<code>npm</code>进行卸载与安装。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br><span class="line">npm i hexo-renderer-markdown-it markdown-it-emoji --save</span><br></pre></td></tr></table></figure><h3 id="2-2-修改-config-yml文件"><a href="#2-2-修改-config-yml文件" class="headerlink" title="2.2 修改_config.yml文件"></a>2.2 修改<code>_config.yml</code>文件</h3><p>在<code>_config.yml</code>文件中，添加关于<code>markdown-it-emoji</code>的配置。（可以直接粘贴在最下方）</p><p>下面是我自己的配置，具体设置请参考<a href="https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki">官方文档</a></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Markdown-it config</span></span><br><span class="line"><span class="comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span></span><br><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">render:</span></span><br><span class="line">    <span class="attr">html:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">breaks:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">linkify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">typographer:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">quotes:</span> <span class="string">&#x27;“”‘’&#x27;</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-abbr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-footnote</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-ins</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sub</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-emoji</span></span><br><span class="line">    </span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">collisionSuffix:</span> <span class="string">&#x27;v&#x27;</span></span><br><span class="line">    <span class="comment"># If `true`, creates an anchor tag with a permalink besides the heading.</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">permalinkClass:</span> <span class="string">header-anchor</span></span><br><span class="line">    <span class="attr">permalinkSide:</span> <span class="string">&#x27;right&#x27;</span></span><br><span class="line">    <span class="attr">permalinkSymbol:</span> <span class="string">&#x27;  ~&#x27;</span></span><br></pre></td></tr></table></figure><p>配置好这些之后，我们就可以愉快地在博客中使用<code>emoji</code>了。:tada:</p><ul><li>如果你重新<code>hexo g &amp;&amp; hexo s</code>仍然无法预览<code>emoji</code>，那么请尝试重启浏览器或者对你要预览的文件进行修改。</li></ul><h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>现在，我们可以愉快地在博客中使用<code>emoji</code>了。:tada:</p><p>在Hexo中使用emoji，为你的博客增添更多乐趣吧！:smiley::heart:</p><p>下一节，更换主题，让我们的博客更加美观吧！:sunglasses:</p><p>玩的开心！:wink:</p><blockquote><p>上一节： <a href="/2023/05/07/R_EB-04-Push-to-github/" title="「建站」04 将Hexo部署到Github Page">「建站」04 将Hexo部署到Github Page</a></p></blockquote><blockquote><p>下一节： <a href="/2023/05/09/R_EB-06-Hexo-theme/" title="「建站」06 更换Hexo主题">「建站」06 更换Hexo主题</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」04 将Hexo部署到Github Page</title>
+      <link href="/2023/05/07/R_EB-04-Push-to-github/"/>
+      <url>/2023/05/07/R_EB-04-Push-to-github/</url>
+      
+        <content type="html"><![CDATA[<!-- # 将Hexo部署到Github Page- 本文编辑时间：2023.05.07 --><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>在上一节中，我们已经安装好了<code>Hexo</code>并在本地预览了我们的博客网站。</p><p>那么在编辑我们的博客之前，不妨先将它部署到<code>Github Page</code>上吧！（本节不涉及域名解析等自定义域名的内容）</p><blockquote><p><code>Github Page</code>是<code>Github</code>提供的一个静态网站托管服务，我们可以将我们的博客网站部署到<code>Github Page</code>上，这样我们就可以通过<code>Github Page</code>来访问我们的博客网站了。</p></blockquote><h2 id="0-注意"><a href="#0-注意" class="headerlink" title="0. 注意"></a>0. 注意</h2><p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p><h2 id="1-修改配置文件"><a href="#1-修改配置文件" class="headerlink" title="1. 修改配置文件"></a>1. 修改配置文件</h2><p>我们需要修改<code>Hexo</code>的配置文件<code>_config.yml</code>，让<code>Hexo</code>知道我们要将博客网站部署到<code>Github Page</code>上。（也可以顺便修改一下博客网站的标题、描述等信息）</p><blockquote><p>具体的参数信息可以参考<a href="https://hexo.io/zh-cn/docs/configuration">Hexo官网</a>。</p></blockquote><h3 id="1-1-Deployment"><a href="#1-1-Deployment" class="headerlink" title="1.1 Deployment"></a>1.1 Deployment</h3><p>首先我们找到<code>Deployment</code>这一项（在最下方），然后对其进行补充与修改。</p><blockquote><p>注释里面已经给了官<a href="https://hexo.io/docs/one-command-deployment">网链接啦</a></p></blockquote><p>我们要将<code>deploy</code>中的<code>type</code>改为<code>git</code>，并且将<code>repo</code>改为我们的<code>Github</code>仓库地址。（地址可以通过<code>Github</code>仓库的<code>Code</code>按钮来获取）</p><p><img src="/img/R_BE/04-1.png" alt="Code-HTTPS"></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;&lt;你的Github用户名&gt;&gt;/&lt;&lt;你的仓库地址&gt;&gt;.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure><blockquote><p>注意：一些老教程会将<code>branch</code>设置为<code>master</code>，但是从2020年开始，<code>Github</code>已经将默认分支改为<code>main</code>了，所以我们需要将<code>branch</code>设置为<code>main</code>。</p><p><em>向制作老教程的前辈们致敬！</em></p></blockquote><h3 id="1-2-URL"><a href="#1-2-URL" class="headerlink" title="1.2 URL"></a>1.2 URL</h3><p>然后我们需要将<code>Hexo</code>的<code>_config.yml</code>文件中的<code>url</code>修改为我们的<code>Github Page</code>地址。</p><p>找到<code>url</code>这一项（靠近最上方），然后将其修改为<code>https://&lt;&lt;你的Github用户名&gt;&gt;.github.io/&lt;&lt;你的仓库地址&gt;&gt;/</code>即可。（或者说<code>https://&lt;&lt;你的仓库名&gt;&gt;.git</code>）</p><blockquote><p>也强烈推荐通过注释里给出的<a href="https://username.github.io/project">官网链接</a>来了解更多配置信息。</p></blockquote><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://&lt;&lt;你的仓库名&gt;&gt;.git</span></span><br></pre></td></tr></table></figure><h3 id="1-3-其他（optional）"><a href="#1-3-其他（optional）" class="headerlink" title="1.3 *其他（optional）"></a>1.3 *其他（optional）</h3><p>我们也可以修改一下博客网站的标题、描述等信息。</p><p>找到最上方的<code>Site</code>这一项，然后按需修改即可。</p><ul><li>注意，这里的<code>language</code>指的是网站的语言，而不是博客的语言。具体填入什么需要根据你所选的<code>主题</code>来定。（主题会在下一节中介绍，如果你不知道该填什么，可以先留着默认的<code>en</code>）</li><li><code>timezone</code>指的是时区，对于中国大陆来说，可以填<code>Asia/Shanghai</code>。</li></ul><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">&lt;&lt;你的博客标题&gt;&gt;</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&lt;&lt;你的博客副标题&gt;&gt;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&lt;&lt;你的博客描述&gt;&gt;</span></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">&lt;&lt;你的博客关键词&gt;&gt;</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">&lt;&lt;你的名字&gt;&gt;</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure><h2 id="2-安装hexo-deployer-git（不是apt安装的git）"><a href="#2-安装hexo-deployer-git（不是apt安装的git）" class="headerlink" title="2. 安装hexo-deployer-git（不是apt安装的git）"></a>2. 安装<code>hexo-deployer-git</code>（不是apt安装的git）</h2><p>我们需要安装<code>hexo-deployer-git</code>这个插件，来实现将博客网站部署到<code>Github Page</code>上。</p><ul><li>如果不安装这个插件直接部署的话会报错<code>Deployer not found: git</code>。（在官方文档中也提到这个bug，给出的解决方案就是安装这个插件）</li></ul><p>将路径切换到博客网站的根目录下，然后执行以下命令即可。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><h2 id="3-配置git"><a href="#3-配置git" class="headerlink" title="3. 配置git"></a>3. 配置git</h2><p>距离部署已经不远啦！我们只需要配置一下<code>git</code>就可以啦！</p><ul><li>如果不配置直接进行部署的话，会出现一个<code>*** Please tell me who you are.</code>的提示，可以根据这个提示下给出的命令来配置<code>git</code>。</li></ul><p>也就是下面这两条命令。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;&lt;&lt;你的Github用户名&gt;&gt;&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;&lt;&lt;你的Github邮箱&gt;&gt;&quot;</span></span><br></pre></td></tr></table></figure><h2 id="4-保存github-token"><a href="#4-保存github-token" class="headerlink" title="4. 保存github token"></a>4. 保存github token</h2><blockquote><p>从2021年8月13日开始，Github将不再接受使用密码进行git操作，所以我们需要使用token来进行git操作。</p></blockquote><p>打开你的<code>Github</code>主页，然后点击右上角的头像，选择<code>Settings</code>，选择最下方的<code>Developer settings</code>。</p><p><img src="/img/R_BE/04-2.png" alt="Developer settings"></p><p>然后选择左侧的<code>Personal access tokens</code>，点击右上角的<code>Generate new token</code>。</p><ul><li><strong>注意，这个token只会显示一次，之后你再打开这个界面就无法再查看它了。<u>请务必将它保存在便于你访问且安全的地方！</u>之后我们每一次更新博客网站都需要用它作为密码来验证。</strong></li></ul><p><img src="/img/R_BE/04-3.png" alt="Generate new token"></p><p>有关<code>token</code>的配置，我们可以将其期限设置为<code>No expiration</code>（当然，<code>Github</code>强烈建议我们设置一个有期限的token，这里根据自己的需求来定）。然后对于<code>Select scopes</code>，我们最低限度只需要勾选<code>repo</code>即可。</p><h2 id="5-部署与更新"><a href="#5-部署与更新" class="headerlink" title="5. 部署与更新"></a>5. 部署与更新</h2><p>让我们先回到博客网站的根目录下。</p><p>接下来要介绍平时更新博客时常用的几个命令。</p><ul><li><p><code>hexo g</code>(<code>hexo generate</code>)：生成静态文件（public文件夹）。</p></li><li><p><code>hexo d</code>(<code>hexo deploy</code>)：部署网站到<code>Github Page</code>上。</p></li><li><p><code>hexo cl</code>(<code>hexo clean</code>)：清除缓存文件（db.json）和已生成的静态文件（public文件夹）。（它不会删除<code>source</code>文件夹中的文件，所以不用担心会误删文章）</p><ul><li>我们通过<code>hexo d</code>命令部署网站时，同步到<code>Github</code>仓库的文件夹就是<code>public</code>文件夹。</li></ul></li><li><p><code>hexo s</code>(<code>hexo server</code>)：启动本地服务器，用于预览网站。（默认端口为<code>4000</code>，可以通过<code>hexo s -p &lt;port&gt;</code>来指定端口）</p></li></ul><p>请记住这几个命令，我们每次会经常用到它们。</p><p>以下是一个常用的更新博客的流程，注意，以下所有命令都需要在<strong>博客网站的根目录</strong>下执行！</p><h3 id="5-1-清除缓存文件和已生成的静态文件"><a href="#5-1-清除缓存文件和已生成的静态文件" class="headerlink" title="5.1 清除缓存文件和已生成的静态文件"></a>5.1 清除缓存文件和已生成的静态文件</h3><p>我不确定这一步是否必要，但是我每次更新博客时都会执行这一步。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure><h3 id="5-2-生成静态文件"><a href="#5-2-生成静态文件" class="headerlink" title="5.2 生成静态文件"></a>5.2 生成静态文件</h3><p>将我们对配置的修改、对文章的修改等等都生成为静态文件到<code>public</code>文件夹中。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><h3 id="5-3-部署网站到Github-Page上"><a href="#5-3-部署网站到Github-Page上" class="headerlink" title="5.3 部署网站到Github Page上"></a>5.3 部署网站到Github Page上</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>这一步会要求你输入<code>Github</code>的用户名和密码，然而：</p><ul><li>用户名是区分大小写的！</li><li>这里的密码并不是你的<code>Github</code>密码，而是你在上一步中保存的<code>Github token</code>！</li></ul><p>对了！如果执行<code>hexo d</code>后卡住，没有出现有关<code>Github</code>的提示，那么可以多次尝试<code>Ctrl+C</code>来终止命令，然后再重新执行<code>hexo d</code>。</p><p>如果一切顺利的话，你的博客网站已经部署到<code>Github Page</code>上了。</p><h3 id="5-4-更新"><a href="#5-4-更新" class="headerlink" title="5.4 更新"></a>5.4 更新</h3><p>自此往后，每次更新博客网站时，我们只需要执行以下两步即可。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>如果遇到一些地方没有同步的情况，可以尝试先执行<code>hexo cl</code>再执行以上两步。</p><h2 id="6-预览网站"><a href="#6-预览网站" class="headerlink" title="6. 预览网站"></a>6. 预览网站</h2><p>在短暂的等待后（部署后需要一定的时间才能在网上访问到你的博客网站），你可以查看你的<code>Github</code>仓库是否更新，也可以直接在浏览器中输入<code>&lt;&lt;你的仓库名&gt;&gt;</code>（<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>）来访问你的博客网站。</p><p>不出意外的话，你已经可以在网页中浏览到<code>source</code>文件夹中自带的<code>Hello World</code>文章了。</p><p>之后我们的主要工作就是在<code>source</code>文件夹中添加文章啦！</p><h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>Congratulations！:tada:</p><p>至此我们已经了解了部署与更新博客的全部流程啦！\(≧▽≦)&#x2F;~</p><p>那么，下一节！我们来讲讲使用这个框架写博客时会遇到的一些问题吧！（比如如何插入图片、如何使用<code>emoji</code>等等）</p><p>有关域名解析的问题，我想在最后面再提，因为我觉得这只是最后的装点～</p><p>玩的开心！:wink:</p><blockquote><p>上一节： <a href="/2023/05/07/R_EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">「建站」03 使用Hexo初步创建博客网站与本地预览</a></p></blockquote><blockquote><p>下一节： <a href="/2023/05/08/R_EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">「建站」05 Hexo中的Markdown特殊用法</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> node </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> npm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」03 使用Hexo初步创建博客网站与本地预览</title>
+      <link href="/2023/05/07/R_EB-03-Hexo-init/"/>
+      <url>/2023/05/07/R_EB-03-Hexo-init/</url>
+      
+        <content type="html"><![CDATA[<!-- # 使用Hexo初步创建博客网站与本地预览- 本文编辑时间：2023.05.07 --><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>我们在上一节做了许多工作呢，辛苦啦～ :smile:</p><p>这一节会比上一节有趣一些，我们将会使用<code>Hexo</code>来创建我们的博客网站，并在本地预览它。</p><blockquote><p><code>Hexo</code>是一个基于<code>Node.js</code>的静态博客框架。</p></blockquote><h2 id="1-选一个用于存储博客网站文件的文件夹"><a href="#1-选一个用于存储博客网站文件的文件夹" class="headerlink" title="1. 选一个用于存储博客网站文件的文件夹"></a>1. 选一个用于存储博客网站文件的文件夹</h2><p>这一步很简单，你只需要在你的电脑上选一个<code>风水宝地</code>来存储你的博客网站文件就可以了。比如说我选了<code>~/mystuff/blog</code>。</p><p>之后我们会把所有的博客网站文件都放在这个文件夹里。</p><h2 id="2-安装Hexo"><a href="#2-安装Hexo" class="headerlink" title="2. 安装Hexo"></a>2. 安装Hexo</h2><blockquote><p>详细步骤我们可以在<code>hexo</code>的<a href="https://hexo.io/zh-cn/index.html">官网</a>上找到。</p></blockquote><p>在任意位置打开你的终端，运行以下命令来安装<code>Hexo</code>：</p><ul><li>这个命令会在你的电脑上全局安装<code>Hexo</code>。</li><li><code>npm</code>是<code>Node.js</code>的包管理器，我们之前使用<code>nvm</code>安装了<code>Node.js</code>时，<code>npm</code>也一起安装了。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h2 id="3-初始化Hexo"><a href="#3-初始化Hexo" class="headerlink" title="3. 初始化Hexo"></a>3. 初始化Hexo</h2><p>让我们回到我们之前选好的<code>风水宝地</code>，也就是<code>~/mystuff/blog</code>，在这个文件夹里运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure><p>这个命令会<code>~/mystuff/blog</code>里创建一些文件，这些文件就是我们博客网站的初始文件。</p><p>在短暂的等待之后，<code>hexo</code>就已经帮我们创建好了博客网站的初始文件了。</p><h3 id="3-1-另一种方式"><a href="#3-1-另一种方式" class="headerlink" title="3.1 另一种方式"></a>3.1 另一种方式</h3><p>你也可以在这个命令后面加上你的博客网站的名字，比如说：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog</span><br></pre></td></tr></table></figure><p>这样<code>hexo</code>就会在<code>~/mystuff/blog</code>里创建一个名为<code>myblog</code>的文件夹，然后把博客网站的初始文件放在这个文件夹里。</p><p>如果你用这种方式，那么你的“博客网站文件夹”就是<code>~/mystuff/blog/myblog</code>了。</p><h2 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4. 安装依赖"></a>4. 安装依赖</h2><p>无论你用了以上的那种方法，现在你需要在你的<strong>博客网站文件夹</strong>里运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><h2 id="5-预览博客网站"><a href="#5-预览博客网站" class="headerlink" title="5. 预览博客网站"></a>5. 预览博客网站</h2><p>想要看看我们折腾半天到底干了些什么吗？</p><p>现在你只需要在<code>~/mystuff/blog</code>里运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure><p>然后打开浏览器，输入terminal里显示的网址（可能是<code>http://localhost:4000</code>），就可以看到我们的博客网站啦！</p><p><img src="/img/R_BE/03-1.png" alt="hexo"></p><ul><li>Tip：你可以使用<code>hexo s</code>来代替<code>hexo server</code>，并且你可以在<code>hexo s</code>后面加上<code>-p</code>来指定端口，比如说<code>hexo s -p 5000</code>。</li></ul><h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>恭喜！:tada: </p><p>看到我们的博客网站在本地运行，这应该是一件很有意思的事情吧！</p><p>但是，还有更有意思的事情等着我们呢！本地预览只是我们的第一步，接下来我们还得知道如何编辑博客内容:pencil:，如何发布博客网站:globe_with_meridians:，以及如何更换主题:art:等等…</p><p>玩的开心！:wink:</p><blockquote><p>上一节： <a href="/2023/05/07/R_EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">「建站」02 Github &amp; SSH &amp; node 基本配置</a></p></blockquote><blockquote><p>下一节： <a href="/2023/05/07/R_EB-04-Push-to-github/" title="「建站」04 将Hexo部署到Github Page">「建站」04 将Hexo部署到Github Page</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> node </tag>
+            
+            <tag> hexo </tag>
+            
+            <tag> npm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」02 Github &amp; SSH &amp; node 基本配置</title>
+      <link href="/2023/05/07/R_EB-02-Github-SSH-node-basic/"/>
+      <url>/2023/05/07/R_EB-02-Github-SSH-node-basic/</url>
+      
+        <content type="html"><![CDATA[<!-- # Github & SSH & node 基本配置- 本文编辑时间：2023.05.07 --><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>想要制作一个个人博客网站，我们需要这些东西的帮助：</p><blockquote><ul><li><code>Github</code>：用来存储我们的网站的源代码</li><li><code>SSH</code>：用来连接我们的电脑和<code>Github</code></li><li><code>node</code>：即<code>Node.js</code>用来运行<code>Hexo</code>（下一节会介绍）</li></ul></blockquote><p>我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。</p><h2 id="0-注意"><a href="#0-注意" class="headerlink" title="0. 注意"></a>0. 注意</h2><p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><p>确保你已经在你的电脑上安装了<code>git</code>和<code>ssh</code>。</p><p>在你的终端中运行<code>git</code>和<code>ssh</code>。如果出现<code>command not found</code>之类的内容的话说明你还没有安装它们。对于我的系统（<code>Linux Mint 21.1</code>），我可以使用以下命令来安装它们：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git ssh</span><br></pre></td></tr></table></figure><h2 id="2-定义git的用户名和邮箱与生成SSH密钥"><a href="#2-定义git的用户名和邮箱与生成SSH密钥" class="headerlink" title="2. 定义git的用户名和邮箱与生成SSH密钥"></a>2. 定义git的用户名和邮箱与生成SSH密钥</h2><h3 id="2-1-定义git的用户名和邮箱"><a href="#2-1-定义git的用户名和邮箱" class="headerlink" title="2.1 定义git的用户名和邮箱"></a>2.1 定义git的用户名和邮箱</h3><p>在terminal中运行以下命令来定义你的用户名和邮箱：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &lt;&lt;你的用户名&gt;&gt;</span><br><span class="line">git config --global user.email &lt;&lt;你的邮箱&gt;&gt;</span><br></pre></td></tr></table></figure><p>否则你在使用<code>git</code>时会出现以下错误：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">*** Please tell me <span class="built_in">who</span> you are.</span><br><span class="line"></span><br><span class="line">Run</span><br><span class="line"></span><br><span class="line">  git config --global user.email <span class="string">&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  git config --global user.name &quot;</span></span><br><span class="line"></span><br><span class="line">to <span class="built_in">set</span> your account<span class="string">&#x27;s default identity.</span></span><br><span class="line"><span class="string">Omit --global to set the identity only in this repository.</span></span><br></pre></td></tr></table></figure><h3 id="2-2-生成SSH密钥"><a href="#2-2-生成SSH密钥" class="headerlink" title="2.2 生成SSH密钥"></a>2.2 生成SSH密钥</h3><ul><li>SSH密钥用于连接你的电脑和<code>Github</code>。</li></ul><p>在terminal中运行以下命令来生成你的SSH密钥：</p><ul><li>注意：你在这里输入的邮箱应该和你注册<code>Github</code>账号时使用的邮箱相同。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &lt;&lt;你的邮箱&gt;&gt;</span><br></pre></td></tr></table></figure><p>然后按照提示来生成你的SSH密钥。（为了方便，你可以直接按<code>Enter</code>来使用默认值。但你也可以指定你的SSH密钥的路径、名称和密码。但一定要你记下来。）</p><p>之后你会得到两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>，它们分别代表你的私钥和公钥。你可以在你指定的路径中找到它们。（默认路径是<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>）</p><h2 id="3-将SSH密钥添加到Github"><a href="#3-将SSH密钥添加到Github" class="headerlink" title="3. 将SSH密钥添加到Github"></a>3. 将SSH密钥添加到Github</h2><ul><li>添加SSH密钥到Github的目的是为了让你的电脑和Github之间可以互相认证。</li></ul><h3 id="3-1-复制你的公钥"><a href="#3-1-复制你的公钥" class="headerlink" title="3.1 复制你的公钥"></a>3.1 复制你的公钥</h3><p>在terminal中运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;&lt;你的公钥的路径&gt;&gt;</span><br></pre></td></tr></table></figure><p>然后你会看到你的公钥的内容。复制它。</p><h3 id="3-2-将你的公钥添加到Github"><a href="#3-2-将你的公钥添加到Github" class="headerlink" title="3.2 将你的公钥添加到Github"></a>3.2 将你的公钥添加到Github</h3><p>进入<code>Github</code> -&gt; <code>Settings</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code>并粘贴你的公钥以添加它。</p><h2 id="4-测试你的SSH密钥"><a href="#4-测试你的SSH密钥" class="headerlink" title="4. 测试你的SSH密钥"></a>4. 测试你的SSH密钥</h2><p>在terminal中运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T &lt;&lt;你的邮箱&gt;&gt;</span><br></pre></td></tr></table></figure><p>如果你看到类似<code>Hi &lt;&lt;你的用户名&gt;&gt;! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>的内容，那么你已经成功地将你的SSH密钥添加到了Github。</p><ul><li><p>如果你的terminal卡在这里，可能是因为网络不好。</p></li><li><p>不需要一直等下去，鬼知道网络什么时候能好。只要不报错，建议直接跳到下一步。</p></li></ul><h2 id="5-创建一个新的仓库（有特殊命名要求）"><a href="#5-创建一个新的仓库（有特殊命名要求）" class="headerlink" title="5. 创建一个新的仓库（有特殊命名要求）"></a>5. 创建一个新的仓库（有特殊命名要求）</h2><p>让我们在<code>Github</code>上创建一个新的仓库并将它命名为<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>。（建议先勾选<code>Add a README file</code>，之后的<code>hexo deploy</code>的流程会自动删除它的。）</p><ul><li><strong>非常重要</strong>：我们需要使用<code>Github Page</code>，所以<ol><li>你的仓库的名字必须是<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>，不要使用其他名字。</li><li>这个仓库必须是<strong>公开的</strong>！</li><li>在仓库创建完毕后，你需要在仓库的<code>Settings</code> -&gt; <code>Pages</code>中将<code>Source</code>设置为<code>main</code>，并点击<code>Save</code>。（有时会自动设置好，我们需要确认一下。）</li></ol></li></ul><h2 id="6-安装node"><a href="#6-安装node" class="headerlink" title="6. 安装node"></a>6. 安装node</h2><ul><li><code>node</code>用于运行<code>Hexo</code>。</li></ul><p>这里我们有两种选择：</p><table><thead><tr><th></th><th>优点</th><th>缺点</th></tr></thead><tbody><tr><td>直接安装<code>node</code></td><td>简单</td><td>无法自定义<code>node</code>的版本</td></tr><tr><td>使用<code>nvm</code>安装<code>node</code></td><td>可以自定义<code>node</code>的版本</td><td>略显繁琐</td></tr></tbody></table><p>如果只是想简单地使用<code>Hexo</code>的话，直接安装<code>node</code>即可。</p><h3 id="6-1-直接安装node"><a href="#6-1-直接安装node" class="headerlink" title="6.1 直接安装node"></a>6.1 直接安装<code>node</code></h3><p>在terminal中运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure><ul><li>如果你已经使用<code>nvm</code>安装过<code>node</code>，那么这里没有提示<code>node</code>已安装是正常的。（因为<code>apt</code>和<code>nvm</code>没有共享安装信息）</li></ul><p>然后运行以下命令来，根据是否输出版本号来判断是否安装成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure><h3 id="6-2-使用nvm安装node"><a href="#6-2-使用nvm安装node" class="headerlink" title="6.2 使用nvm安装node"></a>6.2 使用<code>nvm</code>安装<code>node</code></h3><ul><li><code>nvm</code>即<code>node version manager</code>，用于管理<code>node</code>的版本。</li></ul><blockquote><p>我们可以按照<code>nvm</code>的<a href="https://github.com/nvm-sh/nvm">官方文档</a>来安装它。</p></blockquote><p>大致过程是<code>下载nvm</code> -&gt; <code>安装nvm</code> -&gt; <code>安装node</code>。</p><h4 id="1-下载与安装nvm"><a href="#1-下载与安装nvm" class="headerlink" title="1. 下载与安装nvm"></a>1. 下载与安装<code>nvm</code></h4><blockquote><p>见官方文档中<code>Install &amp; Update Script</code>一节。</p></blockquote><ul><li>具体命令以官方文档为准！！！</li></ul><p>运行以下两个命令中的任一个来下载并安装<code>nvm</code>：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure><h4 id="2-安装node"><a href="#2-安装node" class="headerlink" title="2. 安装node"></a>2. 安装<code>node</code></h4><blockquote><p>见官方文档中<code>Usage</code>一节。</p></blockquote><p>有多种方式安装<code>node</code>，这里我们使用最简单的一种即可：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install node</span><br></pre></td></tr></table></figure><p>安装完成后，运行以下命令来判断是否安装成功：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure><p>如果输出了版本号，那么说明安装成功。</p><h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>如有需要，请参考官方文档来使用<code>nvm</code>。（<em>Recommend</em>）</p><h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>做到这里，我们已经完成了“基础设施建设”。</p><p>下一步我们就要开始使用<code>Hexo</code>来建立我们的博客网站啦！</p><p>玩的开心！:wink:</p><blockquote><p>上一节： <a href="/2023/05/06/R_EB-01-Prerequirements/" title="「建站」01 准备工作 - 建立自己的博客网站">「建站」01 准备工作 - 建立自己的博客网站</a> <br></p></blockquote><blockquote><p>下一节： <a href="/2023/05/07/R_EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">「建站」03 使用Hexo初步创建博客网站与本地预览</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ssh </tag>
+            
+            <tag> node </tag>
+            
+            <tag> nvm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「建站」01 准备工作 - 建立自己的博客网站</title>
+      <link href="/2023/05/06/R_EB-01-Prerequirements/"/>
+      <url>/2023/05/06/R_EB-01-Prerequirements/</url>
+      
+        <content type="html"><![CDATA[<!-- # 准备工作 - 建立自己的博客网站 --><!-- - 本文编辑时间：2023.05.06 --><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你，有想过建立一个自己的博客网站吗？ :thinking:</p><p>我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… :cry:</p><p>但是现在，瞧，这是哪儿？</p><blockquote><p>Hi，欢迎来到我的博客！:smile:</p></blockquote><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>这是一个记录了我在<code>Linux</code>上使用<code>Github Page</code>和<code>Hexo</code>建立自己博客网站的系列。（网上也有很多关于<code>Windows</code>的教程。无论是哪个系统，它们的原理都是90%相同的。）</p><p><img src="/img/R_BE/01-1.png" alt="My OS"></p><p><span></span></p><p>这个系列既是我建站过程的记录，也是一份<strong>粗略的</strong>建站教程（或许最需要看的是未来的我自己？毕竟自己搭的时候也是看了许多不同的教程，我可能最需要的是一篇我自己总结的）。</p><p>我并不专业，很多地方可能只是依葫芦画瓢，内容大多也仅供参考。但同时，如果你也想建立一个博客网站的话，我希望我的博客能帮到你。:heart:</p><h2 id="建一个博客网站需要什么？"><a href="#建一个博客网站需要什么？" class="headerlink" title="建一个博客网站需要什么？"></a>建一个博客网站需要什么？</h2><p>建立一个简单的博客并不难。</p><p>在正式开始之前，我们需要：</p><ul><li>一个<code>Github</code>账号</li><li>如果你会用“魔法”的话那就更好了（你懂我的意思，对吧）</li><li>一个<code>域名</code>（optional|如果你希望不用输入繁琐的<code>github.io</code>域名就能访问你的博客的话，那么推荐你购买一个域名）</li></ul><p>最重要的是，你需要有：</p><ul><li><code>耐心</code>：建站的过程不大可能一帆风顺，我们可能会遇到各种各样的问题（网络、配置、代码等等）</li><li><code>热情</code>：如果缺少热情，那么简单的问题或许也会让你觉得很烦躁</li><li><code>查阅资料的能力</code>：遇到问题时，我们需要学会自己去查阅资料，而不是一味的等待别人的回答。我们使用的大部分工具都是开源的，所以我们完全可以通过查阅资料来解决我们的问题</li></ul><h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>那么，让我们开启建站之旅吧！:tada:</p><p>玩的开心！:wink:</p><blockquote><p>下一节： <a href="/2023/05/07/R_EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">「建站」02 Github &amp; SSH &amp; node 基本配置</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2023 </category>
+          
+          <category> 教程 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> introduction </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
