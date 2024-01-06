@@ -16,27 +16,24 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
+    <meta name="description" content="前言Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码 SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. 注意我会用&lt;&lt;&gt;&gt;来表示每个人情况">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「LUT」01 Grub-电脑启动引导">
-<meta property="og:url" content="https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/index.html">
+<meta property="og:title" content="「建站」02 Github &amp; SSH &amp; node 基本配置">
+<meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-02-Github-SSH-node-basic/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
+<meta property="og:description" content="前言Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码 SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. 注意我会用&lt;&lt;&gt;&gt;来表示每个人情况">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-01.png">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-02.png">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-03.jpg">
-<meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
+<meta property="article:published_time" content="2023-05-07T04:00:00.000Z">
 <meta property="article:modified_time" content="2024-01-06T06:25:10.790Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="tricks">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="node">
+<meta property="article:tag" content="nvm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/LUT/01-01.png">
   
   
   
-  <title>「LUT」01 Grub-电脑启动引导 - Ahu Blog</title>
+  <title>「建站」02 Github &amp; SSH &amp; node 基本配置 - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「LUT」01 Grub-电脑启动引导"></span>
+            <span id="subtitle" data-typed-text="「建站」02 Github &amp; SSH &amp; node 基本配置"></span>
           
         </div>
 
@@ -213,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-12 17:00" pubdate>
-          2023年5月12日 下午
+        <time datetime="2023-05-07 12:00" pubdate>
+          2023年5月7日 中午
         </time>
       </span>
     
@@ -225,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          941 字
+          1.4k 字
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
         
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -273,59 +270,145 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「LUT」01 Grub-电脑启动引导</h1>
+            <h1 id="seo-header">「建站」02 Github &amp; SSH &amp; node 基本配置</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Greetings"><a href="#Greetings" class="headerlink" title="Greetings!"></a>Greetings!</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
-<p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p>
-<p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p>
-<p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p>
-<h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p>
-<ul>
-<li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="hljs-comment"># 添加grub-customizer的下载源</span><br>sudo apt update <span class="hljs-comment"># 更新源</span><br>sudo apt install grub-customizer <span class="hljs-comment"># 安装grub-customizer</span><br></code></pre></td></tr></table></figure>
+                <!-- # Github & SSH & node 基本配置
 
-<p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p>
-<ul>
-<li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li>
-</ul>
-<h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
-<p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p>
-<p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p>
-<p>这里就不具体演示单独修改了。</p>
-<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
-<ul>
-<li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
-</ul>
-<p><img src="/img/LUT/01-01.png" srcset="/img/loading.gif" lazyload alt="Gnome-look:Grub themes"></p>
-<p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li>
-</ul>
-<h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
-<p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p>
-<ul>
-<li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li>
-<li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="hljs-comment"># 克隆repo到本地&lt;path&gt;目录</span><br></code></pre></td></tr></table></figure>
+- 本文编辑时间：2023.05.07 -->
 
-<p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p>
-<p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
-<p><img src="/img/LUT/01-02.png" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
-<p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
-<p><img src="/img/LUT/01-03.jpg" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p>
-<p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
-<p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p>
-<p>Have fun! :wink:</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+<p>想要制作一个个人博客网站，我们需要这些东西的帮助：</p>
 <blockquote>
-<p>下一节： <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">「LUT」02 zsh-更漂亮的terminal</a></p>
+<ul>
+<li><code>Github</code>：用来存储我们的网站的源代码</li>
+<li><code>SSH</code>：用来连接我们的电脑和<code>Github</code></li>
+<li><code>node</code>：即<code>Node.js</code>用来运行<code>Hexo</code>（下一节会介绍）</li>
+</ul>
+</blockquote>
+<p>我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。</p>
+<h2 id="0-注意"><a href="#0-注意" class="headerlink" title="0. 注意"></a>0. 注意</h2><p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><p>确保你已经在你的电脑上安装了<code>git</code>和<code>ssh</code>。</p>
+<p>在你的终端中运行<code>git</code>和<code>ssh</code>。如果出现<code>command not found</code>之类的内容的话说明你还没有安装它们。对于我的系统（<code>Linux Mint 21.1</code>），我可以使用以下命令来安装它们：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install git ssh<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-定义git的用户名和邮箱与生成SSH密钥"><a href="#2-定义git的用户名和邮箱与生成SSH密钥" class="headerlink" title="2. 定义git的用户名和邮箱与生成SSH密钥"></a>2. 定义git的用户名和邮箱与生成SSH密钥</h2><h3 id="2-1-定义git的用户名和邮箱"><a href="#2-1-定义git的用户名和邮箱" class="headerlink" title="2.1 定义git的用户名和邮箱"></a>2.1 定义git的用户名和邮箱</h3><p>在terminal中运行以下命令来定义你的用户名和邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name &lt;&lt;你的用户名&gt;&gt;<br>git config --global user.email &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>否则你在使用<code>git</code>时会出现以下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">*** Please tell me <span class="hljs-built_in">who</span> you are.<br><br>Run<br><br>  git config --global user.email <span class="hljs-string">&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">  git config --global user.name &quot;</span><br><br>to <span class="hljs-built_in">set</span> your account<span class="hljs-string">&#x27;s default identity.</span><br><span class="hljs-string">Omit --global to set the identity only in this repository.</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-生成SSH密钥"><a href="#2-2-生成SSH密钥" class="headerlink" title="2.2 生成SSH密钥"></a>2.2 生成SSH密钥</h3><ul>
+<li>SSH密钥用于连接你的电脑和<code>Github</code>。</li>
+</ul>
+<p>在terminal中运行以下命令来生成你的SSH密钥：</p>
+<ul>
+<li>注意：你在这里输入的邮箱应该和你注册<code>Github</code>账号时使用的邮箱相同。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后按照提示来生成你的SSH密钥。（为了方便，你可以直接按<code>Enter</code>来使用默认值。但你也可以指定你的SSH密钥的路径、名称和密码。但一定要你记下来。）</p>
+<p>之后你会得到两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>，它们分别代表你的私钥和公钥。你可以在你指定的路径中找到它们。（默认路径是<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>）</p>
+<h2 id="3-将SSH密钥添加到Github"><a href="#3-将SSH密钥添加到Github" class="headerlink" title="3. 将SSH密钥添加到Github"></a>3. 将SSH密钥添加到Github</h2><ul>
+<li>添加SSH密钥到Github的目的是为了让你的电脑和Github之间可以互相认证。</li>
+</ul>
+<h3 id="3-1-复制你的公钥"><a href="#3-1-复制你的公钥" class="headerlink" title="3.1 复制你的公钥"></a>3.1 复制你的公钥</h3><p>在terminal中运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;你的公钥的路径&gt;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后你会看到你的公钥的内容。复制它。</p>
+<h3 id="3-2-将你的公钥添加到Github"><a href="#3-2-将你的公钥添加到Github" class="headerlink" title="3.2 将你的公钥添加到Github"></a>3.2 将你的公钥添加到Github</h3><p>进入<code>Github</code> -&gt; <code>Settings</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code>并粘贴你的公钥以添加它。</p>
+<h2 id="4-测试你的SSH密钥"><a href="#4-测试你的SSH密钥" class="headerlink" title="4. 测试你的SSH密钥"></a>4. 测试你的SSH密钥</h2><p>在terminal中运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>如果你看到类似<code>Hi &lt;&lt;你的用户名&gt;&gt;! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>的内容，那么你已经成功地将你的SSH密钥添加到了Github。</p>
+<ul>
+<li><p>如果你的terminal卡在这里，可能是因为网络不好。</p>
+</li>
+<li><p>不需要一直等下去，鬼知道网络什么时候能好。只要不报错，建议直接跳到下一步。</p>
+</li>
+</ul>
+<h2 id="5-创建一个新的仓库（有特殊命名要求）"><a href="#5-创建一个新的仓库（有特殊命名要求）" class="headerlink" title="5. 创建一个新的仓库（有特殊命名要求）"></a>5. 创建一个新的仓库（有特殊命名要求）</h2><p>让我们在<code>Github</code>上创建一个新的仓库并将它命名为<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>。（建议先勾选<code>Add a README file</code>，之后的<code>hexo deploy</code>的流程会自动删除它的。）</p>
+<ul>
+<li><strong>非常重要</strong>：我们需要使用<code>Github Page</code>，所以<ol>
+<li>你的仓库的名字必须是<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>，不要使用其他名字。</li>
+<li>这个仓库必须是<strong>公开的</strong>！</li>
+<li>在仓库创建完毕后，你需要在仓库的<code>Settings</code> -&gt; <code>Pages</code>中将<code>Source</code>设置为<code>main</code>，并点击<code>Save</code>。（有时会自动设置好，我们需要确认一下。）</li>
+</ol>
+</li>
+</ul>
+<h2 id="6-安装node"><a href="#6-安装node" class="headerlink" title="6. 安装node"></a>6. 安装node</h2><ul>
+<li><code>node</code>用于运行<code>Hexo</code>。</li>
+</ul>
+<p>这里我们有两种选择：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>直接安装<code>node</code></td>
+<td>简单</td>
+<td>无法自定义<code>node</code>的版本</td>
+</tr>
+<tr>
+<td>使用<code>nvm</code>安装<code>node</code></td>
+<td>可以自定义<code>node</code>的版本</td>
+<td>略显繁琐</td>
+</tr>
+</tbody></table>
+<p>如果只是想简单地使用<code>Hexo</code>的话，直接安装<code>node</code>即可。</p>
+<h3 id="6-1-直接安装node"><a href="#6-1-直接安装node" class="headerlink" title="6.1 直接安装node"></a>6.1 直接安装<code>node</code></h3><p>在terminal中运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nodejs<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果你已经使用<code>nvm</code>安装过<code>node</code>，那么这里没有提示<code>node</code>已安装是正常的。（因为<code>apt</code>和<code>nvm</code>没有共享安装信息）</li>
+</ul>
+<p>然后运行以下命令来，根据是否输出版本号来判断是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-使用nvm安装node"><a href="#6-2-使用nvm安装node" class="headerlink" title="6.2 使用nvm安装node"></a>6.2 使用<code>nvm</code>安装<code>node</code></h3><ul>
+<li><code>nvm</code>即<code>node version manager</code>，用于管理<code>node</code>的版本。</li>
+</ul>
+<blockquote>
+<p>我们可以按照<code>nvm</code>的<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">官方文档</a>来安装它。</p>
+</blockquote>
+<p>大致过程是<code>下载nvm</code> -&gt; <code>安装nvm</code> -&gt; <code>安装node</code>。</p>
+<h4 id="1-下载与安装nvm"><a href="#1-下载与安装nvm" class="headerlink" title="1. 下载与安装nvm"></a>1. 下载与安装<code>nvm</code></h4><blockquote>
+<p>见官方文档中<code>Install &amp; Update Script</code>一节。</p>
+</blockquote>
+<ul>
+<li>具体命令以官方文档为准！！！</li>
+</ul>
+<p>运行以下两个命令中的任一个来下载并安装<code>nvm</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-安装node"><a href="#2-安装node" class="headerlink" title="2. 安装node"></a>2. 安装<code>node</code></h4><blockquote>
+<p>见官方文档中<code>Usage</code>一节。</p>
+</blockquote>
+<p>有多种方式安装<code>node</code>，这里我们使用最简单的一种即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvm install node<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后，运行以下命令来判断是否安装成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
+
+<p>如果输出了版本号，那么说明安装成功。</p>
+<h4 id="3-补充"><a href="#3-补充" class="headerlink" title="3. 补充"></a>3. 补充</h4><p>如有需要，请参考官方文档来使用<code>nvm</code>。（<em>Recommend</em>）</p>
+<h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>做到这里，我们已经完成了“基础设施建设”。</p>
+<p>下一步我们就要开始使用<code>Hexo</code>来建立我们的博客网站啦！</p>
+<p>玩的开心！:wink:</p>
+<blockquote>
+<p>上一节： <a href="/2023/05/06/R-EB-01-Prerequirements/" title="「建站」01 准备工作 - 建立自己的博客网站">「建站」01 准备工作 - 建立自己的博客网站</a> <br></p>
+</blockquote>
+<blockquote>
+<p>下一节： <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">「建站」03 使用Hexo初步创建博客网站与本地预览</a></p>
 </blockquote>
 <hr>
 <p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
@@ -347,8 +430,22 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux-Useful-Tools/" class="category-chain-item">Linux Useful Tools</a>
+  <a href="/categories/2023/" class="category-chain-item">2023</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -362,9 +459,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+        <a href="/tags/ssh/" class="print-no-link">#ssh</a>
       
-        <a href="/tags/tricks/" class="print-no-link">#tricks</a>
+        <a href="/tags/node/" class="print-no-link">#node</a>
+      
+        <a href="/tags/nvm/" class="print-no-link">#nvm</a>
       
     </div>
   
@@ -376,8 +475,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「LUT」01 Grub-电脑启动引导</div>
-      <div>https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/</div>
+      <div>「建站」02 Github &amp; SSH &amp; node 基本配置</div>
+      <div>https://siriusahu.github.io.git/2023/05/07/R-EB-02-Github-SSH-node-basic/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +488,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月12日</div>
+          <div>2023年5月7日</div>
         </div>
       
       
@@ -421,9 +520,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">
+                      <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「LUT」02 zsh-更漂亮的terminal</span>
+                        <span class="hidden-mobile">「建站」03 使用Hexo初步创建博客网站与本地预览</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -431,8 +530,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">
-                        <span class="hidden-mobile">「建站」05 Hexo中的Markdown特殊用法</span>
+                      <a href="/2023/05/06/R-EB-01-Prerequirements/" title="「建站」01 准备工作 - 建立自己的博客网站">
+                        <span class="hidden-mobile">「建站」01 准备工作 - 建立自己的博客网站</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

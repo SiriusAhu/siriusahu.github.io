@@ -1,14 +1,14 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/misc/nanachi_sign.jpg">
+  <link rel="icon" href="/img/misc/nanachi_sign.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,29 +16,25 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 上一节的结尾我提到这样一句话：  想必接下来一段时间里你用的最多的命令就是reboot了吧  我们为了查看grub的效果需要重启计算机，而重启的一种方式就是在terminal里使用reboot命令进行重启(或者关机:poweroff). 那么现在使用默认快捷键Ctrl+Alt+T打开你的terminal，记住它现在的样">
+    <meta name="description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 上一节的结尾我提到这样一句话：  想必接下来一段时间里你用的最多的命令就是reboot了吧  我们为了查看grub的效果需要重启计算机，而重启的一种方式就是在terminal里使用reboot命令进行重启(或者关机:poweroff). 那么现在使用默认快捷键Ctrl+Alt+T打开你的terminal，记住它现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「LUT」02 zsh-更漂亮的terminal">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/06/14/LUT-02-zsh/index.html">
-<meta property="og:site_name" content="Ahu&#39;s Blog">
-<meta property="og:description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 上一节的结尾我提到这样一句话：  想必接下来一段时间里你用的最多的命令就是reboot了吧  我们为了查看grub的效果需要重启计算机，而重启的一种方式就是在terminal里使用reboot命令进行重启(或者关机:poweroff). 那么现在使用默认快捷键Ctrl+Alt+T打开你的terminal，记住它现在的样">
-<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Ahu Blog">
+<meta property="og:description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 上一节的结尾我提到这样一句话：  想必接下来一段时间里你用的最多的命令就是reboot了吧  我们为了查看grub的效果需要重启计算机，而重启的一种方式就是在terminal里使用reboot命令进行重启(或者关机:poweroff). 那么现在使用默认快捷键Ctrl+Alt+T打开你的terminal，记住它现">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/02-01.png">
 <meta property="article:published_time" content="2023-06-14T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T05:58:16.080Z">
+<meta property="article:modified_time" content="2024-01-06T06:25:10.790Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Linux General">
-<meta property="article:tag" content="Linux Mint">
-<meta property="article:tag" content="EndeavourOS">
-<meta property="article:tag" content="grub">
-<meta property="article:tag" content="beautify">
+<meta property="article:tag" content="tricks">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://siriusahu.github.io.git/img/LUT/02-01.png">
   
   
   
-  <title>「LUT」02 zsh-更漂亮的terminal - Ahu&#39;s Blog</title>
+  <title>「LUT」02 zsh-更漂亮的terminal - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -122,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -134,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -146,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -158,7 +154,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -170,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -198,7 +194,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -216,7 +212,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-06-14 11:00" pubdate>
-          June 14, 2023 am
+          2023年6月14日 上午
         </time>
       </span>
     
@@ -227,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k words
+          1k 字
         
       </span>
     
@@ -238,7 +234,7 @@
         
         
         
-          9 mins
+          9 分钟
         
       </span>
     
@@ -280,7 +276,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+                <h2 id="Greetings"><a href="#Greetings" class="headerlink" title="Greetings!"></a>Greetings!</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
 <p>上一节的结尾我提到这样一句话：</p>
 <blockquote>
 <p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧</p>
@@ -391,6 +387,9 @@
 <p>如果使用的是非系统自带的terminal,Gogh可能会失效。</p>
 </blockquote>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>至此，我们已经完成了<code>zsh</code>的安装与配置，以及<code>powerlevel10k</code>的安装与配置，以及<code>Gogh Scheme</code>的安装与配置。<br>希望你能找到自己最喜欢的终端美化方案！:tada:</p>
+<blockquote>
+<p>上一节： <a href="/2023/05/12/LUT-01-grub/" title="「LUT」01 Grub-电脑启动引导">「LUT」01 Grub-电脑启动引导</a></p>
+</blockquote>
 <hr>
 <p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
 
@@ -411,29 +410,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/2023/" class="category-chain-item">2023</a>
+  <a href="/categories/Linux-Useful-Tools/" class="category-chain-item">Linux Useful Tools</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/2023/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/" class="category-chain-item">Linux</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/" class="category-chain-item">Linux Mint</a>
-  
-  
-
-  
-
-  
-
   
 
       </span>
@@ -449,15 +427,7 @@
       
         <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/tags/Linux-General/" class="print-no-link">#Linux General</a>
-      
-        <a href="/tags/Linux-Mint/" class="print-no-link">#Linux Mint</a>
-      
-        <a href="/tags/EndeavourOS/" class="print-no-link">#EndeavourOS</a>
-      
-        <a href="/tags/grub/" class="print-no-link">#grub</a>
-      
-        <a href="/tags/beautify/" class="print-no-link">#beautify</a>
+        <a href="/tags/tricks/" class="print-no-link">#tricks</a>
       
     </div>
   
@@ -475,26 +445,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
+          <div>作者</div>
           <div>Sirius Ahu</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>June 14, 2023</div>
+          <div>发布于</div>
+          <div>2023年6月14日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Licensed under</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -520,7 +490,7 @@
                     
                       <a href="/2023/05/12/LUT-01-grub/" title="「LUT」01 Grub-电脑启动引导">
                         <span class="hidden-mobile">「LUT」01 Grub-电脑启动引导</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -541,7 +511,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -597,7 +567,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -605,7 +575,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -784,7 +754,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>

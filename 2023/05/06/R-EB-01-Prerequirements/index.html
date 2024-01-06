@@ -16,27 +16,24 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
+    <meta name="description" content="前言你，有想过建立一个自己的博客网站吗？ :thinking: 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… :cry: 但是现在，瞧，这是哪儿？  Hi，欢迎来到我的博客！:smile:  介绍Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有很多关于Wi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「LUT」01 Grub-电脑启动引导">
-<meta property="og:url" content="https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/index.html">
+<meta property="og:title" content="「建站」01 准备工作 - 建立自己的博客网站">
+<meta property="og:url" content="https://siriusahu.github.io.git/2023/05/06/R-EB-01-Prerequirements/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
+<meta property="og:description" content="前言你，有想过建立一个自己的博客网站吗？ :thinking: 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… :cry: 但是现在，瞧，这是哪儿？  Hi，欢迎来到我的博客！:smile:  介绍Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有很多关于Wi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-01.png">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-02.png">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-03.jpg">
-<meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/01-1.png">
+<meta property="article:published_time" content="2023-05-06T04:00:00.000Z">
 <meta property="article:modified_time" content="2024-01-06T06:25:10.790Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="tricks">
+<meta property="article:tag" content="introduction">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/LUT/01-01.png">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/01-1.png">
   
   
   
-  <title>「LUT」01 Grub-电脑启动引导 - Ahu Blog</title>
+  <title>「建站」01 准备工作 - 建立自己的博客网站 - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「LUT」01 Grub-电脑启动引导"></span>
+            <span id="subtitle" data-typed-text="「建站」01 准备工作 - 建立自己的博客网站"></span>
           
         </div>
 
@@ -213,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-12 17:00" pubdate>
-          2023年5月12日 下午
+        <time datetime="2023-05-06 12:00" pubdate>
+          2023年5月6日 中午
         </time>
       </span>
     
@@ -225,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          941 字
+          589 字
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
         
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -273,59 +270,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「LUT」01 Grub-电脑启动引导</h1>
+            <h1 id="seo-header">「建站」01 准备工作 - 建立自己的博客网站</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Greetings"><a href="#Greetings" class="headerlink" title="Greetings!"></a>Greetings!</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
-<p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p>
-<p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p>
-<p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p>
-<h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p>
-<ul>
-<li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="hljs-comment"># 添加grub-customizer的下载源</span><br>sudo apt update <span class="hljs-comment"># 更新源</span><br>sudo apt install grub-customizer <span class="hljs-comment"># 安装grub-customizer</span><br></code></pre></td></tr></table></figure>
+                <!-- # 准备工作 - 建立自己的博客网站 -->
 
-<p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p>
-<ul>
-<li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li>
-</ul>
-<h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
-<p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p>
-<p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p>
-<p>这里就不具体演示单独修改了。</p>
-<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
-<ul>
-<li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
-</ul>
-<p><img src="/img/LUT/01-01.png" srcset="/img/loading.gif" lazyload alt="Gnome-look:Grub themes"></p>
-<p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li>
-</ul>
-<h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
-<p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p>
-<ul>
-<li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li>
-<li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="hljs-comment"># 克隆repo到本地&lt;path&gt;目录</span><br></code></pre></td></tr></table></figure>
+<!-- - 本文编辑时间：2023.05.06 -->
 
-<p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p>
-<p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
-<p><img src="/img/LUT/01-02.png" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
-<p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
-<p><img src="/img/LUT/01-03.jpg" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p>
-<p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
-<p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p>
-<p>Have fun! :wink:</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你，有想过建立一个自己的博客网站吗？ :thinking:</p>
+<p>我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… :cry:</p>
+<p>但是现在，瞧，这是哪儿？</p>
 <blockquote>
-<p>下一节： <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">「LUT」02 zsh-更漂亮的terminal</a></p>
+<p>Hi，欢迎来到我的博客！:smile:</p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+<p>这是一个记录了我在<code>Linux</code>上使用<code>Github Page</code>和<code>Hexo</code>建立自己博客网站的系列。（网上也有很多关于<code>Windows</code>的教程。无论是哪个系统，它们的原理都是90%相同的。）</p>
+<p><img src="/img/R_BE/01-1.png" srcset="/img/loading.gif" lazyload alt="My OS"></p>
+<p><span></span></p>
+<p>这个系列既是我建站过程的记录，也是一份<strong>粗略的</strong>建站教程（或许最需要看的是未来的我自己？毕竟自己搭的时候也是看了许多不同的教程，我可能最需要的是一篇我自己总结的）。</p>
+<p>我并不专业，很多地方可能只是依葫芦画瓢，内容大多也仅供参考。但同时，如果你也想建立一个博客网站的话，我希望我的博客能帮到你。:heart:</p>
+<h2 id="建一个博客网站需要什么？"><a href="#建一个博客网站需要什么？" class="headerlink" title="建一个博客网站需要什么？"></a>建一个博客网站需要什么？</h2><p>建立一个简单的博客并不难。</p>
+<p>在正式开始之前，我们需要：</p>
+<ul>
+<li>一个<code>Github</code>账号</li>
+<li>如果你会用“魔法”的话那就更好了（你懂我的意思，对吧）</li>
+<li>一个<code>域名</code>（optional|如果你希望不用输入繁琐的<code>github.io</code>域名就能访问你的博客的话，那么推荐你购买一个域名）</li>
+</ul>
+<p>最重要的是，你需要有：</p>
+<ul>
+<li><code>耐心</code>：建站的过程不大可能一帆风顺，我们可能会遇到各种各样的问题（网络、配置、代码等等）</li>
+<li><code>热情</code>：如果缺少热情，那么简单的问题或许也会让你觉得很烦躁</li>
+<li><code>查阅资料的能力</code>：遇到问题时，我们需要学会自己去查阅资料，而不是一味的等待别人的回答。我们使用的大部分工具都是开源的，所以我们完全可以通过查阅资料来解决我们的问题</li>
+</ul>
+<h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>那么，让我们开启建站之旅吧！:tada:</p>
+<p>玩的开心！:wink:</p>
+<blockquote>
+<p>下一节： <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">「建站」02 Github &amp; SSH &amp; node 基本配置</a></p>
 </blockquote>
 <hr>
 <p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
@@ -347,8 +329,22 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux-Useful-Tools/" class="category-chain-item">Linux Useful Tools</a>
+  <a href="/categories/2023/" class="category-chain-item">2023</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -362,9 +358,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/tricks/" class="print-no-link">#tricks</a>
+        <a href="/tags/introduction/" class="print-no-link">#introduction</a>
       
     </div>
   
@@ -376,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「LUT」01 Grub-电脑启动引导</div>
-      <div>https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/</div>
+      <div>「建站」01 准备工作 - 建立自己的博客网站</div>
+      <div>https://siriusahu.github.io.git/2023/05/06/R-EB-01-Prerequirements/</div>
     </div>
     <div class="license-meta">
       
@@ -389,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月12日</div>
+          <div>2023年5月6日</div>
         </div>
       
       
@@ -421,21 +415,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">
+                      <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「LUT」02 zsh-更漂亮的terminal</span>
+                        <span class="hidden-mobile">「建站」02 Github &amp; SSH &amp; node 基本配置</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">
-                        <span class="hidden-mobile">「建站」05 Hexo中的Markdown特殊用法</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
