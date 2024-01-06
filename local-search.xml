@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="//github.com/SiriusAhu/siriusahu.github.io/2024/01/06/hello-world/"/>
+    <url>//github.com/SiriusAhu/siriusahu.github.io/2024/01/06/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>「EOS」02 zsh-更漂亮的terminal</title>
+    <link href="//github.com/SiriusAhu/siriusahu.github.io/2023/06/14/LUT-02-zsh/"/>
+    <url>//github.com/SiriusAhu/siriusahu.github.io/2023/06/14/LUT-02-zsh/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><p>上一节的结尾我提到这样一句话：</p><blockquote><p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧</p></blockquote><p>我们为了查看<code>grub</code>的效果需要重启计算机，而重启的一种方式就是在<code>terminal</code>里使用<code>reboot</code>命令进行重启(或者关机:<code>poweroff</code>).</p><p>那么现在使用默认快捷键<code>Ctrl+Alt+T</code>打开你的terminal，记住它现在的样子！</p><p>这一节会教你如何将你的<code>terminal</code>变成下面这个样子：</p><p><img src="/github.com/SiriusAhu/siriusahu.github.io/img/LUT/02-01.png" alt="Beautified Terminal"></p><h2 id="How"><a href="#How" class="headerlink" title="How?"></a>How?</h2><blockquote><p>可以使用我的脚本：<a href="https://github.com/SiriusAhu/zsh-script">Ahu的脚本</a></p></blockquote><ol><li>为了实现这样的效果，我们需要安装一些必要的软件包。以下是清单：</li></ol><table><thead><tr><th>packages</th><th>description</th></tr></thead><tbody><tr><td><code>zsh</code></td><td>一个强大的shell</td></tr><tr><td><code>oh-my-zsh</code></td><td>一个强大的zsh配置框架</td></tr></tbody></table><ol start="2"><li>然后为了让<code>zsh</code>的效果更好，我们还需要安装一些主题与插件：</li></ol><table><thead><tr><th>theme&#x2F;plugins</th><th>description</th></tr></thead><tbody><tr><td><code>powerlevel10k</code></td><td>一个强大、美观的主题（有字体要求）</td></tr><tr><td><code>zsh-autosuggestions</code></td><td>一个自动补全插件</td></tr><tr><td><code>zsh-syntax-highlighting</code></td><td>一个语法高亮插件</td></tr><tr><td><code>zsh-history-substring-search</code></td><td>一个历史命令搜索插件</td></tr><tr><td><code>auto-notify</code></td><td>一个在任务运行结束后自动提醒的插件</td></tr><tr><td><code>you-shoud-use</code></td><td>一个提示最简单的alias的插件</td></tr></tbody></table><ol start="3"><li>最后是安装（设置）调色盘，这里建议直接使用<code>Gogh Scheme</code>来下载各种调色盘。</li></ol><h2 id="1-Install-zsh-oh-my-zsh"><a href="#1-Install-zsh-oh-my-zsh" class="headerlink" title="1. Install zsh &amp; oh-my-zsh"></a>1. Install zsh &amp; oh-my-zsh</h2><h3 id="1-1-zsh"><a href="#1-1-zsh" class="headerlink" title="1.1 zsh"></a>1.1 zsh</h3><p>zsh是一个强大的shell，它可以替代默认的<code>bash</code>，让你的terminal更加强大。</p><p>这一步因系统而异。</p><p>如果是<code>Arch</code>系的发行版，可以直接使用<code>pacman</code>安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -S zsh<br></code></pre></td></tr></table></figure><p>如果是<code>Debian</code>系的发行版（如<code>Ubuntu</code>,<code>Linux Mint</code>等），可以直接使用<code>apt</code>安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install zsh<br></code></pre></td></tr></table></figure><h3 id="1-2-oh-my-zsh"><a href="#1-2-oh-my-zsh" class="headerlink" title="1.2 oh-my-zsh"></a>1.2 oh-my-zsh</h3><p><code>oh-my-zsh</code>是一个强大的<code>zsh</code>配置框架，它可以让你在<code>zsh</code>中使用各种主题与插件。</p><p>其<a href="https://ohmyz.sh/">官网</a>提供了两种安装脚本，一种是使用<code>curl</code>，一种是使用<code>wget</code>，这里我使用<code>curl</code>的脚本：</p><blockquote><p>注意：如果此脚本不能使用，请前往官网查看最新的安装脚本</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure><p>在下载后一路选择默认，将zsh设为默认shell即可。</p><h2 id="2-Install-theme-plugins"><a href="#2-Install-theme-plugins" class="headerlink" title="2. Install theme &amp; plugins"></a>2. Install theme &amp; plugins</h2><p>我的脚本包含了下载步骤（包括主题、插件与字体）与配置文件（<code>~/.zshrc</code>）修改，你可以直接使用我的脚本来安装。</p><p>具体的修改内容可以参考脚本的<code>github仓库</code>。</p><blockquote><p>.zshrc即为zsh的配置文件，位于<code>~/.zshrc</code>。类似的，bash的配置文件为<code>.bashrc</code>，位于<code>~/.bashrc</code>。</p></blockquote><h3 id="2-1-powerlevel10k"><a href="#2-1-powerlevel10k" class="headerlink" title="2.1 powerlevel10k"></a>2.1 powerlevel10k</h3><p><code>powerlevel10k</code>是实现主要的颜色与字体效果的主题，它需要一些特殊的字体才能正常显示。</p><p>建议访问<a href="https://github.com/romkatv/powerlevel10k">powerlevel10k</a>的github页面查看最新的安装方法。（或者直接我提供的脚本）</p><p><a href="https://github.com/romkatv/powerlevel10k/blob/master/font.md">字体描述</a></p><p>需要安装的是以<code>MesloLGS NF</code>开头的4种字体，使用一般的<code>Linux发行版</code>都可以直接双击安装。</p><blockquote><p>注意：对于大部分的<code>terminal</code>（如：<code>gnome-terminal</code>）我们需要对其<code>profile</code>单独进行设置以应用字体！请自行搜索各种<code>terminal</code>的设置方法。</p></blockquote><h3 id="2-2-plugins"><a href="#2-2-plugins" class="headerlink" title="2.2 plugins"></a>2.2 plugins</h3><p>这些插件只需在配置文件中设置好即可启用啦。</p><h2 id="3-Install-color-scheme"><a href="#3-Install-color-scheme" class="headerlink" title="3. Install color scheme"></a>3. Install color scheme</h2><p>虽然自己调色也是一种不错的选择，但是我还是推荐使用<code>Gogh Scheme</code>来下载并应用各种调色盘。</p><blockquote><p>Gogh Scheme: Color Scheme for Gnome Terminal, Pantheon Terminal, Tilix, and XFCE4 Terminal</p></blockquote><p><code>Gogh Scheme</code>只有一句命令，我们可以通过这句命令来选择自己喜欢的调色盘进行下载与安装。（<a href="https://gogh-co.github.io/Gogh/">Gogh Scheme官网</a>）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bash -c  <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -qO- https://git.io/vQgMr)</span>&quot;</span> <br></code></pre></td></tr></table></figure><p>运行这行命令后我们会看到一个很长的列表，我们可以通过查看<a href="https://gogh-co.github.io/Gogh/">Gogh Scheme官网</a>的方式来预览各种调色盘。</p><p>按照脚本的提示进行安装即可。</p><blockquote><p>如果使用的是非系统自带的terminal,Gogh可能会失效。</p></blockquote><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>至此，我们已经完成了<code>zsh</code>的安装与配置，以及<code>powerlevel10k</code>的安装与配置，以及<code>Gogh Scheme</code>的安装与配置。<br>希望你能找到自己最喜欢的终端美化方案！:tada:</p><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>2023</category>
+      
+      <category>教程</category>
+      
+      <category>Linux</category>
+      
+      <category>Linux Mint</category>
+      
+      <category>EndeavourOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Linux General</tag>
+      
+      <tag>Linux Mint</tag>
+      
+      <tag>EndeavourOS</tag>
+      
+      <tag>grub</tag>
+      
+      <tag>beautify</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>「EOS」01 Grub-电脑启动引导</title>
+    <link href="//github.com/SiriusAhu/siriusahu.github.io/2023/05/12/LUT-01-grub/"/>
+    <url>//github.com/SiriusAhu/siriusahu.github.io/2023/05/12/LUT-01-grub/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p><ul><li>注意：这里默认你刚刚安装了<code>Linux Mint</code>，具体安装方法请参考<a href="https://linuxmint-installation-guide.readthedocs.io/zh_CN/latest/">官方教程</a>。（小概率我会自己写一篇教程）</li></ul><p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p><p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p><p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p><h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p><ul><li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="hljs-comment"># 添加grub-customizer的下载源</span><br>sudo apt update <span class="hljs-comment"># 更新源</span><br>sudo apt install grub-customizer <span class="hljs-comment"># 安装grub-customizer</span><br></code></pre></td></tr></table></figure><p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p><ul><li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li></ul><h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p><p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p><p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p><p>这里就不具体演示单独修改了。</p><h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p><ul><li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li></ul><p><img src="/github.com/SiriusAhu/siriusahu.github.io/img/LUT/01-01.png" alt="Gnome-look:Grub themes"></p><p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p><ul><li><a href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li><li><a href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li></ul><h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p><p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p><ul><li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li><li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="hljs-comment"># 克隆repo到本地&lt;path&gt;目录</span><br></code></pre></td></tr></table></figure><p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p><p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p><p><img src="/github.com/SiriusAhu/siriusahu.github.io/img/LUT/01-02.png" alt="Mint Grub"></p><p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p><p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p><p><img src="/github.com/SiriusAhu/siriusahu.github.io/img/LUT/01-03.jpg" alt="Mint Grub"></p><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p><p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p><p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p><p>Have fun! :wink:</p><blockquote><p>下一节： <a href="//github.com/SiriusAhu/2023/06/14/LUT-02-zsh/" title="「EOS」02 zsh-更漂亮的terminal">「EOS」02 zsh-更漂亮的terminal</a></p></blockquote><hr><p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>2023</category>
+      
+      <category>教程</category>
+      
+      <category>Linux</category>
+      
+      <category>Linux Mint</category>
+      
+      <category>EndeavourOS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Linux General</tag>
+      
+      <tag>Linux Mint</tag>
+      
+      <tag>EndeavourOS</tag>
+      
+      <tag>grub</tag>
+      
+      <tag>beautify</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
