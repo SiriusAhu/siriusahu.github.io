@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>「EOS」01 Grub-电脑启动引导 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~  注意：这里默认你刚刚安装了Linux Mint，具体安装方法请参考官方教程。（小概率我会自己写一篇教程）  如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「EOS」01 Grub-电脑启动引导">
+<meta property="og:url" content="http://example.com/2023/05/12/LUT-01-grub/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~  注意：这里默认你刚刚安装了Linux Mint，具体安装方法请参考官方教程。（小概率我会自己写一篇教程）  如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/LUT/01-01.png">
+<meta property="og:image" content="http://example.com/img/LUT/01-02.png">
+<meta property="og:image" content="http://example.com/img/LUT/01-03.jpg">
+<meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-06T05:27:50.030Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Linux General">
+<meta property="article:tag" content="Linux Mint">
+<meta property="article:tag" content="EndeavourOS">
+<meta property="article:tag" content="grub">
+<meta property="article:tag" content="beautify">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/LUT/01-01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-LUT-01-grub" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/12/LUT-01-grub/" class="article-date">
+  <time class="dt-published" datetime="2023-05-12T09:00:00.000Z" itemprop="datePublished">2023-05-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/2023/">2023</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/">教程</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/">Linux</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/EndeavourOS/">EndeavourOS</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/">Linux Mint</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      「EOS」01 Grub-电脑启动引导
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+<ul>
+<li>注意：这里默认你刚刚安装了<code>Linux Mint</code>，具体安装方法请参考<a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/zh_CN/latest/">官方教程</a>。（小概率我会自己写一篇教程）</li>
+</ul>
+<p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p>
+<p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p>
+<p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p>
+<h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p>
+<ul>
+<li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="comment"># 添加grub-customizer的下载源</span></span><br><span class="line">sudo apt update <span class="comment"># 更新源</span></span><br><span class="line">sudo apt install grub-customizer <span class="comment"># 安装grub-customizer</span></span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p>
+<ul>
+<li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li>
+</ul>
+<h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
+<p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p>
+<p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p>
+<p>这里就不具体演示单独修改了。</p>
+<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
+<ul>
+<li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
+</ul>
+<p><img src="/img/LUT/01-01.png" alt="Gnome-look:Grub themes"></p>
+<p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li>
+</ul>
+<h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
+<p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p>
+<ul>
+<li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li>
+<li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="comment"># 克隆repo到本地&lt;path&gt;目录</span></span><br></pre></td></tr></table></figure>
+
+<p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p>
+<p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
+<p><img src="/img/LUT/01-02.png" alt="Mint Grub"></p>
+<p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
+<p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
+<p><img src="/img/LUT/01-03.jpg" alt="Mint Grub"></p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p>
+<p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
+<p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p>
+<p>Have fun! :wink:</p>
+<blockquote>
+<p>下一节： <a href="/2023/06/14/LUT-02-zsh/" title="「EOS」02 zsh-更漂亮的terminal">「EOS」02 zsh-更漂亮的terminal</a></p>
+</blockquote>
+<hr>
+<p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/12/LUT-01-grub/" data-id="clr1mj00g0000yo2q8o6yb2xf" data-title="「EOS」01 Grub-电脑启动引导" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EndeavourOS/" rel="tag">EndeavourOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-General/" rel="tag">Linux General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Mint/" rel="tag">Linux Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/beautify/" rel="tag">beautify</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grub/" rel="tag">grub</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/06/14/LUT-02-zsh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          「EOS」02 zsh-更漂亮的terminal
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/">2023</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/">教程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/EndeavourOS/">EndeavourOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/">Linux Mint</a></li></ul></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EndeavourOS/" rel="tag">EndeavourOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-General/" rel="tag">Linux General</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Mint/" rel="tag">Linux Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/beautify/" rel="tag">beautify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grub/" rel="tag">grub</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-General/" style="font-size: 10px;">Linux General</a> <a href="/tags/Linux-Mint/" style="font-size: 10px;">Linux Mint</a> <a href="/tags/beautify/" style="font-size: 10px;">beautify</a> <a href="/tags/grub/" style="font-size: 10px;">grub</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/01/06/temp2/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/06/temp/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/06/14/LUT-02-zsh/">「EOS」02 zsh-更漂亮的terminal</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/12/LUT-01-grub/">「EOS」01 Grub-电脑启动引导</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
