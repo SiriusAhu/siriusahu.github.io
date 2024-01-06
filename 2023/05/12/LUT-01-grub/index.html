@@ -1,12 +1,22 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
   
-  <title>「EOS」01 Grub-电脑启动引导 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~  注意：这里默认你刚刚安装了Linux Mint，具体安装方法请参考官方教程。（小概率我会自己写一篇教程）  如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美">
+    <meta name="description" content="PrefaceYaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~  注意：这里默认你刚刚安装了Linux Mint，具体安装方法请参考官方教程。（小概率我会自己写一篇教程）  如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「EOS」01 Grub-电脑启动引导">
 <meta property="og:url" content="http://example.com/2023/05/12/LUT-01-grub/index.html">
@@ -17,7 +27,7 @@
 <meta property="og:image" content="http://example.com/img/LUT/01-02.png">
 <meta property="og:image" content="http://example.com/img/LUT/01-03.jpg">
 <meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T05:27:50.030Z">
+<meta property="article:modified_time" content="2024-01-06T04:05:39.263Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Linux General">
@@ -25,89 +35,254 @@
 <meta property="article:tag" content="EndeavourOS">
 <meta property="article:tag" content="grub">
 <meta property="article:tag" content="beautify">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/LUT/01-01.png">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <title>「EOS」01 Grub-电脑启动引导 - Hexo</title>
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
   
 <meta name="generator" content="Hexo 7.0.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="「EOS」01 Grub-电脑启动引导"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-05-12 17:00" pubdate>
+          May 12, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          978 words
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+          9 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-LUT-01-grub" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/05/12/LUT-01-grub/" class="article-date">
-  <time class="dt-published" datetime="2023-05-12T09:00:00.000Z" itemprop="datePublished">2023-05-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/2023/">2023</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/">教程</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/">Linux</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/EndeavourOS/">EndeavourOS</a>►<a class="article-category-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/">Linux Mint</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      「EOS」01 Grub-电脑启动引导
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">「EOS」01 Grub-电脑启动引导</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
 <ul>
 <li>注意：这里默认你刚刚安装了<code>Linux Mint</code>，具体安装方法请参考<a target="_blank" rel="noopener" href="https://linuxmint-installation-guide.readthedocs.io/zh_CN/latest/">官方教程</a>。（小概率我会自己写一篇教程）</li>
 </ul>
@@ -118,7 +293,7 @@
 <ul>
 <li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="comment"># 添加grub-customizer的下载源</span></span><br><span class="line">sudo apt update <span class="comment"># 更新源</span></span><br><span class="line">sudo apt install grub-customizer <span class="comment"># 安装grub-customizer</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="hljs-comment"># 添加grub-customizer的下载源</span><br>sudo apt update <span class="hljs-comment"># 更新源</span><br>sudo apt install grub-customizer <span class="hljs-comment"># 安装grub-customizer</span><br></code></pre></td></tr></table></figure>
 
 <p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p>
 <ul>
@@ -132,7 +307,7 @@
 <ul>
 <li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
 </ul>
-<p><img src="/img/LUT/01-01.png" alt="Gnome-look:Grub themes"></p>
+<p><img src="/../img/LUT/01-01.png" srcset="/img/loading.gif" lazyload alt="Gnome-look:Grub themes"></p>
 <p>这里我们以<code>Distro Grub Themes</code>为例，来介绍一下主题的安装方法。</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
@@ -144,14 +319,14 @@
 <li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li>
 <li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="comment"># 克隆repo到本地&lt;path&gt;目录</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="hljs-comment"># 克隆repo到本地&lt;path&gt;目录</span><br></code></pre></td></tr></table></figure>
 
 <p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p>
 <p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
-<p><img src="/img/LUT/01-02.png" alt="Mint Grub"></p>
+<p><img src="/../img/LUT/01-02.png" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
 <p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
 <p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
-<p><img src="/img/LUT/01-03.jpg" alt="Mint Grub"></p>
+<p><img src="/../img/LUT/01-03.jpg" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p>
 <p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
 <p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p>
@@ -162,148 +337,397 @@
 <hr>
 <p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/05/12/LUT-01-grub/" data-id="clr1mj00g0000yo2q8o6yb2xf" data-title="「EOS」01 Grub-电脑启动引导" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EndeavourOS/" rel="tag">EndeavourOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-General/" rel="tag">Linux General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Mint/" rel="tag">Linux Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/beautify/" rel="tag">beautify</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grub/" rel="tag">grub</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/2023/" class="category-chain-item">2023</a>
   
-    <a href="/2023/06/14/LUT-02-zsh/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          「EOS」02 zsh-更漂亮的terminal
-        
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/" class="category-chain-item">Linux</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/" class="category-chain-item">Linux Mint</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/Linux-General/" class="print-no-link">#Linux General</a>
+      
+        <a href="/tags/Linux-Mint/" class="print-no-link">#Linux Mint</a>
+      
+        <a href="/tags/EndeavourOS/" class="print-no-link">#EndeavourOS</a>
+      
+        <a href="/tags/grub/" class="print-no-link">#grub</a>
+      
+        <a href="/tags/beautify/" class="print-no-link">#beautify</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>「EOS」01 Grub-电脑启动引导</div>
+      <div>http://example.com/2023/05/12/LUT-01-grub/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 12, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/14/LUT-02-zsh/" title="「EOS」02 zsh-更漂亮的terminal">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">「EOS」02 zsh-更漂亮的terminal</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/">2023</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/">教程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/EndeavourOS/">EndeavourOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/2023/%E6%95%99%E7%A8%8B/Linux/Linux-Mint/">Linux Mint</a></li></ul></li></ul></li></ul></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/EndeavourOS/" rel="tag">EndeavourOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-General/" rel="tag">Linux General</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Mint/" rel="tag">Linux Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/beautify/" rel="tag">beautify</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grub/" rel="tag">grub</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/EndeavourOS/" style="font-size: 10px;">EndeavourOS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Linux-General/" style="font-size: 10px;">Linux General</a> <a href="/tags/Linux-Mint/" style="font-size: 10px;">Linux Mint</a> <a href="/tags/beautify/" style="font-size: 10px;">beautify</a> <a href="/tags/grub/" style="font-size: 10px;">grub</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/06/">June 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2024/01/06/temp2/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/06/temp/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2023/06/14/LUT-02-zsh/">「EOS」02 zsh-更漂亮的terminal</a>
-          </li>
-        
-          <li>
-            <a href="/2023/05/12/LUT-01-grub/">「EOS」01 Grub-电脑启动引导</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2024 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
 </body>
 </html>
