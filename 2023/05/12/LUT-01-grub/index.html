@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=dark>
+<html lang="en" data-default-color-scheme=dark>
 
 
 
@@ -16,18 +16,18 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
+    <meta name="description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「LUT」01 Grub-电脑启动引导">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。 Grub是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。 这一节我们就来学习如何安装、配置与美化Grub。 Install Grub（with grub-customizer）由于Linux Min">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-01.png">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-02.png">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/01-03.jpg">
 <meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T06:42:34.176Z">
+<meta property="article:modified_time" content="2024-01-06T20:03:34.670Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="tricks">
@@ -120,7 +120,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -132,7 +132,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -144,7 +144,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -156,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -168,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
             </li>
           
@@ -214,7 +214,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-05-12 17:00" pubdate>
-          2023年5月12日 下午
+          May 12, 2023 pm
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          941 字
+          1.1k words
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          8 分钟
+          10 mins
         
       </span>
     
@@ -278,25 +278,44 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Greetings"><a href="#Greetings" class="headerlink" title="Greetings!"></a>Greetings!</h2><p>Yaho~ 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
-<p>如果你是双系统用户，那么在安装新系统之后要解决的第一个问题就是如何切换双系统了。</p>
-<p><code>Grub</code>是解决这个问题的通用选择，它是一个引导菜单，可以让你在开机的时候选择进入哪个系统。</p>
-<p>这一节我们就来学习如何安装、配置与美化<code>Grub</code>。</p>
-<h2 id="Install-Grub（with-grub-customizer）"><a href="#Install-Grub（with-grub-customizer）" class="headerlink" title="Install Grub（with grub-customizer）"></a>Install Grub（with grub-customizer）</h2><p>由于<code>Linux Mint</code>默认安装了<code>Grub</code>，所以我们只需要安装一个<code>grub-customizer</code>用于美化<code>Grub</code>即可。</p>
-<ul>
-<li>添加下载源这一步很重要！如果不添加下载源，那么<code>apt</code>很可能无法找到<code>grub-customizer</code>。</li>
-</ul>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+<p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
+<p>如果你是双系统用户，那么你一定遇到过这样一个问题<code>我该如何选择启动哪个系统呢？</code>。</p>
+<p>虽然说可以直接通过<code>BIOS</code>来选择启动哪个系统，但是这样做真是太麻烦了！</p>
+<p>那么！我将在这里向大家推荐一个我的解决方案：<code>Grub</code>！</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/"><code>Grub</code></a>是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高度定制。</p>
+</blockquote>
+<h1 id="Install-Grub（with-grub-customizer）">Install <code>Grub</code>（with <code>grub-customizer</code>）<a class="header-anchor" href="#Install-Grub（with-grub-customizer）">  んなぁ~</a></h1>
+<h2 id="Grub"><code>Grub</code><a class="header-anchor" href="#Grub">  んなぁ~</a></h2>
+<p>首先，我们需要使用自己的<code>Linux</code>发行版所提供的包管理器来安装<code>grub</code>。</p>
+<p><code>Ubuntu</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install grub <span class="hljs-comment"># 安装grub</span><br></code></pre></td></tr></table></figure>
+<p><code>Arch</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -S grub <span class="hljs-comment"># 安装grub</span><br></code></pre></td></tr></table></figure>
+<h2 id="grub-customizer"><code>grub-customizer</code><a class="header-anchor" href="#grub-customizer">  んなぁ~</a></h2>
+<p><code>grub-customizer</code>是一个可以帮助我们定制<code>Grub</code>的工具，我们可以通过它来<u>更轻松地</u>修改<code>Grub</code>的各种设置。</p>
+<blockquote>
+<p>Note: 对于<code>Ubuntu</code>用户来说，下载<code>grub-customizer</code>很可能需要添加下载源。因为其默认的下载源内不一定包含<code>grub-customizer</code>。</p>
+</blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo add-apt-repository ppa:danielrichter2007/grub-customizer <span class="hljs-comment"># 添加grub-customizer的下载源</span><br>sudo apt update <span class="hljs-comment"># 更新源</span><br>sudo apt install grub-customizer <span class="hljs-comment"># 安装grub-customizer</span><br></code></pre></td></tr></table></figure>
-
-<p>安装完成后，我们就可以按<code>Super</code>键（即<code>Windows</code>键）打开<code>grub-customizer</code>了。</p>
-<ul>
-<li>注意：有的时候<code>Linux Mint</code>会被识别为<code>Ubuntu</code>，如果这影响了你的使用，那么你可以在<code>grub-customizer</code>中修改<code>Ubuntu</code>为<code>Linux Mint</code>。（包括Grub主题的图标名称）这是我目前唯一的解决方法。</li>
-</ul>
-<h2 id="Config-Grub"><a href="#Config-Grub" class="headerlink" title="Config Grub"></a>Config Grub</h2><h3 id="Change-Default-System"><a href="#Change-Default-System" class="headerlink" title="Change Default System"></a>Change Default System</h3><h2 id="Beautify-Grub"><a href="#Beautify-Grub" class="headerlink" title="Beautify Grub"></a>Beautify Grub</h2><p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
+<blockquote>
+<p>然而<code>Arch</code>用户由于有强大的<code>AUR</code>支持，所以不必担心这个问题。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yay -S grub-customizer <span class="hljs-comment"># 安装grub-customizer，以yay为例</span><br></code></pre></td></tr></table></figure>
+<h1 id="Config-Grub">Config <code>Grub</code><a class="header-anchor" href="#Config-Grub">  んなぁ~</a></h1>
+<p><code>grub</code>的配置中有一个默认参数<code>GRUB_DISABLE_OS_PROBER=false</code>，它在被设为<code>true</code>时会导致<code>grub</code>不会自动检测其他系统。</p>
+<p>而这个参数在配置文件中被注释掉了，因此<code>grub</code>使用的值是<code>true</code>。</p>
+<p>我们需要打开<code>/etc/default/grub</code>文件，然后取消这一行注释并将其值改为<code>false</code>。</p>
+<p>（这一行一般位于文件的末尾）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">GRUB_DISABLE_OS_PROBER=false # 取消注释并将值改为false<br></code></pre></td></tr></table></figure>
+<h1 id="Beautify-Grub">Beautify <code>Grub</code><a class="header-anchor" href="#Beautify-Grub">  んなぁ~</a></h1>
+<p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
 <p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p>
 <p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p>
 <p>这里就不具体演示单独修改了。</p>
-<h3 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h3><p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
+<h2 id="安装主题">安装主题<a class="header-anchor" href="#安装主题">  んなぁ~</a></h2>
+<p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&amp;ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
 <ul>
 <li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
 </ul>
@@ -306,29 +325,31 @@
 <li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li>
 </ul>
-<h3 id="安装Distro-Grub-Themes"><a href="#安装Distro-Grub-Themes" class="headerlink" title="安装Distro Grub Themes"></a>安装Distro Grub Themes</h3><p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
-<p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，为空则默认为当前目录）。</p>
+<h2 id="安装Distro-Grub-Themes">安装<code>Distro Grub Themes</code><a class="header-anchor" href="#安装Distro-Grub-Themes">  んなぁ~</a></h2>
+<h3 id="下载主题">下载主题<a class="header-anchor" href="#下载主题">  んなぁ~</a></h3>
+<p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
+<p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，不填写则默认为当前目录）。</p>
 <ul>
 <li>如果你打算尝试多个主题，那么我建议你单独创建一个文件夹用于存放所有主题的文件夹。</li>
 <li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/AdisonCavani/distro-grub-themes.git &lt;path&gt; <span class="hljs-comment"># 克隆repo到本地&lt;path&gt;目录</span><br></code></pre></td></tr></table></figure>
-
-<p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。</p>
+<h3 id="应用主题">应用主题<a class="header-anchor" href="#应用主题">  んなぁ~</a></h3>
+<p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。（虽然我的屏幕分辨率是<code>2560x1440</code>，但是适当地降低分辨率可以让<code>Grub</code>的字体更大更清晰）</p>
 <p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
 <p><img src="/img/LUT/01-02.png" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
 <p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
 <p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
+<h3 id="效果展示">效果展示<a class="header-anchor" href="#效果展示">  んなぁ~</a></h3>
 <p><img src="/img/LUT/01-03.jpg" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Congratulations! 现在你已经学会了如何安装<code>Grub</code>与使用<code>Distro Grub Themes</code>主题啦！</p>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<p>Congratulations! 有用的知识又增加了一点点！</p>
 <p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
-<p>想必接下来一段时间里你用的最多的命令就是<code>reboot</code>了吧（笑）</p>
-<p>Have fun! :wink:</p>
+<p>Have fun! 😉</p>
+<hr>
 <blockquote>
 <p>下一节： <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">「LUT」02 zsh-更漂亮的terminal</a></p>
 </blockquote>
-<hr>
-<p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
 
                 
               </div>
@@ -382,26 +403,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>Sirius Ahu</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2023年5月12日</div>
+          <div>Posted on</div>
+          <div>May 12, 2023</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -424,7 +445,7 @@
                       <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">「LUT」02 zsh-更漂亮的terminal</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -433,7 +454,7 @@
                     
                       <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">
                         <span class="hidden-mobile">「建站」05 Hexo中的Markdown特殊用法</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -454,7 +475,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -510,7 +531,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -518,7 +539,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -697,7 +718,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

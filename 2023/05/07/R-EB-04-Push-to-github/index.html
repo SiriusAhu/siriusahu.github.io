@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=dark>
+<html lang="en" data-default-color-scheme=dark>
 
 
 
@@ -16,18 +16,18 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这样我们就可以通过Githu">
+    <meta name="description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」04 将Hexo部署到Github Page">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-04-Push-to-github/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="前言Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这样我们就可以通过Githu">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/04-1.png">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/04-2.png">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/04-3.png">
 <meta property="article:published_time" content="2023-05-07T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T06:42:34.180Z">
+<meta property="article:modified_time" content="2024-01-06T20:03:34.670Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="hexo">
@@ -121,7 +121,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -133,7 +133,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -145,7 +145,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -157,7 +157,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -169,7 +169,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
             </li>
           
@@ -215,7 +215,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2023-05-07 17:00" pubdate>
-          2023年5月7日 下午
+          May 7, 2023 pm
         </time>
       </span>
     
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1.9k words
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          17 分钟
+          17 mins
         
       </span>
     
@@ -282,59 +282,63 @@
                 <!-- # 将Hexo部署到Github Page
 
 - 本文编辑时间：2023.05.07 -->
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hi, 阿乎です！(&gt; ▽ &lt;) &#x2F;~</p>
+<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+<p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>在上一节中，我们已经安装好了<code>Hexo</code>并在本地预览了我们的博客网站。</p>
 <p>那么在编辑我们的博客之前，不妨先将它部署到<code>Github Page</code>上吧！（本节不涉及域名解析等自定义域名的内容）</p>
 <blockquote>
 <p><code>Github Page</code>是<code>Github</code>提供的一个静态网站托管服务，我们可以将我们的博客网站部署到<code>Github Page</code>上，这样我们就可以通过<code>Github Page</code>来访问我们的博客网站了。</p>
 </blockquote>
-<h2 id="0-注意"><a href="#0-注意" class="headerlink" title="0. 注意"></a>0. 注意</h2><p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
-<h2 id="1-修改配置文件"><a href="#1-修改配置文件" class="headerlink" title="1. 修改配置文件"></a>1. 修改配置文件</h2><p>我们需要修改<code>Hexo</code>的配置文件<code>_config.yml</code>，让<code>Hexo</code>知道我们要将博客网站部署到<code>Github Page</code>上。（也可以顺便修改一下博客网站的标题、描述等信息）</p>
+<h1 id="0-注意">0. 注意<a class="header-anchor" href="#0-注意">  んなぁ~</a></h1>
+<p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
+<h1 id="1-修改配置文件">1. 修改配置文件<a class="header-anchor" href="#1-修改配置文件">  んなぁ~</a></h1>
+<p>我们需要修改<code>Hexo</code>的配置文件<code>_config.yml</code>，让<code>Hexo</code>知道我们要将博客网站部署到<code>Github Page</code>上。（也可以顺便修改一下博客网站的标题、描述等信息）</p>
 <blockquote>
 <p>具体的参数信息可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">Hexo官网</a>。</p>
 </blockquote>
-<h3 id="1-1-Deployment"><a href="#1-1-Deployment" class="headerlink" title="1.1 Deployment"></a>1.1 Deployment</h3><p>首先我们找到<code>Deployment</code>这一项（在最下方），然后对其进行补充与修改。</p>
+<h2 id="1-1-Deployment">1.1 Deployment<a class="header-anchor" href="#1-1-Deployment">  んなぁ~</a></h2>
+<p>首先我们找到<code>Deployment</code>这一项（在最下方），然后对其进行补充与修改。</p>
 <blockquote>
 <p>注释里面已经给了官<a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment">网链接啦</a></p>
 </blockquote>
 <p>我们要将<code>deploy</code>中的<code>type</code>改为<code>git</code>，并且将<code>repo</code>改为我们的<code>Github</code>仓库地址。（地址可以通过<code>Github</code>仓库的<code>Code</code>按钮来获取）</p>
 <p><img src="/img/R_BE/04-1.png" srcset="/img/loading.gif" lazyload alt="Code-HTTPS"></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Deployment</span><br><span class="hljs-comment">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;&lt;你的Github用户名&gt;&gt;/&lt;&lt;你的仓库地址&gt;&gt;.git</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span><br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>注意：一些老教程会将<code>branch</code>设置为<code>master</code>，但是从2020年开始，<code>Github</code>已经将默认分支改为<code>main</code>了，所以我们需要将<code>branch</code>设置为<code>main</code>。</p>
 <p><em>向制作老教程的前辈们致敬！</em></p>
 </blockquote>
-<h3 id="1-2-URL"><a href="#1-2-URL" class="headerlink" title="1.2 URL"></a>1.2 URL</h3><p>然后我们需要将<code>Hexo</code>的<code>_config.yml</code>文件中的<code>url</code>修改为我们的<code>Github Page</code>地址。</p>
+<h2 id="1-2-URL">1.2 URL<a class="header-anchor" href="#1-2-URL">  んなぁ~</a></h2>
+<p>然后我们需要将<code>Hexo</code>的<code>_config.yml</code>文件中的<code>url</code>修改为我们的<code>Github Page</code>地址。</p>
 <p>找到<code>url</code>这一项（靠近最上方），然后将其修改为<code>https://&lt;&lt;你的Github用户名&gt;&gt;.github.io/&lt;&lt;你的仓库地址&gt;&gt;/</code>即可。（或者说<code>https://&lt;&lt;你的仓库名&gt;&gt;.git</code>）</p>
 <blockquote>
 <p>也强烈推荐通过注释里给出的<a target="_blank" rel="noopener" href="https://username.github.io/project">官网链接</a>来了解更多配置信息。</p>
 </blockquote>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># URL</span><br><span class="hljs-comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="hljs-attr">url:</span> <span class="hljs-string">https://&lt;&lt;你的仓库名&gt;&gt;.git</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="1-3-其他（optional）"><a href="#1-3-其他（optional）" class="headerlink" title="1.3 *其他（optional）"></a>1.3 *其他（optional）</h3><p>我们也可以修改一下博客网站的标题、描述等信息。</p>
+<h2 id="1-3-其他（optional）">1.3 *其他（optional）<a class="header-anchor" href="#1-3-其他（optional）">  んなぁ~</a></h2>
+<p>我们也可以修改一下博客网站的标题、描述等信息。</p>
 <p>找到最上方的<code>Site</code>这一项，然后按需修改即可。</p>
 <ul>
 <li>注意，这里的<code>language</code>指的是网站的语言，而不是博客的语言。具体填入什么需要根据你所选的<code>主题</code>来定。（主题会在下一节中介绍，如果你不知道该填什么，可以先留着默认的<code>en</code>）</li>
 <li><code>timezone</code>指的是时区，对于中国大陆来说，可以填<code>Asia/Shanghai</code>。</li>
 </ul>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Site</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">&lt;&lt;你的博客标题&gt;&gt;</span><br><span class="hljs-attr">subtitle:</span> <span class="hljs-string">&lt;&lt;你的博客副标题&gt;&gt;</span><br><span class="hljs-attr">description:</span> <span class="hljs-string">&lt;&lt;你的博客描述&gt;&gt;</span><br><span class="hljs-attr">keywords:</span> <span class="hljs-string">&lt;&lt;你的博客关键词&gt;&gt;</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">&lt;&lt;你的名字&gt;&gt;</span><br><span class="hljs-attr">language:</span> <span class="hljs-string">en</span><br><span class="hljs-attr">timezone:</span> <span class="hljs-string">Asia/Shanghai</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="2-安装hexo-deployer-git（不是apt安装的git）"><a href="#2-安装hexo-deployer-git（不是apt安装的git）" class="headerlink" title="2. 安装hexo-deployer-git（不是apt安装的git）"></a>2. 安装<code>hexo-deployer-git</code>（不是apt安装的git）</h2><p>我们需要安装<code>hexo-deployer-git</code>这个插件，来实现将博客网站部署到<code>Github Page</code>上。</p>
+<h1 id="2-安装hexo-deployer-git（不是apt安装的git）">2. 安装<code>hexo-deployer-git</code>（不是apt安装的git）<a class="header-anchor" href="#2-安装hexo-deployer-git（不是apt安装的git）">  んなぁ~</a></h1>
+<p>我们需要安装<code>hexo-deployer-git</code>这个插件，来实现将博客网站部署到<code>Github Page</code>上。</p>
 <ul>
 <li>如果不安装这个插件直接部署的话会报错<code>Deployer not found: git</code>。（在官方文档中也提到这个bug，给出的解决方案就是安装这个插件）</li>
 </ul>
 <p>将路径切换到博客网站的根目录下，然后执行以下命令即可。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
-
-<h2 id="3-配置git"><a href="#3-配置git" class="headerlink" title="3. 配置git"></a>3. 配置git</h2><p>距离部署已经不远啦！我们只需要配置一下<code>git</code>就可以啦！</p>
+<h1 id="3-配置git">3. 配置git<a class="header-anchor" href="#3-配置git">  んなぁ~</a></h1>
+<p>距离部署已经不远啦！我们只需要配置一下<code>git</code>就可以啦！</p>
 <ul>
 <li>如果不配置直接进行部署的话，会出现一个<code>*** Please tell me who you are.</code>的提示，可以根据这个提示下给出的命令来配置<code>git</code>。</li>
 </ul>
 <p>也就是下面这两条命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;&lt;&lt;你的Github用户名&gt;&gt;&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;&lt;&lt;你的Github邮箱&gt;&gt;&quot;</span><br></code></pre></td></tr></table></figure>
-<h2 id="4-保存github-token"><a href="#4-保存github-token" class="headerlink" title="4. 保存github token"></a>4. 保存github token</h2><blockquote>
+<h1 id="4-保存github-token">4. 保存github token<a class="header-anchor" href="#4-保存github-token">  んなぁ~</a></h1>
+<blockquote>
 <p>从2021年8月13日开始，Github将不再接受使用密码进行git操作，所以我们需要使用token来进行git操作。</p>
 </blockquote>
 <p>打开你的<code>Github</code>主页，然后点击右上角的头像，选择<code>Settings</code>，选择最下方的<code>Developer settings</code>。</p>
@@ -345,31 +349,36 @@
 </ul>
 <p><img src="/img/R_BE/04-3.png" srcset="/img/loading.gif" lazyload alt="Generate new token"></p>
 <p>有关<code>token</code>的配置，我们可以将其期限设置为<code>No expiration</code>（当然，<code>Github</code>强烈建议我们设置一个有期限的token，这里根据自己的需求来定）。然后对于<code>Select scopes</code>，我们最低限度只需要勾选<code>repo</code>即可。</p>
-<h2 id="5-部署与更新"><a href="#5-部署与更新" class="headerlink" title="5. 部署与更新"></a>5. 部署与更新</h2><p>让我们先回到博客网站的根目录下。</p>
+<h1 id="5-部署与更新">5. 部署与更新<a class="header-anchor" href="#5-部署与更新">  んなぁ~</a></h1>
+<p>让我们先回到博客网站的根目录下。</p>
 <p>接下来要介绍平时更新博客时常用的几个命令。</p>
 <ul>
-<li><p><code>hexo g</code>(<code>hexo generate</code>)：生成静态文件（public文件夹）。</p>
+<li>
+<p><code>hexo g</code>(<code>hexo generate</code>)：生成静态文件（public文件夹）。</p>
 </li>
-<li><p><code>hexo d</code>(<code>hexo deploy</code>)：部署网站到<code>Github Page</code>上。</p>
+<li>
+<p><code>hexo d</code>(<code>hexo deploy</code>)：部署网站到<code>Github Page</code>上。</p>
 </li>
-<li><p><code>hexo cl</code>(<code>hexo clean</code>)：清除缓存文件（db.json）和已生成的静态文件（public文件夹）。（它不会删除<code>source</code>文件夹中的文件，所以不用担心会误删文章）</p>
+<li>
+<p><code>hexo cl</code>(<code>hexo clean</code>)：清除缓存文件（db.json）和已生成的静态文件（public文件夹）。（它不会删除<code>source</code>文件夹中的文件，所以不用担心会误删文章）</p>
 <ul>
 <li>我们通过<code>hexo d</code>命令部署网站时，同步到<code>Github</code>仓库的文件夹就是<code>public</code>文件夹。</li>
 </ul>
 </li>
-<li><p><code>hexo s</code>(<code>hexo server</code>)：启动本地服务器，用于预览网站。（默认端口为<code>4000</code>，可以通过<code>hexo s -p &lt;port&gt;</code>来指定端口）</p>
+<li>
+<p><code>hexo s</code>(<code>hexo server</code>)：启动本地服务器，用于预览网站。（默认端口为<code>4000</code>，可以通过<code>hexo s -p &lt;port&gt;</code>来指定端口）</p>
 </li>
 </ul>
 <p>请记住这几个命令，我们每次会经常用到它们。</p>
 <p>以下是一个常用的更新博客的流程，注意，以下所有命令都需要在<strong>博客网站的根目录</strong>下执行！</p>
-<h3 id="5-1-清除缓存文件和已生成的静态文件"><a href="#5-1-清除缓存文件和已生成的静态文件" class="headerlink" title="5.1 清除缓存文件和已生成的静态文件"></a>5.1 清除缓存文件和已生成的静态文件</h3><p>我不确定这一步是否必要，但是我每次更新博客时都会执行这一步。</p>
+<h2 id="5-1-清除缓存文件和已生成的静态文件">5.1 清除缓存文件和已生成的静态文件<a class="header-anchor" href="#5-1-清除缓存文件和已生成的静态文件">  んなぁ~</a></h2>
+<p>我不确定这一步是否必要，但是我每次更新博客时都会执行这一步。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo cl<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-2-生成静态文件"><a href="#5-2-生成静态文件" class="headerlink" title="5.2 生成静态文件"></a>5.2 生成静态文件</h3><p>将我们对配置的修改、对文章的修改等等都生成为静态文件到<code>public</code>文件夹中。</p>
+<h2 id="5-2-生成静态文件">5.2 生成静态文件<a class="header-anchor" href="#5-2-生成静态文件">  んなぁ~</a></h2>
+<p>将我们对配置的修改、对文章的修改等等都生成为静态文件到<code>public</code>文件夹中。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo g<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-3-部署网站到Github-Page上"><a href="#5-3-部署网站到Github-Page上" class="headerlink" title="5.3 部署网站到Github Page上"></a>5.3 部署网站到Github Page上</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo d<br></code></pre></td></tr></table></figure>
-
+<h2 id="5-3-部署网站到Github-Page上">5.3 部署网站到Github Page上<a class="header-anchor" href="#5-3-部署网站到Github-Page上">  んなぁ~</a></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo d<br></code></pre></td></tr></table></figure>
 <p>这一步会要求你输入<code>Github</code>的用户名和密码，然而：</p>
 <ul>
 <li>用户名是区分大小写的！</li>
@@ -377,26 +386,26 @@
 </ul>
 <p>对了！如果执行<code>hexo d</code>后卡住，没有出现有关<code>Github</code>的提示，那么可以多次尝试<code>Ctrl+C</code>来终止命令，然后再重新执行<code>hexo d</code>。</p>
 <p>如果一切顺利的话，你的博客网站已经部署到<code>Github Page</code>上了。</p>
-<h3 id="5-4-更新"><a href="#5-4-更新" class="headerlink" title="5.4 更新"></a>5.4 更新</h3><p>自此往后，每次更新博客网站时，我们只需要执行以下两步即可。</p>
+<h2 id="5-4-更新">5.4 更新<a class="header-anchor" href="#5-4-更新">  んなぁ~</a></h2>
+<p>自此往后，每次更新博客网站时，我们只需要执行以下两步即可。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo g<br>hexo d<br></code></pre></td></tr></table></figure>
-
 <p>如果遇到一些地方没有同步的情况，可以尝试先执行<code>hexo cl</code>再执行以上两步。</p>
-<h2 id="6-预览网站"><a href="#6-预览网站" class="headerlink" title="6. 预览网站"></a>6. 预览网站</h2><p>在短暂的等待后（部署后需要一定的时间才能在网上访问到你的博客网站），你可以查看你的<code>Github</code>仓库是否更新，也可以直接在浏览器中输入<code>&lt;&lt;你的仓库名&gt;&gt;</code>（<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>）来访问你的博客网站。</p>
+<h1 id="6-预览网站">6. 预览网站<a class="header-anchor" href="#6-预览网站">  んなぁ~</a></h1>
+<p>在短暂的等待后（部署后需要一定的时间才能在网上访问到你的博客网站），你可以查看你的<code>Github</code>仓库是否更新，也可以直接在浏览器中输入<code>&lt;&lt;你的仓库名&gt;&gt;</code>（<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>）来访问你的博客网站。</p>
 <p>不出意外的话，你已经可以在网页中浏览到<code>source</code>文件夹中自带的<code>Hello World</code>文章了。</p>
 <p>之后我们的主要工作就是在<code>source</code>文件夹中添加文章啦！</p>
-<h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>Congratulations！:tada:</p>
-<p>至此我们已经了解了部署与更新博客的全部流程啦！\(≧▽≦)&#x2F;~</p>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<p>Congratulations！🎉</p>
+<p>至此我们已经了解了部署与更新博客的全部流程啦！\(≧▽≦)/~</p>
 <p>那么，下一节！我们来讲讲使用这个框架写博客时会遇到的一些问题吧！（比如如何插入图片、如何使用<code>emoji</code>等等）</p>
 <p>有关域名解析的问题，我想在最后面再提，因为我觉得这只是最后的装点～</p>
-<p>玩的开心！:wink:</p>
+<p>Have fun! 😉</p>
 <blockquote>
 <p>上一节： <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">「建站」03 使用Hexo初步创建博客网站与本地预览</a></p>
 </blockquote>
 <blockquote>
 <p>下一节： <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">「建站」05 Hexo中的Markdown特殊用法</a></p>
 </blockquote>
-<hr>
-<p>如果在阅读过程中发现任何问题，欢迎在评论区留言（如果开放了的话），或者给我发邮件：<a href="mailto:SiriusLLLUUU@outlook.com">阿乎的邮箱</a>。</p>
 
                 
               </div>
@@ -459,26 +468,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>Sirius Ahu</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2023年5月7日</div>
+          <div>Posted on</div>
+          <div>May 7, 2023</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -501,7 +510,7 @@
                       <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">「建站」05 Hexo中的Markdown特殊用法</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -510,7 +519,7 @@
                     
                       <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">
                         <span class="hidden-mobile">「建站」03 使用Hexo初步创建博客网站与本地预览</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -531,7 +540,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -587,7 +596,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -595,7 +604,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -774,7 +783,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
