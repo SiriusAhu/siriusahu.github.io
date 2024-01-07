@@ -12,26 +12,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 我们在上一节做了许多工作呢，辛苦啦～ 😄 这一节会比上一节有趣一些，我们将会使用Hexo来创建我们的博客网站，并在本地预览它。  Hexo是一个基于Node.js的静态博客框架。  1. 选一个用于存储博客网站文件的文件夹  んなぁ~ 这一步很简单，你只需要在你的电脑上选一个风水宝地来存储你的博客网站">
+    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 我们在上一节做了许多工作呢，辛苦啦～ 😄 这一节会比上一节有趣一些，我们将会使用Hexo来创建我们的博客网站，并在本地预览它。  Hexo是一个基于Node.js的静态博客框架。  1. 选一个用于存储博客网站文件的文件夹  &gt;_&lt; 这一步很简单，你只需要在你的电脑上选一个风水宝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」03 使用Hexo初步创建博客网站与本地预览">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-03-Hexo-init/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 我们在上一节做了许多工作呢，辛苦啦～ 😄 这一节会比上一节有趣一些，我们将会使用Hexo来创建我们的博客网站，并在本地预览它。  Hexo是一个基于Node.js的静态博客框架。  1. 选一个用于存储博客网站文件的文件夹  んなぁ~ 这一步很简单，你只需要在你的电脑上选一个风水宝地来存储你的博客网站">
+<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 我们在上一节做了许多工作呢，辛苦啦～ 😄 这一节会比上一节有趣一些，我们将会使用Hexo来创建我们的博客网站，并在本地预览它。  Hexo是一个基于Node.js的静态博客框架。  1. 选一个用于存储博客网站文件的文件夹  &gt;_&lt; 这一步很简单，你只需要在你的电脑上选一个风水宝">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/03-1.png">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-07T05:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T20:14:58.813Z">
+<meta property="article:modified_time" content="2024-01-07T02:48:45.493Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="npm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/03-1.png">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
   
   
   
@@ -44,6 +46,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -73,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":10,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -95,11 +99,11 @@
   <header>
     
 
-<div class="header-inner" style="height: 70vh;">
+<div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Ahu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -197,7 +201,7 @@
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
@@ -224,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          716 words
+          732 words
         
       </span>
     
@@ -235,12 +239,20 @@
         
         
         
-          6 mins
+          7 mins
         
       </span>
     
 
     
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
     
   </div>
 
@@ -280,17 +292,17 @@
                 <!-- # 使用Hexo初步创建博客网站与本地预览
 
 - 本文编辑时间：2023.05.07 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>我们在上一节做了许多工作呢，辛苦啦～ 😄</p>
 <p>这一节会比上一节有趣一些，我们将会使用<code>Hexo</code>来创建我们的博客网站，并在本地预览它。</p>
 <blockquote>
 <p><code>Hexo</code>是一个基于<code>Node.js</code>的静态博客框架。</p>
 </blockquote>
-<h1 id="1-选一个用于存储博客网站文件的文件夹">1. 选一个用于存储博客网站文件的文件夹<a class="header-anchor" href="#1-选一个用于存储博客网站文件的文件夹">  んなぁ~</a></h1>
+<h1 id="1-选一个用于存储博客网站文件的文件夹">1. 选一个用于存储博客网站文件的文件夹<a class="header-anchor" href="#1-选一个用于存储博客网站文件的文件夹">  &gt;_&lt;</a></h1>
 <p>这一步很简单，你只需要在你的电脑上选一个<code>风水宝地</code>来存储你的博客网站文件就可以了。比如说我选了<code>~/mystuff/blog</code>。</p>
 <p>之后我们会把所有的博客网站文件都放在这个文件夹里。</p>
-<h1 id="2-安装Hexo">2. 安装Hexo<a class="header-anchor" href="#2-安装Hexo">  んなぁ~</a></h1>
+<h1 id="2-安装Hexo">2. 安装Hexo<a class="header-anchor" href="#2-安装Hexo">  &gt;_&lt;</a></h1>
 <blockquote>
 <p>详细步骤我们可以在<code>hexo</code>的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">官网</a>上找到。</p>
 </blockquote>
@@ -299,30 +311,30 @@
 <li>这个命令会在你的电脑上全局安装<code>Hexo</code>。</li>
 <li><code>npm</code>是<code>Node.js</code>的包管理器，我们之前使用<code>nvm</code>安装了<code>Node.js</code>时，<code>npm</code>也一起安装了。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install -g hexo-cli<br></code></pre></td></tr></table></figure>
-<h1 id="3-初始化Hexo">3. 初始化Hexo<a class="header-anchor" href="#3-初始化Hexo">  んなぁ~</a></h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h1 id="3-初始化Hexo">3. 初始化Hexo<a class="header-anchor" href="#3-初始化Hexo">  &gt;_&lt;</a></h1>
 <p>让我们回到我们之前选好的<code>风水宝地</code>，也就是<code>~/mystuff/blog</code>，在这个文件夹里运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>这个命令会<code>~/mystuff/blog</code>里创建一些文件，这些文件就是我们博客网站的初始文件。</p>
 <p>在短暂的等待之后，<code>hexo</code>就已经帮我们创建好了博客网站的初始文件了。</p>
-<h2 id="3-1-另一种方式">3.1 另一种方式<a class="header-anchor" href="#3-1-另一种方式">  んなぁ~</a></h2>
+<h2 id="3-1-另一种方式">3.1 另一种方式<a class="header-anchor" href="#3-1-另一种方式">  &gt;_&lt;</a></h2>
 <p>你也可以在这个命令后面加上你的博客网站的名字，比如说：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init myblog<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo init myblog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>这样<code>hexo</code>就会在<code>~/mystuff/blog</code>里创建一个名为<code>myblog</code>的文件夹，然后把博客网站的初始文件放在这个文件夹里。</p>
 <p>如果你用这种方式，那么你的“博客网站文件夹”就是<code>~/mystuff/blog/myblog</code>了。</p>
-<h1 id="4-安装依赖">4. 安装依赖<a class="header-anchor" href="#4-安装依赖">  んなぁ~</a></h1>
+<h1 id="4-安装依赖">4. 安装依赖<a class="header-anchor" href="#4-安装依赖">  &gt;_&lt;</a></h1>
 <p>无论你用了以上的那种方法，现在你需要在你的<strong>博客网站文件夹</strong>里运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install<br></code></pre></td></tr></table></figure>
-<h1 id="5-预览博客网站">5. 预览博客网站<a class="header-anchor" href="#5-预览博客网站">  んなぁ~</a></h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h1 id="5-预览博客网站">5. 预览博客网站<a class="header-anchor" href="#5-预览博客网站">  &gt;_&lt;</a></h1>
 <p>想要看看我们折腾半天到底干了些什么吗？</p>
 <p>现在你只需要在<code>~/mystuff/blog</code>里运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>然后打开浏览器，输入terminal里显示的网址（可能是<code>http://localhost:4000</code>），就可以看到我们的博客网站啦！</p>
 <p><img src="/img/R_BE/03-1.png" srcset="/img/loading.gif" lazyload alt="hexo"></p>
 <ul>
 <li>Tip：你可以使用<code>hexo s</code>来代替<code>hexo server</code>，并且你可以在<code>hexo s</code>后面加上<code>-p</code>来指定端口，比如说<code>hexo s -p 5000</code>。</li>
 </ul>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
 <p>恭喜！🎉</p>
 <p>看到我们的博客网站在本地运行，这应该是一件很有意思的事情吧！</p>
 <p>但是，还有更有意思的事情等着我们呢！本地预览只是我们的第一步，接下来我们还得知道如何编辑博客内容📝，如何发布博客网站🌐，以及如何更换主题🎨等等…</p>
@@ -548,9 +560,34 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -643,6 +680,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -697,6 +736,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 

@@ -12,23 +12,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经将我们的博客网站部署到了Github Page上。 那么现在，我们需要做的事就是编写一些博客文章了。 Hexo支持使用Markdown来编写博客文章，关于Markdown的基本用法在此就不多赘述。 这一节关键要看一些Hexo中的Markdown特殊用法。 1. 图片  んなぁ~ Hex">
+    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经将我们的博客网站部署到了Github Page上。 那么现在，我们需要做的事就是编写一些博客文章了。 Hexo支持使用Markdown来编写博客文章，关于Markdown的基本用法在此就不多赘述。 这一节关键要看一些Hexo中的Markdown特殊用法。 1. 图片  &amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」05 Hexo中的Markdown特殊用法">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/08/R-EB-05-Hexo-Markdown/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经将我们的博客网站部署到了Github Page上。 那么现在，我们需要做的事就是编写一些博客文章了。 Hexo支持使用Markdown来编写博客文章，关于Markdown的基本用法在此就不多赘述。 这一节关键要看一些Hexo中的Markdown特殊用法。 1. 图片  んなぁ~ Hex">
+<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经将我们的博客网站部署到了Github Page上。 那么现在，我们需要做的事就是编写一些博客文章了。 Hexo支持使用Markdown来编写博客文章，关于Markdown的基本用法在此就不多赘述。 这一节关键要看一些Hexo中的Markdown特殊用法。 1. 图片  &amp;gt">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-08T12:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T20:14:58.813Z">
+<meta property="article:modified_time" content="2024-01-07T02:48:45.493Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="markdown">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
   
   
   
@@ -41,6 +45,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -70,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":10,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -92,11 +98,11 @@
   <header>
     
 
-<div class="header-inner" style="height: 70vh;">
+<div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Ahu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -194,7 +200,7 @@
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
@@ -239,6 +245,14 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
   </div>
 
 
@@ -274,37 +288,41 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>在上一节中，我们已经将我们的博客网站部署到了<code>Github Page</code>上。</p>
 <p>那么现在，我们需要做的事就是编写一些博客文章了。</p>
 <p><code>Hexo</code>支持使用<code>Markdown</code>来编写博客文章，关于<code>Markdown</code>的基本用法在此就不多赘述。</p>
 <p>这一节关键要看一些<code>Hexo</code>中的<code>Markdown</code>特殊用法。</p>
-<h1 id="1-图片">1. 图片<a class="header-anchor" href="#1-图片">  んなぁ~</a></h1>
+<h1 id="1-图片">1. 图片<a class="header-anchor" href="#1-图片">  &gt;_&lt;</a></h1>
 <p><code>Hexo</code>中的图片引用与<code>Markdown</code>中的图片引用一样，都是使用<code>![]()</code>。</p>
 <p>不过<code>Hexo</code>中<strong>本地引用</strong>的引用规则与<code>Markdown</code>中的引用规则有所不同。</p>
-<h2 id="1-1-从source-img文件夹中引用图片">1.1 从source/img文件夹中引用图片<a class="header-anchor" href="#1-1-从source-img文件夹中引用图片">  んなぁ~</a></h2>
+<h2 id="1-1-从source-img文件夹中引用图片">1.1 从source/img文件夹中引用图片<a class="header-anchor" href="#1-1-从source-img文件夹中引用图片">  &gt;_&lt;</a></h2>
 <p>一般来讲，我们会在<code>markdown</code>文件的同级目录下创建一个<code>img</code>文件夹，然后将图片放在<code>img</code>文件夹中，然后在<code>markdown</code>文件中使用<code>![]()</code>来引用图片。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">├── blog01.md<br>└── img<br>    └── pic01.jpg<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">├── blog01.md
+└── img
+    └── pic01.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>如果我想在<code>blog01.md</code>中引用<code>img</code>文件夹中的<code>pic01.jpg</code>，那么我可以这样写：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">my picture</span>](<span class="hljs-link">img/pic01.jpg</span>)<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">my picture</span>](<span class="token url">img/pic01.jpg</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>或者</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">my picture</span>](<span class="hljs-link">./img/pic01.jpg</span>)<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">my picture</span>](<span class="token url">./img/pic01.jpg</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>但是，很可惜，这种写法在<code>Hexo</code>中是<strong>无效的</strong>。</p>
 <p>我们需要把路径改写为绝对路径：（加上一个<code>/</code>）</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">my picture</span>](<span class="hljs-link">/img/pic01.jpg</span>)<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">my picture</span>](<span class="token url">/img/pic01.jpg</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>这是因为<code>hexo</code>在部署到<code>Github Page</code>时，会将<code>source</code>以及<code>public</code>文件夹中的内容都按原来的格式放在同一目录下，那个目录就是我们的博客网站的根目录。</p>
 <p>也就是说<code>public/img</code>会被放在<code>/img</code>目录下，因此我们需要使用绝对路径来引用图片。</p>
-<h2 id="1-2-「替代方案1」开启post-asset-folder功能-复杂">1.2 「替代方案1」开启<code>post_asset_folder</code>功能 - 复杂<a class="header-anchor" href="#1-2-「替代方案1」开启post-asset-folder功能-复杂">  んなぁ~</a></h2>
+<h2 id="1-2-「替代方案1」开启post-asset-folder功能-复杂">1.2 「替代方案1」开启<code>post_asset_folder</code>功能 - 复杂<a class="header-anchor" href="#1-2-「替代方案1」开启post-asset-folder功能-复杂">  &gt;_&lt;</a></h2>
 <p><code>Hexo</code>配置文件中有一个默认关闭的功能<code>post_asset_folder</code>，它允许我们在<code>markdown</code>文件的同级目录下创建一个<code>同名文件夹</code>，然后将图片放在<code>同名文件夹</code>中，然后在<code>markdown</code>文件中使用<code>![]()</code>来引用图片。</p>
 <p>然而，图片路径的写法与之前的不同，我们只能写图片的文件名。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">├── blog01.md<br>└── blog01<br>    └── pic01.jpg<br></code></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">my picture</span>](<span class="hljs-link">pic01.jpg</span>)<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">├── blog01.md
+└── blog01
+    └── pic01.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">my picture</span>](<span class="token url">pic01.jpg</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>虽然终于可以显示图片了，但是如果我们为每一个博客都创建一个<code>同名文件夹</code>，那么我们的<code>source</code>文件夹会变得非常的杂乱（虽然我一开始也一直在用这种方法😅）。</p>
-<h2 id="1-3-「替代方案2」使用public-img文件夹中的图片-推荐">1.3 「替代方案2」使用<code>public/img</code>文件夹中的图片 - 推荐<a class="header-anchor" href="#1-3-「替代方案2」使用public-img文件夹中的图片-推荐">  んなぁ~</a></h2>
+<h2 id="1-3-「替代方案2」使用public-img文件夹中的图片-推荐">1.3 「替代方案2」使用<code>public/img</code>文件夹中的图片 - 推荐<a class="header-anchor" href="#1-3-「替代方案2」使用public-img文件夹中的图片-推荐">  &gt;_&lt;</a></h2>
 <p>但是！就在刚刚（没错，就是为了写这一篇文章，我刚刚去测试了许多种图片引用方法），我发现我们的可以直接引用<code>public</code>文件夹中的图片！</p>
 <p>这使用的是一种绝对引用，我们可以这样写：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">![<span class="hljs-string">my picture</span>](<span class="hljs-link">/img/pic01.jpg</span>)<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url"><span class="token operator">!</span>[<span class="token content">my picture</span>](<span class="token url">/img/pic01.jpg</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>这样的话我们只需要将图片放在<code>public/img</code>文件夹中，就可以方便地引用了。</p>
 <blockquote>
 <p>注意：<code>public</code>文件夹会被<code>hexo clean</code>清空。我的解决方案是创建一个脚本用于将复制我存储图片的文件夹到<code>public</code>文件夹中。<br>
@@ -317,13 +335,13 @@
 <li><code>alias</code>是<code>Linux</code>中的一种特有的命令，它允许你在你使用的终端中创建一个自定义的命令（修改配置文件），让你更方便地使用你的命令（组合）。</li>
 </ul>
 </blockquote>
-<h2 id="1-4-弊端">1.4 弊端<a class="header-anchor" href="#1-4-弊端">  んなぁ~</a></h2>
+<h2 id="1-4-弊端">1.4 弊端<a class="header-anchor" href="#1-4-弊端">  &gt;_&lt;</a></h2>
 <p>无论使用以上哪一种方法，都有一个弊端，那就是我们无法在<code>markdown</code>文件中预览图片。</p>
 <p>不过既然我们最终都要将博客发布，那么我们完全可以使用<code>hexo s</code>预览其本地效果，这也方便我们检查博客在网页上的显示效果。</p>
-<h2 id="1-5-非markdown语法的图片引用">1.5 非<code>markdown</code>语法的图片引用<a class="header-anchor" href="#1-5-非markdown语法的图片引用">  んなぁ~</a></h2>
+<h2 id="1-5-非markdown语法的图片引用">1.5 非<code>markdown</code>语法的图片引用<a class="header-anchor" href="#1-5-非markdown语法的图片引用">  &gt;_&lt;</a></h2>
 <p><code>Hexo</code>还有一种以<code>&#123;% asset_img [图片名] [图片描述] %&#125;</code>的方式来引用图片的方法，但是这种方法在<code>markdown</code>文件中是无效的，只能在<code>html</code>文件中使用，所以我不喜欢这种方法。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">&#123;% asset_img pic01.jpg my picture %&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="2-如何使用emoji">2. 如何使用<code>emoji</code><a class="header-anchor" href="#2-如何使用emoji">  んなぁ~</a></h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">&#123;% asset_img pic01.jpg my picture %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h1 id="2-如何使用emoji">2. 如何使用<code>emoji</code><a class="header-anchor" href="#2-如何使用emoji">  &gt;_&lt;</a></h1>
 <p>我平时使用<code>VSCode</code>来编写<code>markdown</code>文件，有时也会在里面加一些<code>emoji</code>。😄</p>
 <p>平时在逛<code>Github</code>的时候，你也能在一些<code>README.md</code>文件中看到一些<code>emoji</code>。📚</p>
 <p>我本以为既然我们使用了<code>Github Page</code>，那么我们也可以在我们的博客中使用<code>emoji</code>，但是我发现并不是这样的。😓</p>
@@ -332,18 +350,44 @@
 <li>卸载原有的<code>hexo-renderer-marked</code>插件</li>
 <li>安装<code>markdown-it-emoji</code>和<code>hexo-renderer-markdown-it</code>插件</li>
 </ol>
-<h2 id="2-1-卸载与安装插件">2.1 卸载与安装插件<a class="header-anchor" href="#2-1-卸载与安装插件">  んなぁ~</a></h2>
+<h2 id="2-1-卸载与安装插件">2.1 卸载与安装插件<a class="header-anchor" href="#2-1-卸载与安装插件">  &gt;_&lt;</a></h2>
 <p>在你的博客根目录下，使用<code>npm</code>进行卸载与安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm un hexo-renderer-marked --save<br>npm i hexo-renderer-markdown-it markdown-it-emoji --save<br></code></pre></td></tr></table></figure>
-<h2 id="2-2-修改-config-yml文件">2.2 修改<code>_config.yml</code>文件<a class="header-anchor" href="#2-2-修改-config-yml文件">  んなぁ~</a></h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> un hexo-renderer-marked <span class="token parameter variable">--save</span>
+<span class="token function">npm</span> i hexo-renderer-markdown-it markdown-it-emoji <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<h2 id="2-2-修改-config-yml文件">2.2 修改<code>_config.yml</code>文件<a class="header-anchor" href="#2-2-修改-config-yml文件">  &gt;_&lt;</a></h2>
 <p>在<code>_config.yml</code>文件中，添加关于<code>markdown-it-emoji</code>的配置。（可以直接粘贴在最下方）</p>
 <p>下面是我自己的配置，具体设置请参考<a target="_blank" rel="noopener" href="https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki">官方文档</a></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Markdown-it config</span><br><span class="hljs-comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span><br><span class="hljs-attr">markdown:</span><br>  <span class="hljs-attr">render:</span><br>    <span class="hljs-attr">html:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">xhtmlOut:</span> <span class="hljs-literal">false</span><br>    <span class="hljs-attr">breaks:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">linkify:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">typographer:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">quotes:</span> <span class="hljs-string">&#x27;“”‘’&#x27;</span><br>  <span class="hljs-attr">plugins:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-abbr</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-footnote</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-ins</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-sub</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-sup</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-emoji</span><br>    <br>  <span class="hljs-attr">anchors:</span><br>    <span class="hljs-attr">level:</span> <span class="hljs-number">1</span><br>    <span class="hljs-attr">collisionSuffix:</span> <span class="hljs-string">&#x27;v&#x27;</span><br>    <span class="hljs-comment"># If `true`, creates an anchor tag with a permalink besides the heading.</span><br>    <span class="hljs-attr">permalink:</span> <span class="hljs-literal">true</span><br>    <span class="hljs-attr">permalinkClass:</span> <span class="hljs-string">header-anchor</span><br>    <span class="hljs-attr">permalinkSide:</span> <span class="hljs-string">&#x27;right&#x27;</span><br>    <span class="hljs-attr">permalinkSymbol:</span> <span class="hljs-string">&#x27;  ~&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Markdown-it config</span>
+<span class="token comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span>
+<span class="token key atrule">markdown</span><span class="token punctuation">:</span>
+  <span class="token key atrule">render</span><span class="token punctuation">:</span>
+    <span class="token key atrule">html</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">xhtmlOut</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">breaks</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">linkify</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">typographer</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">quotes</span><span class="token punctuation">:</span> <span class="token string">'“”‘’'</span>
+  <span class="token key atrule">plugins</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>abbr
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>footnote
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>ins
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>sub
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>sup
+    <span class="token punctuation">-</span> markdown<span class="token punctuation">-</span>it<span class="token punctuation">-</span>emoji
+    
+  <span class="token key atrule">anchors</span><span class="token punctuation">:</span>
+    <span class="token key atrule">level</span><span class="token punctuation">:</span> <span class="token number">1</span>
+    <span class="token key atrule">collisionSuffix</span><span class="token punctuation">:</span> <span class="token string">'v'</span>
+    <span class="token comment"># If `true`, creates an anchor tag with a permalink besides the heading.</span>
+    <span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">permalinkClass</span><span class="token punctuation">:</span> header<span class="token punctuation">-</span>anchor
+    <span class="token key atrule">permalinkSide</span><span class="token punctuation">:</span> <span class="token string">'right'</span>
+    <span class="token key atrule">permalinkSymbol</span><span class="token punctuation">:</span> <span class="token string">'  ~'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>配置好这些之后，我们就可以愉快地在博客中使用<code>emoji</code>了。🎉</p>
 <ul>
 <li>如果你重新<code>hexo g &amp;&amp; hexo s</code>仍然无法预览<code>emoji</code>，那么请尝试重启浏览器或者对你要预览的文件进行修改。</li>
 </ul>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
 <p>现在，我们可以愉快地在博客中使用<code>emoji</code>了。🎉</p>
 <p>在Hexo中使用emoji，为你的博客增添更多乐趣吧！😃❤️</p>
 <p>下一节，更换主题，让我们的博客更加美观吧！😎</p>
@@ -564,9 +608,34 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -659,6 +728,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -713,6 +784,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 

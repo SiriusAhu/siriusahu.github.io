@@ -12,24 +12,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. Note!">
+    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. N">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」02 Github &amp; SSH &amp; node 基本配置">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-02-Github-SSH-node-basic/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. Note!">
+<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. N">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-07T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T20:14:58.813Z">
+<meta property="article:modified_time" content="2024-01-07T02:48:45.493Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="nvm">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
   
   
   
@@ -42,6 +46,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -71,7 +77,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":10,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -93,11 +99,11 @@
   <header>
     
 
-<div class="header-inner" style="height: 70vh;">
+<div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Ahu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -195,7 +201,7 @@
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
@@ -240,6 +246,14 @@
 
     
     
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
   </div>
 
 
@@ -278,7 +292,7 @@
                 <!-- # Github & SSH & node 基本配置
 
 - 本文编辑时间：2023.05.07 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>想要制作一个个人博客网站，我们需要这些东西的帮助：</p>
 <blockquote>
@@ -289,19 +303,29 @@
 </ul>
 </blockquote>
 <p>我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。</p>
-<h1 id="0-Note">0. Note!<a class="header-anchor" href="#0-Note">  んなぁ~</a></h1>
+<h1 id="0-Note">0. Note!<a class="header-anchor" href="#0-Note">  &gt;_&lt;</a></h1>
 <p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
-<h1 id="1-Prerequirements">1. Prerequirements<a class="header-anchor" href="#1-Prerequirements">  んなぁ~</a></h1>
+<h1 id="1-Prerequirements">1. Prerequirements<a class="header-anchor" href="#1-Prerequirements">  &gt;_&lt;</a></h1>
 <p>确保你已经在你的电脑上安装了<code>git</code>和<code>ssh</code>。</p>
 <p>在你的终端中运行<code>git</code>和<code>ssh</code>。如果出现<code>command not found</code>之类的内容的话说明你还没有安装它们。对于我的系统（<code>Linux Mint 21.1</code>），我可以使用以下命令来安装它们：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install git ssh<br></code></pre></td></tr></table></figure>
-<h1 id="2-定义git的用户名和邮箱与生成SSH密钥">2. 定义git的用户名和邮箱与生成SSH密钥<a class="header-anchor" href="#2-定义git的用户名和邮箱与生成SSH密钥">  んなぁ~</a></h1>
-<h2 id="2-1-定义git的用户名和邮箱">2.1 定义git的用户名和邮箱<a class="header-anchor" href="#2-1-定义git的用户名和邮箱">  んなぁ~</a></h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h1 id="2-定义git的用户名和邮箱与生成SSH密钥">2. 定义git的用户名和邮箱与生成SSH密钥<a class="header-anchor" href="#2-定义git的用户名和邮箱与生成SSH密钥">  &gt;_&lt;</a></h1>
+<h2 id="2-1-定义git的用户名和邮箱">2.1 定义git的用户名和邮箱<a class="header-anchor" href="#2-1-定义git的用户名和邮箱">  &gt;_&lt;</a></h2>
 <p>在terminal中运行以下命令来定义你的用户名和邮箱：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name &lt;&lt;你的用户名&gt;&gt;<br>git config --global user.email &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token operator">&lt;&lt;</span>你的用户名<span class="token operator">>></span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token operator">&lt;&lt;</span>你的邮箱<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>否则你在使用<code>git</code>时会出现以下错误：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">*** Please tell me <span class="hljs-built_in">who</span> you are.<br><br>Run<br><br>  git config --global user.email <span class="hljs-string">&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">  git config --global user.name &quot;</span><br><br>to <span class="hljs-built_in">set</span> your account<span class="hljs-string">&#x27;s default identity.</span><br><span class="hljs-string">Omit --global to set the identity only in this repository.</span><br></code></pre></td></tr></table></figure>
-<h2 id="2-2-生成SSH密钥">2.2 生成SSH密钥<a class="header-anchor" href="#2-2-生成SSH密钥">  んなぁ~</a></h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">*** Please tell me <span class="token function">who</span> you are.
+
+Run
+
+  <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"
+
+  git config --global user.name "</span>
+
+to <span class="token builtin class-name">set</span> your account's default identity.
+Omit <span class="token parameter variable">--global</span> to <span class="token builtin class-name">set</span> the identity only <span class="token keyword">in</span> this repository.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="2-2-生成SSH密钥">2.2 生成SSH密钥<a class="header-anchor" href="#2-2-生成SSH密钥">  &gt;_&lt;</a></h2>
 <ul>
 <li>SSH密钥用于连接你的电脑和<code>Github</code>。</li>
 </ul>
@@ -309,7 +333,7 @@
 <ul>
 <li>注意：你在这里输入的邮箱应该和你注册<code>Github</code>账号时使用的邮箱相同。</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token operator">&lt;&lt;</span>你的邮箱<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>其中：</p>
 <ul>
 <li><code>-t</code>：指定密钥类型，这里我们使用<code>rsa</code>。</li>
@@ -317,19 +341,19 @@
 </ul>
 <p>然后按照提示来生成你的SSH密钥。（为了方便，你可以直接按<code>Enter</code>来使用默认值。但你也可以指定你的SSH密钥的路径、名称和密码。但一定要你记下来。）</p>
 <p>之后你会得到两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>，它们分别代表你的私钥和公钥。你可以在你指定的路径中找到它们。（默认路径是<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>）</p>
-<h1 id="3-将SSH密钥添加到Github">3. 将SSH密钥添加到Github<a class="header-anchor" href="#3-将SSH密钥添加到Github">  んなぁ~</a></h1>
+<h1 id="3-将SSH密钥添加到Github">3. 将SSH密钥添加到Github<a class="header-anchor" href="#3-将SSH密钥添加到Github">  &gt;_&lt;</a></h1>
 <ul>
 <li>添加SSH密钥到Github的目的是为了让你的电脑和Github之间可以互相认证。</li>
 </ul>
-<h2 id="3-1-复制你的公钥">3.1 复制你的公钥<a class="header-anchor" href="#3-1-复制你的公钥">  んなぁ~</a></h2>
+<h2 id="3-1-复制你的公钥">3.1 复制你的公钥<a class="header-anchor" href="#3-1-复制你的公钥">  &gt;_&lt;</a></h2>
 <p>在terminal中运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt;你的公钥的路径&gt;&gt;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>你的公钥的路径<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>然后你会看到你的公钥的内容。复制它。</p>
-<h2 id="3-2-将你的公钥添加到Github">3.2 将你的公钥添加到Github<a class="header-anchor" href="#3-2-将你的公钥添加到Github">  んなぁ~</a></h2>
+<h2 id="3-2-将你的公钥添加到Github">3.2 将你的公钥添加到Github<a class="header-anchor" href="#3-2-将你的公钥添加到Github">  &gt;_&lt;</a></h2>
 <p>进入<code>Github</code> -&gt; <code>Settings</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code>并粘贴你的公钥以添加它。</p>
-<h1 id="4-测试你的SSH密钥">4. 测试你的SSH密钥<a class="header-anchor" href="#4-测试你的SSH密钥">  んなぁ~</a></h1>
+<h1 id="4-测试你的SSH密钥">4. 测试你的SSH密钥<a class="header-anchor" href="#4-测试你的SSH密钥">  &gt;_&lt;</a></h1>
 <p>在terminal中运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T &lt;&lt;你的邮箱&gt;&gt;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> <span class="token operator">&lt;&lt;</span>你的邮箱<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>如果你看到类似<code>Hi &lt;&lt;你的用户名&gt;&gt;! You've successfully authenticated, but GitHub does not provide shell access.</code>的内容，那么你已经成功地将你的SSH密钥添加到了Github。</p>
 <ul>
 <li>
@@ -339,7 +363,7 @@
 <p>不需要一直等下去，鬼知道网络什么时候能好。只要不报错，建议直接跳到下一步。</p>
 </li>
 </ul>
-<h1 id="5-创建一个新的仓库（有特殊命名要求）">5. 创建一个新的仓库（有特殊命名要求）<a class="header-anchor" href="#5-创建一个新的仓库（有特殊命名要求）">  んなぁ~</a></h1>
+<h1 id="5-创建一个新的仓库（有特殊命名要求）">5. 创建一个新的仓库（有特殊命名要求）<a class="header-anchor" href="#5-创建一个新的仓库（有特殊命名要求）">  &gt;_&lt;</a></h1>
 <p>让我们在<code>Github</code>上创建一个新的仓库并将它命名为<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>。（建议先勾选<code>Add a README file</code>，之后的<code>hexo deploy</code>的流程会自动删除它的。）</p>
 <ul>
 <li><strong>非常重要</strong>：我们需要使用<code>Github Page</code>，所以
@@ -350,7 +374,7 @@
 </ol>
 </li>
 </ul>
-<h1 id="6-安装node">6. 安装node<a class="header-anchor" href="#6-安装node">  んなぁ~</a></h1>
+<h1 id="6-安装node">6. 安装node<a class="header-anchor" href="#6-安装node">  &gt;_&lt;</a></h1>
 <ul>
 <li><code>node</code>用于运行<code>Hexo</code>。</li>
 </ul>
@@ -377,15 +401,15 @@
 </tbody>
 </table>
 <p>如果只是想简单地使用<code>Hexo</code>的话，直接安装<code>node</code>即可。</p>
-<h2 id="6-1-直接安装node">6.1 直接安装<code>node</code><a class="header-anchor" href="#6-1-直接安装node">  んなぁ~</a></h2>
+<h2 id="6-1-直接安装node">6.1 直接安装<code>node</code><a class="header-anchor" href="#6-1-直接安装node">  &gt;_&lt;</a></h2>
 <p>在terminal中运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nodejs<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nodejs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <ul>
 <li>如果你已经使用<code>nvm</code>安装过<code>node</code>，那么这里没有提示<code>node</code>已安装是正常的。（因为<code>apt</code>和<code>nvm</code>没有共享安装信息）</li>
 </ul>
 <p>然后运行以下命令来，根据是否输出版本号来判断是否安装成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
-<h2 id="6-2-使用nvm安装node">6.2 使用<code>nvm</code>安装<code>node</code><a class="header-anchor" href="#6-2-使用nvm安装node">  んなぁ~</a></h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h2 id="6-2-使用nvm安装node">6.2 使用<code>nvm</code>安装<code>node</code><a class="header-anchor" href="#6-2-使用nvm安装node">  &gt;_&lt;</a></h2>
 <ul>
 <li><code>nvm</code>即<code>node version manager</code>，用于管理<code>node</code>的版本。</li>
 </ul>
@@ -393,7 +417,7 @@
 <p>我们可以按照<code>nvm</code>的<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">官方文档</a>来安装它。</p>
 </blockquote>
 <p>大致过程是<code>下载nvm</code> -&gt; <code>安装nvm</code> -&gt; <code>安装node</code>。</p>
-<h3 id="6-2-1-下载与安装nvm">6.2.1. 下载与安装<code>nvm</code><a class="header-anchor" href="#6-2-1-下载与安装nvm">  んなぁ~</a></h3>
+<h3 id="6-2-1-下载与安装nvm">6.2.1. 下载与安装<code>nvm</code><a class="header-anchor" href="#6-2-1-下载与安装nvm">  &gt;_&lt;</a></h3>
 <blockquote>
 <p>见官方文档中<code>Install &amp; Update Script</code>一节。</p>
 </blockquote>
@@ -401,21 +425,21 @@
 <li>具体命令以官方文档为准！！！</li>
 </ul>
 <p>运行以下两个命令中的任一个来下载并安装<code>nvm</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>或者</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash<br></code></pre></td></tr></table></figure>
-<h3 id="6-2-2-安装node">6.2.2. 安装<code>node</code><a class="header-anchor" href="#6-2-2-安装node">  んなぁ~</a></h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h3 id="6-2-2-安装node">6.2.2. 安装<code>node</code><a class="header-anchor" href="#6-2-2-安装node">  &gt;_&lt;</a></h3>
 <blockquote>
 <p>见官方文档中<code>Usage</code>一节。</p>
 </blockquote>
 <p>有多种方式安装<code>node</code>，这里我们使用最简单的一种即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvm install node<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nvm <span class="token function">install</span> <span class="token function">node</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>安装完成后，运行以下命令来判断是否安装成功：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node -v<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>如果输出了版本号，那么说明安装成功。</p>
-<h3 id="6-2-3-补充">6.2.3. 补充<a class="header-anchor" href="#6-2-3-补充">  んなぁ~</a></h3>
+<h3 id="6-2-3-补充">6.2.3. 补充<a class="header-anchor" href="#6-2-3-补充">  &gt;_&lt;</a></h3>
 <p>如有需要，请参考官方文档来使用<code>nvm</code>。（<em>Recommend</em>）</p>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
 <p>做到这里，我们已经完成了“基础设施建设”。</p>
 <p>下一步我们就要开始使用<code>Hexo</code>来建立我们的博客网站啦！</p>
 <p>Have fun! 😉</p>
@@ -640,9 +664,34 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -735,6 +784,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -789,6 +840,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 

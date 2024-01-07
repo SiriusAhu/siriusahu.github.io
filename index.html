@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
@@ -60,7 +62,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":10,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -86,7 +88,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Ahu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -223,71 +225,16 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2023/06/14/LUT-02-zsh/" target="_self">
-          「LUT」02 zsh-更漂亮的terminal
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/12/LUT-01-grub/" target="_self">
+          <img src="/img/LUT/grub-starrail.png" srcset="/img/loading.gif" lazyload alt="「LUT」01 Grub-电脑启动引导">
         </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/06/14/LUT-02-zsh/" target="_self">
-        <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 现在，请打开你的terminal，并记住它现在的样子！ 这一节会帮你把terminal变得更加漂亮！比如这样：   可以使用Ahu的脚本哟！ 点我点我！  How?  んなぁ~ 我使用了zsh来替换系统默认的shell：bash（bash -&gt; zsh），然后使用oh-my-zsh来配置zsh`，并
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-06-14 11:00" pubdate>
-              2023-06-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Linux-Useful-Tools/" class="category-chain-item">Linux Useful Tools</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Linux/">#Linux</a>
-            
-              <a href="/tags/tricks/">#tricks</a>
-            
-          </div>
-        
       </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
     
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
+        
+          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
         
         <a href="/2023/05/12/LUT-01-grub/" target="_self">
           「LUT」01 Grub-电脑启动引导
@@ -295,9 +242,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/12/LUT-01-grub/" target="_self">
+      <a class="index-excerpt " href="/2023/05/12/LUT-01-grub/" target="_self">
         <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高
+          
         </div>
       </a>
 
@@ -349,7 +296,84 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/06/14/LUT-02-zsh/" target="_self">
+          <img src="/img/LUT/02-01.png" srcset="/img/loading.gif" lazyload alt="「LUT」02 zsh-更漂亮的terminal">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
+        
+        <a href="/2023/06/14/LUT-02-zsh/" target="_self">
+          「LUT」02 zsh-更漂亮的terminal
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2023/06/14/LUT-02-zsh/" target="_self">
+        <div>
+          
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-06-14 11:00" pubdate>
+              2023-06-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux-Useful-Tools/" class="category-chain-item">Linux Useful Tools</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+              <a href="/tags/tricks/">#tricks</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" target="_self">
+          <img src="/img/R_BE/index.jpg" srcset="/img/loading.gif" lazyload alt="「建站」05 Hexo中的Markdown特殊用法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" target="_self">
@@ -358,9 +382,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/08/R-EB-05-Hexo-Markdown/" target="_self">
+      <a class="index-excerpt " href="/2023/05/08/R-EB-05-Hexo-Markdown/" target="_self">
         <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 在上一节中，我们已经将我们的博客网站部署到了Github Page上。 那么现在，我们需要做的事就是编写一些博客文章了。 Hexo支持使用Markdown来编写博客文章，关于Markdown的基本用法在此就不多赘述。 这一节关键要看一些Hexo中的Markdown特殊用法。 1. 图片  んなぁ~ Hex
+          
         </div>
       </a>
 
@@ -419,7 +443,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/07/R-EB-04-Push-to-github/" target="_self">
+          <img src="/img/R_BE/index.jpg" srcset="/img/loading.gif" lazyload alt="「建站」04 将Hexo部署到Github Page">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/2023/05/07/R-EB-04-Push-to-github/" target="_self">
@@ -428,9 +458,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/07/R-EB-04-Push-to-github/" target="_self">
+      <a class="index-excerpt " href="/2023/05/07/R-EB-04-Push-to-github/" target="_self">
         <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这
+          
         </div>
       </a>
 
@@ -491,7 +521,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/07/R-EB-03-Hexo-init/" target="_self">
+          <img src="/img/R_BE/index.jpg" srcset="/img/loading.gif" lazyload alt="「建站」03 使用Hexo初步创建博客网站与本地预览">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/2023/05/07/R-EB-03-Hexo-init/" target="_self">
@@ -500,9 +536,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/07/R-EB-03-Hexo-init/" target="_self">
+      <a class="index-excerpt " href="/2023/05/07/R-EB-03-Hexo-init/" target="_self">
         <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 我们在上一节做了许多工作呢，辛苦啦～ 😄 这一节会比上一节有趣一些，我们将会使用Hexo来创建我们的博客网站，并在本地预览它。  Hexo是一个基于Node.js的静态博客框架。  1. 选一个用于存储博客网站文件的文件夹  んなぁ~ 这一步很简单，你只需要在你的电脑上选一个风水宝地来存储你的博客网站
+          
         </div>
       </a>
 
@@ -563,7 +599,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" target="_self">
+          <img src="/img/R_BE/index.jpg" srcset="/img/loading.gif" lazyload alt="「建站」02 Github &amp; SSH &amp; node 基本配置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" target="_self">
@@ -572,9 +614,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" target="_self">
+      <a class="index-excerpt " href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" target="_self">
         <div>
-          Greetings!  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. Note!
+          
         </div>
       </a>
 
@@ -635,7 +677,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2023/05/06/R-EB-01-Prerequirements/" target="_self">
+          <img src="/img/R_BE/index.jpg" srcset="/img/loading.gif" lazyload alt="「建站」01 准备工作 - 建立自己的博客网站">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/2023/05/06/R-EB-01-Prerequirements/" target="_self">
@@ -644,9 +692,9 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/05/06/R-EB-01-Prerequirements/" target="_self">
+      <a class="index-excerpt " href="/2023/05/06/R-EB-01-Prerequirements/" target="_self">
         <div>
-          Greetings!  んなぁ~ 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在，  Hi，欢迎来到我的博客！😉  Introduction  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有
+          
         </div>
       </a>
 
@@ -748,9 +796,34 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -804,6 +877,8 @@
 
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 

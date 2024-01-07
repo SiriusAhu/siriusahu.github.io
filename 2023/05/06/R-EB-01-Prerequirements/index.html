@@ -12,24 +12,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  んなぁ~ 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在，  Hi，欢迎来到我的博客！😉  Introduction  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有">
+    <meta name="description" content="Greetings!  &gt;_&lt; 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在， Hi，欢迎来到我的博客！😉 Introduction  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」01 准备工作 - 建立自己的博客网站">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/06/R-EB-01-Prerequirements/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  んなぁ~ 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在，  Hi，欢迎来到我的博客！😉  Introduction  んなぁ~ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有">
+<meta property="og:description" content="Greetings!  &gt;_&lt; 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在， Hi，欢迎来到我的博客！😉 Introduction  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/01-1.png">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-06T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-06T20:14:58.813Z">
+<meta property="article:modified_time" content="2024-01-07T02:48:45.493Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="introduction">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/01-1.png">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
   
   
   
@@ -42,6 +44,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -71,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":10,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -93,11 +97,11 @@
   <header>
     
 
-<div class="header-inner" style="height: 70vh;">
+<div class="header-inner" style="height: 60vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Ahu Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -195,7 +199,7 @@
 <div id="banner" class="banner" parallax=true
      style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
@@ -222,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          523 words
+          531 words
         
       </span>
     
@@ -239,6 +243,14 @@
     
 
     
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
     
   </div>
 
@@ -277,21 +289,19 @@
                 
                 <!-- # 准备工作 - 建立自己的博客网站 -->
 <!-- - 本文编辑时间：2023.05.06 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  んなぁ~</a></h1>
+<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
 <p>你，有想过建立一个自己的博客网站吗？ 🤔</p>
 <p>我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢</p>
 <p>但是现在，</p>
-<blockquote>
 <p>Hi，欢迎来到我的博客！😉</p>
-</blockquote>
-<h1 id="Introduction">Introduction<a class="header-anchor" href="#Introduction">  んなぁ~</a></h1>
+<h1 id="Introduction">Introduction<a class="header-anchor" href="#Introduction">  &gt;_&lt;</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>这是一个记录了我在<code>Linux</code>上使用<code>Github Page</code>和<code>Hexo</code>建立自己博客网站的系列。（网上也有很多关于<code>Windows</code>的教程。无论是哪个系统，它们的原理都是基本相同的。）</p>
 <p><img src="/img/R_BE/01-1.png" srcset="/img/loading.gif" lazyload alt="My Mint"></p>
 <p><span></span></p>
 <p>这个系列既是我建站过程的记录，也是一份<strong>粗略的</strong>建站教程（或许最需要看的是未来的我自己？毕竟自己搭的时候也是看了许多不同的教程，我可能最需要的是一篇我自己总结的）。</p>
 <p>我并不专业，很多地方可能只是依葫芦画瓢，内容大多也仅供参考。但同时，如果你也想建立一个博客网站的话，我希望我的博客能帮到你。❤️</p>
-<h1 id="What-do-we-need">What do we need<a class="header-anchor" href="#What-do-we-need">  んなぁ~</a></h1>
+<h1 id="What-do-we-need">What do we need<a class="header-anchor" href="#What-do-we-need">  &gt;_&lt;</a></h1>
 <p>建立一个简单的博客并不难。</p>
 <p>在正式开始之前，我们需要：</p>
 <ul>
@@ -305,7 +315,7 @@
 <li><code>热情</code>：如果缺少热情，那么简单的问题或许也会让你觉得很烦躁</li>
 <li><code>查阅资料的能力</code>：遇到问题时，我们需要学会自己去查阅资料，而不是一味的等待别人的回答。我们使用的大部分工具都是开源的，所以我们完全可以通过查阅资料来解决我们的问题</li>
 </ul>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  んなぁ~</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
 <p>那么，让我们开启建站之旅吧！🎉</p>
 <p>Have fun! 😉</p>
 <blockquote>
@@ -516,9 +526,34 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -611,6 +646,8 @@
 </script>
 
 
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
   <script>Fluid.plugins.codeWidget();</script>
@@ -665,6 +702,8 @@
   <script>Fluid.plugins.imageCaption();</script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
