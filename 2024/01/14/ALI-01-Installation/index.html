@@ -26,11 +26,11 @@
 <meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你看到了这里，那么说明你已经做好准备了，那么我们就开始吧！  注：本教程使用virtualbox作为虚拟机记录安装过程，实机安装过程与虚拟机安装过程基本完全相同。  1. Get into the Arch Linux live environment  &gt;_&lt; 首先我们要进入A">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
-<meta property="article:published_time" content="2024-01-14T02:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-14T14:53:10.479Z">
+<meta property="article:published_time" content="2024-01-14T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-14T18:51:46.872Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Linux">
-<meta property="article:tag" content="OS Installation">
+<meta property="article:tag" content="Linux Installation">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
   
@@ -244,7 +244,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-14 10:00" pubdate>
+        <time datetime="2024-01-14 11:00" pubdate>
           January 14, 2024 am
         </time>
       </span>
@@ -500,14 +500,14 @@
 <p><code>vim</code>的用法请自行搜索。<br>
 Tips：<code>vim</code>中<code>/</code>用于搜索，<code>n</code>用于跳转到下一个搜索结果，<code>N</code>用于跳转到上一个搜索结果。</p>
 </blockquote>
-<h2 id="10-1-编辑-etc-locale-gen">10.1. 编辑<code>/etc/locale.gen</code><a class="header-anchor" href="#10-1-编辑-etc-locale-gen">  &gt;_&lt;</a></h2>
+<h2 id="10-1-Edit-etc-locale-gen">10.1. Edit <code>/etc/locale.gen</code><a class="header-anchor" href="#10-1-Edit-etc-locale-gen">  &gt;_&lt;</a></h2>
 <p>首先我们需要编辑<code>/etc/locale.gen</code>文件，将<code>en_US.UTF-8 UTF-8</code>和<code>zh_CN.UTF-8 UTF-8</code>前面的注释符号<code>#</code>去掉。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/locale.gen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p><img src="/img/ALI/01/ali09.PNG" srcset="/img/loading.gif" lazyload alt="locale.gen"><img src="/img/ALI/01/ali09-1.PNG" srcset="/img/loading.gif" lazyload alt="locale.gen"></p>
-<h2 id="10-2-生成locale文件">10.2. 生成<code>locale</code>文件<a class="header-anchor" href="#10-2-生成locale文件">  &gt;_&lt;</a></h2>
+<h2 id="10-2-Generate-locale">10.2. Generate <code>locale</code><a class="header-anchor" href="#10-2-Generate-locale">  &gt;_&lt;</a></h2>
 <p>然后我们生成<code>locale</code>文件。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">locale-gen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="10-3-创建-etc-locale-conf">10.3. 创建<code>/etc/locale.conf</code><a class="header-anchor" href="#10-3-创建-etc-locale-conf">  &gt;_&lt;</a></h2>
+<h2 id="10-3-Edit-etc-locale-conf">10.3. Edit <code>/etc/locale.conf</code><a class="header-anchor" href="#10-3-Edit-etc-locale-conf">  &gt;_&lt;</a></h2>
 <p>最后我们创建<code>/etc/locale.conf</code>文件，并将<code>LANG=en_US.UTF-8</code>写入其中。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token assign-left variable"><span class="token environment constant">LANG</span></span><span class="token operator">=</span>en_US.UTF-8 <span class="token operator">></span> /etc/locale.conf <span class="token comment"># 这是一种简便的写法，等价于先创建文件再写入</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <blockquote>
@@ -536,7 +536,7 @@ Tips：<code>vim</code>中<code>/</code>用于搜索，<code>n</code>用于跳�
 <p>最后为<code>root</code>也设置一个密码。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token comment"># 不加用户名的话默认为root</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>之后按照提示输入两次密码即可。（输入的密码不会显示在屏幕上哦）</p>
-<h2 id="11-3-编辑-etc-sudoers">11.3. 编辑<code>/etc/sudoers</code><a class="header-anchor" href="#11-3-编辑-etc-sudoers">  &gt;_&lt;</a></h2>
+<h2 id="11-3-Edit-etc-sudoers">11.3. Edit <code>/etc/sudoers</code><a class="header-anchor" href="#11-3-Edit-etc-sudoers">  &gt;_&lt;</a></h2>
 <p>我们需要编辑<code>/etc/sudoers</code>文件，给予我们的用户<code>sudo</code>权限。</p>
 <p>具体操作是在文件中找到<code>root ALL=(ALL) ALL</code>这一行，然后在其下面添加一行<code>&lt;用户名&gt; ALL=(ALL) ALL</code>。如下图所示。</p>
 <p><img src="/img/ALI/01/ali10.PNG" srcset="/img/loading.gif" lazyload alt="sudoers"></p>
@@ -623,7 +623,7 @@ Tips：<code>vim</code>中<code>/</code>用于搜索，<code>n</code>用于跳�
       
         <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
-        <a href="/tags/OS-Installation/" class="print-no-link">#OS Installation</a>
+        <a href="/tags/Linux-Installation/" class="print-no-link">#Linux Installation</a>
       
     </div>
   
@@ -680,9 +680,9 @@ Tips：<code>vim</code>中<code>/</code>用于搜索，<code>n</code>用于跳�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/14/ALI-00-preparation/" title="「ALI」00 准备工作">
+                      <a href="/2024/01/14/ALI-02-After_Installation/" title="「ALI」02 安装之后...">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「ALI」00 准备工作</span>
+                        <span class="hidden-mobile">「ALI」02 安装之后...</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -690,8 +690,8 @@ Tips：<code>vim</code>中<code>/</code>用于搜索，<code>n</code>用于跳�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">
-                        <span class="hidden-mobile">「LUT」02 zsh-更漂亮的terminal</span>
+                      <a href="/2024/01/14/ALI-00-preparation/" title="「ALI」00 准备工作">
+                        <span class="hidden-mobile">「ALI」00 准备工作</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
