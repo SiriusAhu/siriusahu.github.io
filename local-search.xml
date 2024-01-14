@@ -4,6 +4,60 @@
   
   
   <entry>
+    <title>「ALI」00 准备工作</title>
+    <link href="/2024/01/14/ALI-00-preparation/"/>
+    <url>/2024/01/14/ALI-00-preparation/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1><p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p><p>这是一个（<strong>单电脑多系统</strong>）安装<code>Arch Linux</code>的系列教程，从启动盘的制作到图形界面的安装，都会一一介绍！</p><blockquote><p>注：本教程仅根据我的个人经验及使用情况编写，不保证适用于所有人。</p></blockquote><p>本章节将会介绍一些安装前的须知，以及一些准备工作。</p><h1 id="Why-I-write-this-tutorial">Why I write this tutorial?<a class="header-anchor" href="#Why-I-write-this-tutorial">  &gt;_&lt;</a></h1><p>网上已经有很多非常详尽的<code>Arch Linux</code>安装教程了，为什么我还要写这个教程呢？</p><p>我并不能写得比那些教程更好，这个教程更多地是为了记录我自己的安装过程，为未来的我提供参考。</p><h1 id="Before-we-start">Before we start<a class="header-anchor" href="#Before-we-start">  &gt;_&lt;</a></h1><h2 id="1-什么是Arch-Linux-为什么我们要选择它？">1. 什么是<code>Arch Linux</code> &amp; 为什么我们要选择它？<a class="header-anchor" href="#1-什么是Arch-Linux-为什么我们要选择它？">  &gt;_&lt;</a></h2><p><code>Linux</code>有着众多的发行版，而<code>Arch Linux</code>是其中最受欢迎的发行版之一。</p><p>我选择<code>Arch</code>的原因主要是它的<code>强大</code>：</p><ol><li><code>Arch</code>有着非常详细的<a href="https://wiki.archlinux.org/">官方wiki</a>，这使得我们在遇到各种问题时可以很快地找到<code>高可信的</code>解决方案。</li><li><code>Arch</code>有着非常活跃的社区，里面大佬云集，在无法通过官方wiki解决问题时，我们就可以在社区中寻求帮助。</li><li>（最喜欢的一点）<code>Arch</code>有着生态完善的<code>AUR</code>（Arch User Repository），这个软件库里包含了几乎所有我们需要的软件，而且它的软件更新速度非常快，这使得我们可以第一时间体验到最新的软件。</li></ol><h2 id="2-你是否适合使用Arch-Linux？">2. 你是否适合使用<code>Arch Linux</code>？<a class="header-anchor" href="#2-你是否适合使用Arch-Linux？">  &gt;_&lt;</a></h2><p><code>Arch Linux</code>是一个非常轻量级的发行版，它的安装过程非常复杂，而且它的使用也需要一定的<code>Linux</code>基础。</p><p>如果你是新手，那么我建议你从<code>Ubuntu</code>系列的发行版开始（我推荐<code>Pop!_OS</code>和<code>Linux Mint</code>）。</p><p>如果你急于尝试<code>Arch</code>，那么请考虑使用<code>EndeavourOS</code>，它是一个基于<code>Arch</code>的发行版，不过预装了图形化安装程序和桌面环境，极大地简化了安装过程。同时它也是我的<code>Arch</code>入门发行版。（个人建议不要使用<code>Manjaro</code>，因为它的软件库和<code>AUR</code>更新速度都非常慢。虽然它也有图形化安装程序，并且预先设定了许多非常有用的设定，但是直接使用<code>Manjaro</code>会让你跳过太多<code>Arch</code>的学习过程，这样的话未来遇到问题时你就会束手无策。）</p><h2 id="3-你是否做好了心理准备？">3. 你是否做好了心理准备？<a class="header-anchor" href="#3-你是否做好了心理准备？">  &gt;_&lt;</a></h2><p>不像<code>Ubuntu</code>等所见即所得的发行版，<code>Arch</code>的安装过程相对复杂，而且它的安装过程中会遇到各种各样的问题，这些问题有些是可以通过官方wiki解决的，但是有些问题却需要我们自己去寻找解决方案。（不过不用担心，大部分问题已经有很多前辈们遇到并解决过了，基本上我们只需要在网上搜索一下就可以找到解决方案。）</p><p>所以在安装<code>Arch</code>之前，我们需要做好心理准备，不要因为遇到问题就放弃，要坚持下去，相信我，你会发现这一切都是值得的。</p><p>如果你心有顾虑的话，那么我建议你先使用虚拟机来安装<code>Arch</code>，这样即使遇到问题也不会影响你的日常使用。</p><h1 id="Preparation">Preparation<a class="header-anchor" href="#Preparation">  &gt;_&lt;</a></h1><p>在安装<code>Arch</code>之前，我们需要准备以下东西：</p><ol><li><code>Arch Linux</code>的安装镜像（<code>iso</code>文件），可以从<a href="https://archlinux.org/download/">官网</a>或者<a href="https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/">清华大学开源软件镜像站</a>下载。</li><li>一个<code>U盘</code>，用于制作启动盘。（由于<code>Arch</code>的镜像文件比较小，所以一个<code>2G</code>的<code>U盘</code>就足够了。）</li><li>启动盘制作软件。<br>我推荐使用<code>Rufus</code>，它是一个非常好用的启动盘制作软件，可以从<a href="https://rufus.ie/">官网</a>下载。<br>对于<code>Linux</code>用户来说，我推荐使用<code>Etcher</code>，它是一个开源的启动盘制作软件，可以从<a href="https://www.balena.io/etcher/">官网</a>下载。</li></ol><h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1><p>请一定确定你已经做好了所有准备，然后我们就可以开始安装<code>Arch Linux</code>了！</p><p>Have fun! 😉</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Arch Linux Installation</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>OS Installation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>「ALI」01 安装</title>
+    <link href="/2024/01/14/ALI-01-Installation01/"/>
+    <url>/2024/01/14/ALI-01-Installation01/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Arch Linux Installation</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>OS Installation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>「LUT」02 zsh-更漂亮的terminal</title>
     <link href="/2023/06/14/LUT-02-zsh/"/>
     <url>/2023/06/14/LUT-02-zsh/</url>
