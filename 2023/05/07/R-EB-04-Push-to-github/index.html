@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Pa">
+    <meta name="description" content="Greetings!Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这样">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」04 将Hexo部署到Github Page">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-04-Push-to-github/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Pa">
+<meta property="og:description" content="Greetings!Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中，我们已经安装好了Hexo并在本地预览了我们的博客网站。 那么在编辑我们的博客之前，不妨先将它部署到Github Page上吧！（本节不涉及域名解析等自定义域名的内容）  Github Page是Github提供的一个静态网站托管服务，我们可以将我们的博客网站部署到Github Page上，这样">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-07T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-04T23:51:15.825Z">
+<meta property="article:modified_time" content="2024-02-05T00:06:44.128Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="hexo">
@@ -257,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k words
+          1.9k words
         
       </span>
     
@@ -268,7 +268,7 @@
         
         
         
-          17 mins
+          16 mins
         
       </span>
     
@@ -321,22 +321,19 @@
                 <!-- # 将Hexo部署到Github Page
 
 - 本文编辑时间：2023.05.07 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
-<p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
+
+<h1 id="Greetings"><a href="#Greetings" class="headerlink" title="Greetings!"></a>Greetings!</h1><p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~</p>
 <p>在上一节中，我们已经安装好了<code>Hexo</code>并在本地预览了我们的博客网站。</p>
 <p>那么在编辑我们的博客之前，不妨先将它部署到<code>Github Page</code>上吧！（本节不涉及域名解析等自定义域名的内容）</p>
 <blockquote>
 <p><code>Github Page</code>是<code>Github</code>提供的一个静态网站托管服务，我们可以将我们的博客网站部署到<code>Github Page</code>上，这样我们就可以通过<code>Github Page</code>来访问我们的博客网站了。</p>
 </blockquote>
-<h1 id="0-注意">0. 注意<a class="header-anchor" href="#0-注意">  &gt;_&lt;</a></h1>
-<p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
-<h1 id="1-修改配置文件">1. 修改配置文件<a class="header-anchor" href="#1-修改配置文件">  &gt;_&lt;</a></h1>
-<p>我们需要修改<code>Hexo</code>的配置文件<code>_config.yml</code>，让<code>Hexo</code>知道我们要将博客网站部署到<code>Github Page</code>上。（也可以顺便修改一下博客网站的标题、描述等信息）</p>
+<h1 id="0-注意"><a href="#0-注意" class="headerlink" title="0. 注意"></a>0. 注意</h1><p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
+<h1 id="1-修改配置文件"><a href="#1-修改配置文件" class="headerlink" title="1. 修改配置文件"></a>1. 修改配置文件</h1><p>我们需要修改<code>Hexo</code>的配置文件<code>_config.yml</code>，让<code>Hexo</code>知道我们要将博客网站部署到<code>Github Page</code>上。（也可以顺便修改一下博客网站的标题、描述等信息）</p>
 <blockquote>
 <p>具体的参数信息可以参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">Hexo官网</a>。</p>
 </blockquote>
-<h2 id="1-1-Deployment">1.1 Deployment<a class="header-anchor" href="#1-1-Deployment">  &gt;_&lt;</a></h2>
-<p>首先我们找到<code>Deployment</code>这一项（在最下方），然后对其进行补充与修改。</p>
+<h2 id="1-1-Deployment"><a href="#1-1-Deployment" class="headerlink" title="1.1 Deployment"></a>1.1 Deployment</h2><p>首先我们找到<code>Deployment</code>这一项（在最下方），然后对其进行补充与修改。</p>
 <blockquote>
 <p>注释里面已经给了官<a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment">网链接啦</a></p>
 </blockquote>
@@ -348,12 +345,12 @@
   <span class="token key atrule">type</span><span class="token punctuation">:</span> git
   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/&lt;&lt;你的Github用户名<span class="token punctuation">></span><span class="token punctuation">></span>/&lt;&lt;你的仓库地址<span class="token punctuation">></span><span class="token punctuation">></span>.git
   <span class="token key atrule">branch</span><span class="token punctuation">:</span> main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
 <blockquote>
 <p>注意：一些老教程会将<code>branch</code>设置为<code>master</code>，但是从2020年开始，<code>Github</code>已经将默认分支改为<code>main</code>了，所以我们需要将<code>branch</code>设置为<code>main</code>。</p>
 <p><em>向制作老教程的前辈们致敬！</em></p>
 </blockquote>
-<h2 id="1-2-URL">1.2 URL<a class="header-anchor" href="#1-2-URL">  &gt;_&lt;</a></h2>
-<p>然后我们需要将<code>Hexo</code>的<code>_config.yml</code>文件中的<code>url</code>修改为我们的<code>Github Page</code>地址。</p>
+<h2 id="1-2-URL"><a href="#1-2-URL" class="headerlink" title="1.2 URL"></a>1.2 URL</h2><p>然后我们需要将<code>Hexo</code>的<code>_config.yml</code>文件中的<code>url</code>修改为我们的<code>Github Page</code>地址。</p>
 <p>找到<code>url</code>这一项（靠近最上方），然后将其修改为<code>https://&lt;&lt;你的Github用户名&gt;&gt;.github.io/&lt;&lt;你的仓库地址&gt;&gt;/</code>即可。（或者说<code>https://&lt;&lt;你的仓库名&gt;&gt;.git</code>）</p>
 <blockquote>
 <p>也强烈推荐通过注释里给出的<a target="_blank" rel="noopener" href="https://username.github.io/project">官网链接</a>来了解更多配置信息。</p>
@@ -361,8 +358,8 @@
 <figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># URL</span>
 <span class="token comment">## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'</span>
 <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//&lt;&lt;你的仓库名<span class="token punctuation">></span><span class="token punctuation">></span>.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
-<h2 id="1-3-其他（optional）">1.3 *其他（optional）<a class="header-anchor" href="#1-3-其他（optional）">  &gt;_&lt;</a></h2>
-<p>我们也可以修改一下博客网站的标题、描述等信息。</p>
+
+<h2 id="1-3-其他（optional）"><a href="#1-3-其他（optional）" class="headerlink" title="1.3 *其他（optional）"></a>1.3 *其他（optional）</h2><p>我们也可以修改一下博客网站的标题、描述等信息。</p>
 <p>找到最上方的<code>Site</code>这一项，然后按需修改即可。</p>
 <ul>
 <li>注意，这里的<code>language</code>指的是网站的语言，而不是博客的语言。具体填入什么需要根据你所选的<code>主题</code>来定。（主题会在下一节中介绍，如果你不知道该填什么，可以先留着默认的<code>en</code>）</li>
@@ -376,23 +373,22 @@
 <span class="token key atrule">author</span><span class="token punctuation">:</span> &lt;&lt;你的名字<span class="token punctuation">></span><span class="token punctuation">></span>
 <span class="token key atrule">language</span><span class="token punctuation">:</span> en
 <span class="token key atrule">timezone</span><span class="token punctuation">:</span> Asia/Shanghai<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<h1 id="2-安装hexo-deployer-git（不是apt安装的git）">2. 安装<code>hexo-deployer-git</code>（不是apt安装的git）<a class="header-anchor" href="#2-安装hexo-deployer-git（不是apt安装的git）">  &gt;_&lt;</a></h1>
-<p>我们需要安装<code>hexo-deployer-git</code>这个插件，来实现将博客网站部署到<code>Github Page</code>上。</p>
+
+<h1 id="2-安装hexo-deployer-git（不是apt安装的git）"><a href="#2-安装hexo-deployer-git（不是apt安装的git）" class="headerlink" title="2. 安装hexo-deployer-git（不是apt安装的git）"></a>2. 安装<code>hexo-deployer-git</code>（不是apt安装的git）</h1><p>我们需要安装<code>hexo-deployer-git</code>这个插件，来实现将博客网站部署到<code>Github Page</code>上。</p>
 <ul>
 <li>如果不安装这个插件直接部署的话会报错<code>Deployer not found: git</code>。（在官方文档中也提到这个bug，给出的解决方案就是安装这个插件）</li>
 </ul>
 <p>将路径切换到博客网站的根目录下，然后执行以下命令即可。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git <span class="token parameter variable">--save</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h1 id="3-配置git">3. 配置git<a class="header-anchor" href="#3-配置git">  &gt;_&lt;</a></h1>
-<p>距离部署已经不远啦！我们只需要配置一下<code>git</code>就可以啦！</p>
+
+<h1 id="3-配置git"><a href="#3-配置git" class="headerlink" title="3. 配置git"></a>3. 配置git</h1><p>距离部署已经不远啦！我们只需要配置一下<code>git</code>就可以啦！</p>
 <ul>
 <li>如果不配置直接进行部署的话，会出现一个<code>*** Please tell me who you are.</code>的提示，可以根据这个提示下给出的命令来配置<code>git</code>。</li>
 </ul>
 <p>也就是下面这两条命令。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"&lt;&lt;你的Github用户名>>"</span>
 <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"&lt;&lt;你的Github邮箱>>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<h1 id="4-保存github-token">4. 保存github token<a class="header-anchor" href="#4-保存github-token">  &gt;_&lt;</a></h1>
-<blockquote>
+<h1 id="4-保存github-token"><a href="#4-保存github-token" class="headerlink" title="4. 保存github token"></a>4. 保存github token</h1><blockquote>
 <p>从2021年8月13日开始，Github将不再接受使用密码进行git操作，所以我们需要使用token来进行git操作。</p>
 </blockquote>
 <p>打开你的<code>Github</code>主页，然后点击右上角的头像，选择<code>Settings</code>，选择最下方的<code>Developer settings</code>。</p>
@@ -403,36 +399,31 @@
 </ul>
 <p><img src="/img/R_BE/04-3.png" srcset="/img/loading.gif" lazyload alt="Generate new token"></p>
 <p>有关<code>token</code>的配置，我们可以将其期限设置为<code>No expiration</code>（当然，<code>Github</code>强烈建议我们设置一个有期限的token，这里根据自己的需求来定）。然后对于<code>Select scopes</code>，我们最低限度只需要勾选<code>repo</code>即可。</p>
-<h1 id="5-部署与更新">5. 部署与更新<a class="header-anchor" href="#5-部署与更新">  &gt;_&lt;</a></h1>
-<p>让我们先回到博客网站的根目录下。</p>
+<h1 id="5-部署与更新"><a href="#5-部署与更新" class="headerlink" title="5. 部署与更新"></a>5. 部署与更新</h1><p>让我们先回到博客网站的根目录下。</p>
 <p>接下来要介绍平时更新博客时常用的几个命令。</p>
 <ul>
-<li>
-<p><code>hexo g</code>(<code>hexo generate</code>)：生成静态文件（public文件夹）。</p>
+<li><p><code>hexo g</code>(<code>hexo generate</code>)：生成静态文件（public文件夹）。</p>
 </li>
-<li>
-<p><code>hexo d</code>(<code>hexo deploy</code>)：部署网站到<code>Github Page</code>上。</p>
+<li><p><code>hexo d</code>(<code>hexo deploy</code>)：部署网站到<code>Github Page</code>上。</p>
 </li>
-<li>
-<p><code>hexo cl</code>(<code>hexo clean</code>)：清除缓存文件（db.json）和已生成的静态文件（public文件夹）。（它不会删除<code>source</code>文件夹中的文件，所以不用担心会误删文章）</p>
+<li><p><code>hexo cl</code>(<code>hexo clean</code>)：清除缓存文件（db.json）和已生成的静态文件（public文件夹）。（它不会删除<code>source</code>文件夹中的文件，所以不用担心会误删文章）</p>
 <ul>
 <li>我们通过<code>hexo d</code>命令部署网站时，同步到<code>Github</code>仓库的文件夹就是<code>public</code>文件夹。</li>
 </ul>
 </li>
-<li>
-<p><code>hexo s</code>(<code>hexo server</code>)：启动本地服务器，用于预览网站。（默认端口为<code>4000</code>，可以通过<code>hexo s -p &lt;port&gt;</code>来指定端口）</p>
+<li><p><code>hexo s</code>(<code>hexo server</code>)：启动本地服务器，用于预览网站。（默认端口为<code>4000</code>，可以通过<code>hexo s -p &lt;port&gt;</code>来指定端口）</p>
 </li>
 </ul>
 <p>请记住这几个命令，我们每次会经常用到它们。</p>
 <p>以下是一个常用的更新博客的流程，注意，以下所有命令都需要在<strong>博客网站的根目录</strong>下执行！</p>
-<h2 id="5-1-清除缓存文件和已生成的静态文件">5.1 清除缓存文件和已生成的静态文件<a class="header-anchor" href="#5-1-清除缓存文件和已生成的静态文件">  &gt;_&lt;</a></h2>
-<p>我不确定这一步是否必要，但是我每次更新博客时都会执行这一步。</p>
+<h2 id="5-1-清除缓存文件和已生成的静态文件"><a href="#5-1-清除缓存文件和已生成的静态文件" class="headerlink" title="5.1 清除缓存文件和已生成的静态文件"></a>5.1 清除缓存文件和已生成的静态文件</h2><p>我不确定这一步是否必要，但是我每次更新博客时都会执行这一步。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo cl<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="5-2-生成静态文件">5.2 生成静态文件<a class="header-anchor" href="#5-2-生成静态文件">  &gt;_&lt;</a></h2>
-<p>将我们对配置的修改、对文章的修改等等都生成为静态文件到<code>public</code>文件夹中。</p>
+
+<h2 id="5-2-生成静态文件"><a href="#5-2-生成静态文件" class="headerlink" title="5.2 生成静态文件"></a>5.2 生成静态文件</h2><p>将我们对配置的修改、对文章的修改等等都生成为静态文件到<code>public</code>文件夹中。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="5-3-部署网站到Github-Page上">5.3 部署网站到Github Page上<a class="header-anchor" href="#5-3-部署网站到Github-Page上">  &gt;_&lt;</a></h2>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<h2 id="5-3-部署网站到Github-Page上"><a href="#5-3-部署网站到Github-Page上" class="headerlink" title="5.3 部署网站到Github Page上"></a>5.3 部署网站到Github Page上</h2><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
 <p>这一步会要求你输入<code>Github</code>的用户名和密码，然而：</p>
 <ul>
 <li>用户名是区分大小写的！</li>
@@ -440,21 +431,19 @@
 </ul>
 <p>对了！如果执行<code>hexo d</code>后卡住，没有出现有关<code>Github</code>的提示，那么可以多次尝试<code>Ctrl+C</code>来终止命令，然后再重新执行<code>hexo d</code>。</p>
 <p>如果一切顺利的话，你的博客网站已经部署到<code>Github Page</code>上了。</p>
-<h2 id="5-4-更新">5.4 更新<a class="header-anchor" href="#5-4-更新">  &gt;_&lt;</a></h2>
-<p>自此往后，每次更新博客网站时，我们只需要执行以下两步即可。</p>
+<h2 id="5-4-更新"><a href="#5-4-更新" class="headerlink" title="5.4 更新"></a>5.4 更新</h2><p>自此往后，每次更新博客网站时，我们只需要执行以下两步即可。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo g
 hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+
 <p>如果遇到一些地方没有同步的情况，可以尝试先执行<code>hexo cl</code>再执行以上两步。</p>
-<h1 id="6-预览网站">6. 预览网站<a class="header-anchor" href="#6-预览网站">  &gt;_&lt;</a></h1>
-<p>在短暂的等待后（部署后需要一定的时间才能在网上访问到你的博客网站），你可以查看你的<code>Github</code>仓库是否更新，也可以直接在浏览器中输入<code>&lt;&lt;你的仓库名&gt;&gt;</code>（<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>）来访问你的博客网站。</p>
+<h1 id="6-预览网站"><a href="#6-预览网站" class="headerlink" title="6. 预览网站"></a>6. 预览网站</h1><p>在短暂的等待后（部署后需要一定的时间才能在网上访问到你的博客网站），你可以查看你的<code>Github</code>仓库是否更新，也可以直接在浏览器中输入<code>&lt;&lt;你的仓库名&gt;&gt;</code>（<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>）来访问你的博客网站。</p>
 <p>不出意外的话，你已经可以在网页中浏览到<code>source</code>文件夹中自带的<code>Hello World</code>文章了。</p>
 <p>之后我们的主要工作就是在<code>source</code>文件夹中添加文章啦！</p>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
-<p>Congratulations！🎉</p>
-<p>至此我们已经了解了部署与更新博客的全部流程啦！\(≧▽≦)/~</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>Congratulations！:tada:</p>
+<p>至此我们已经了解了部署与更新博客的全部流程啦！\(≧▽≦)&#x2F;~</p>
 <p>那么，下一节！我们来讲讲使用这个框架写博客时会遇到的一些问题吧！（比如如何插入图片、如何使用<code>emoji</code>等等）</p>
 <p>有关域名解析的问题，我想在最后面再提，因为我觉得这只是最后的装点～</p>
-<p>Have fun! 😉</p>
+<p>Have fun! :wink:</p>
 <blockquote>
 <p>上一节： <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览">「建站」03 使用Hexo初步创建博客网站与本地预览</a></p>
 </blockquote>
@@ -869,5 +858,20 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
