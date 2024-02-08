@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中我们已经完成了Arch Linux的安装，但是我们还有许多事情要做，包括安装桌面环境、输入法等等。 这一节中我会先介绍桌面环境的安装，然后再补充一些其他的内容。 0. Use better mirrors to speed up downloads  &gt;_&lt; 由于众所周知的">
+    <meta name="description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中我们已经完成了Arch Linux的安装，但是我们还有许多事情要做，包括安装桌面环境、输入法等等。 这一节中我会先介绍桌面环境的安装，然后再补充一些其他的内容。 0. Use better mirrors to speed up downloadso.O 由于众所周知的原因，我们最好使用一些国内的镜像">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ALI」02 安装之后...">
 <meta property="og:url" content="https://siriusahu.github.io.git/2024/01/14/ALI-02-After_Installation/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中我们已经完成了Arch Linux的安装，但是我们还有许多事情要做，包括安装桌面环境、输入法等等。 这一节中我会先介绍桌面环境的安装，然后再补充一些其他的内容。 0. Use better mirrors to speed up downloads  &gt;_&lt; 由于众所周知的">
+<meta property="og:description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 在上一节中我们已经完成了Arch Linux的安装，但是我们还有许多事情要做，包括安装桌面环境、输入法等等。 这一节中我会先介绍桌面环境的安装，然后再补充一些其他的内容。 0. Use better mirrors to speed up downloadso.O 由于众所周知的原因，我们最好使用一些国内的镜像">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
 <meta property="article:published_time" content="2024-01-14T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T15:53:42.278Z">
+<meta property="article:modified_time" content="2024-02-08T16:00:42.675Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Linux Installation">
@@ -387,21 +387,21 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">o.O</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>在上一节中我们已经完成了<code>Arch Linux</code>的安装，但是我们还有许多事情要做，包括安装<code>桌面环境</code>、<code>输入法</code>等等。</p>
 <p>这一节中我会先介绍桌面环境的安装，然后再补充一些其他的内容。</p>
-<h2 id="0-Use-better-mirrors-to-speed-up-downloads">0. Use better mirrors to speed up downloads<a class="header-anchor" href="#0-Use-better-mirrors-to-speed-up-downloads">  &gt;_&lt;</a></h2>
+<h2 id="0-Use-better-mirrors-to-speed-up-downloads">0. Use better mirrors to speed up downloads<a class="header-anchor" href="#0-Use-better-mirrors-to-speed-up-downloads">o.O</a></h2>
 <p>由于众所周知的原因，我们最好使用一些国内的镜像源来加速下载。</p>
 <p>我们可以使用<code>reflector</code>来自动选择速度最快的镜像源。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> reflector <span class="token comment"># 安装reflector</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> reflector <span class="token parameter variable">--country</span> China <span class="token parameter variable">--age</span> <span class="token number">12</span> <span class="token parameter variable">--protocol</span> https <span class="token parameter variable">--sort</span> rate <span class="token parameter variable">--save</span> /etc/pacman.d/mirrorlist <span class="token comment"># 选择速度最快的12个小时内更新的镜像源并保存到/etc/pacman.d/mirrorlist</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>最后我们再更新一下<code>pacman</code>的软件包数据库。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-Syy</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="1-Install-Desktop-Environment">1. Install Desktop Environment<a class="header-anchor" href="#1-Install-Desktop-Environment">  &gt;_&lt;</a></h2>
+<h2 id="1-Install-Desktop-Environment">1. Install Desktop Environment<a class="header-anchor" href="#1-Install-Desktop-Environment">o.O</a></h2>
 <p>目前有许多桌面环境可供选择，包括<code>GNOME</code>、<code>KDE</code>、<code>Xfce</code>、<code>LXDE</code>、<code>LXQt</code>、<code>Cinnamon</code>、<code>Deepin</code>、<code>Budgie</code>等等。</p>
 <p>这里我想以<code>GNOME</code>为例，在性能足够的情况下<code>GNOME</code>的表现非常不错，我自己使用的也是<code>GNOME</code>。</p>
-<h2 id="1-1-Update-pacman-database">1.1. Update <code>pacman</code> database<a class="header-anchor" href="#1-1-Update-pacman-database">  &gt;_&lt;</a></h2>
+<h2 id="1-1-Update-pacman-database">1.1. Update <code>pacman</code> database<a class="header-anchor" href="#1-1-Update-pacman-database">o.O</a></h2>
 <blockquote>
 <p>这里的“数据库”指的是<code>pacman</code>的软件包数据库，是用于存储软件包信息（包括软件包名称、版本、依赖关系等）的数据库。</p>
 </blockquote>
@@ -412,7 +412,7 @@
 因此在要更新时请直接使用<code>-Syu</code>来更新软件包数据库并更新系统中的软件包。<br>
 <code>-Syy</code>则是“强制更新软件包数据库”，即使软件包数据库已经是最新的了，也会重新下载一遍。所以这里我们使用<code>-Syy</code>来更新软件包数据库。</p>
 </blockquote>
-<h2 id="1-2-Install-GNOME">1.2. Install <code>GNOME</code><a class="header-anchor" href="#1-2-Install-GNOME">  &gt;_&lt;</a></h2>
+<h2 id="1-2-Install-GNOME">1.2. Install <code>GNOME</code><a class="header-anchor" href="#1-2-Install-GNOME">o.O</a></h2>
 <p>我们将安装以下软件包：</p>
 <ul>
 <li><code>gnome</code>：<code>GNOME</code>桌面环境</li>
@@ -423,25 +423,25 @@
 <blockquote>
 <p>一路选回车即可</p>
 </blockquote>
-<h2 id="1-3-Enable-gdm">1.3. Enable <code>gdm</code><a class="header-anchor" href="#1-3-Enable-gdm">  &gt;_&lt;</a></h2>
+<h2 id="1-3-Enable-gdm">1.3. Enable <code>gdm</code><a class="header-anchor" href="#1-3-Enable-gdm">o.O</a></h2>
 <p><code>gdm</code>是<code>GNOME</code>的显示管理器，我们需要让它在开机时启动以直接进入<code>GNOME</code>桌面环境。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> gdm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="1-4-Reboot-and-enjoy-GNOME">1.4. Reboot and enjoy <code>GNOME</code>!<a class="header-anchor" href="#1-4-Reboot-and-enjoy-GNOME">  &gt;_&lt;</a></h2>
+<h2 id="1-4-Reboot-and-enjoy-GNOME">1.4. Reboot and enjoy <code>GNOME</code>!<a class="header-anchor" href="#1-4-Reboot-and-enjoy-GNOME">o.O</a></h2>
 <p>最后我们重启电脑，就可以进入<code>GNOME</code>桌面环境了！</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">reboot</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p><img src="/img/ALI/02/ali01.PNG" srcset="/img/loading.gif" lazyload alt="GNOME"><br>
 <img src="/img/ALI/02/ali02.PNG" srcset="/img/loading.gif" lazyload alt="GNOME"></p>
-<h2 id="1-5-Where-is-my-terminal">1.5. Where is my <code>terminal</code>?<a class="header-anchor" href="#1-5-Where-is-my-terminal">  &gt;_&lt;</a></h2>
+<h2 id="1-5-Where-is-my-terminal">1.5. Where is my <code>terminal</code>?<a class="header-anchor" href="#1-5-Where-is-my-terminal">o.O</a></h2>
 <p>按以上方法安装的<code>GNOME</code>使用的默认终端是<code>gnome-console</code>，我们可以按下<code>Super</code>（<code>Windows</code>键）然后输入<code>console</code>来打开它。</p>
 <p>当然，我们也可以安装其他终端，比如<code>gnome-terminal</code>、<code>xfce4-terminal</code>等等。</p>
-<h1 id="2-yay-an-easy-to-use-AUR-helper-Optional-but-recommended">2. <code>yay</code>: an easy-to-use AUR helper (<strong>Optional but recommended!</strong>)<a class="header-anchor" href="#2-yay-an-easy-to-use-AUR-helper-Optional-but-recommended">  &gt;_&lt;</a></h1>
-<h2 id="2-1-What-is-yay-and-why-we-need-it">2.1. What is <code>yay</code> and why we need it?<a class="header-anchor" href="#2-1-What-is-yay-and-why-we-need-it">  &gt;_&lt;</a></h2>
+<h1 id="2-yay-an-easy-to-use-AUR-helper-Optional-but-recommended">2. <code>yay</code>: an easy-to-use AUR helper (<strong>Optional but recommended!</strong>)<a class="header-anchor" href="#2-yay-an-easy-to-use-AUR-helper-Optional-but-recommended">o.O</a></h1>
+<h2 id="2-1-What-is-yay-and-why-we-need-it">2.1. What is <code>yay</code> and why we need it?<a class="header-anchor" href="#2-1-What-is-yay-and-why-we-need-it">o.O</a></h2>
 <p><code>yay</code>是一个非常好用的<code>AUR</code>助手，可以帮助我们快速安装<code>AUR</code>软件包。</p>
 <p>一般来说，我们想要用<code>pacman</code>安装某个软件则需要它的全名，但是<code>yay</code>可以帮助我们通过关键词来搜索软件包，然后选择安装。</p>
 <p>比如说我想安装<code>neofetch</code>，但是只记得它的名字开头是<code>neof</code>，那么我就可以使用<code>yay</code>来搜索<code>neof</code>，然后选择安装<code>neofetch</code>。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay fetch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>另外，在没有<code>yay</code>之前，我们需要手动下载<code>AUR</code>软件包的源码，然后使用<code>makepkg</code>来编译安装，这个过程非常繁琐，而<code>yay</code>可以帮助我们自动完成这些步骤。</p>
-<h2 id="2-2-Install-yay">2.2. Install <code>yay</code><a class="header-anchor" href="#2-2-Install-yay">  &gt;_&lt;</a></h2>
+<h2 id="2-2-Install-yay">2.2. Install <code>yay</code><a class="header-anchor" href="#2-2-Install-yay">o.O</a></h2>
 <p>首先确保基本的<code>base-devel</code>组件已经安装。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> base-devel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>之后通过<code>git</code>来下载<code>yay</code>的源码。</p>
@@ -452,7 +452,7 @@ makepkg <span class="token parameter variable">-si</span><span aria-hidden="true
 <blockquote>
 <p>注意：由于众所周知的原因，我们需要科学上网才能顺利<code>makepkg</code>。</p>
 </blockquote>
-<h2 id="2-3-Example-Download-google-chrome">2.3. Example: Download <code>google-chrome</code><a class="header-anchor" href="#2-3-Example-Download-google-chrome">  &gt;_&lt;</a></h2>
+<h2 id="2-3-Example-Download-google-chrome">2.3. Example: Download <code>google-chrome</code><a class="header-anchor" href="#2-3-Example-Download-google-chrome">o.O</a></h2>
 <p><code>Google Chrome</code>作为一个拥有庞大用户量的高度可定制的浏览器，是我认为装机必备的一个浏览器。</p>
 <p>由于<code>Google Chrome</code>不在<code>Arch</code>的官方软件库中，所以我们需要使用<code>yay</code>来安装。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay google chrome<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
@@ -460,21 +460,21 @@ makepkg <span class="token parameter variable">-si</span><span aria-hidden="true
 <p>我们发现想要的软件的序号是<code>1</code>，那么我们就输入<code>1</code>并回车。</p>
 <p>之后一路回车即可。</p>
 <p><img src="/img/ALI/02/ali04.PNG" srcset="/img/loading.gif" lazyload alt="yay-downloading"></p>
-<h2 id="2-4-Clean-up-remove-no-longer-needed-dependencies">2.4. Clean up: remove no longer needed dependencies<a class="header-anchor" href="#2-4-Clean-up-remove-no-longer-needed-dependencies">  &gt;_&lt;</a></h2>
+<h2 id="2-4-Clean-up-remove-no-longer-needed-dependencies">2.4. Clean up: remove no longer needed dependencies<a class="header-anchor" href="#2-4-Clean-up-remove-no-longer-needed-dependencies">o.O</a></h2>
 <p>以下是一些用于<code>pacman</code>和<code>yay</code>的清理命令。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-Rns</span> <span class="token variable"><span class="token variable">$(</span>pacman <span class="token parameter variable">-Qtdq</span><span class="token variable">)</span></span> <span class="token comment"># 删除所有不再需要的依赖</span>
 yay <span class="token parameter variable">-Yc</span> <span class="token comment"># 删除所有不再需要的AUR软件包</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<h1 id="3-Install-Chinese-Input-Method">3. Install Chinese Input Method<a class="header-anchor" href="#3-Install-Chinese-Input-Method">  &gt;_&lt;</a></h1>
+<h1 id="3-Install-Chinese-Input-Method">3. Install Chinese Input Method<a class="header-anchor" href="#3-Install-Chinese-Input-Method">o.O</a></h1>
 <p>一般推荐使用<code>fcitx5</code>作为输入法框架，然后再安装<code>rime</code>作为输入法引擎。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> fcitx5-im <span class="token comment"># 一定要先安装fcitx5-im，否则会出现无法进入配置界面的问题</span>
 <span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> fcitx5-chinese-addons  fcitx5-rime<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>之后就可以通过<code>fcitx5-configtool</code>来配置输入法了。（具体配置方法请自行查找）</p>
-<h1 id="4-Drivers">4. Drivers<a class="header-anchor" href="#4-Drivers">  &gt;_&lt;</a></h1>
+<h1 id="4-Drivers">4. Drivers<a class="header-anchor" href="#4-Drivers">o.O</a></h1>
 <p>具体的驱动安装方法请参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/568981775">Arch Linux 安装后该做什么？Arch Linux 使用指南与推荐配置「2023.09」</a>。</p>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">o.O</a></h1>
 <p>至此，我们已经配置好了基础的工作环境，可以开始愉快地使用<code>Arch Linux</code>了！</p>
 <p>Have fun! 😉</p>
-<h1 id="References">References<a class="header-anchor" href="#References">  &gt;_&lt;</a></h1>
+<h1 id="References">References<a class="header-anchor" href="#References">o.O</a></h1>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/568981775">Arch Linux 安装后该做什么？Arch Linux 使用指南与推荐配置「2023.09」</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/393746270">Arch Linux - 中文输入法</a></li>

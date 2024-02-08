@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. N">
+    <meta name="description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. Note!o.O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「建站」02 Github &amp; SSH &amp; node 基本配置">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/07/R-EB-02-Github-SSH-node-basic/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. N">
+<meta property="og:description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 想要制作一个个人博客网站，我们需要这些东西的帮助：   Github：用来存储我们的网站的源代码（也有其他替代方案） SSH：用来连接我们的电脑和Github node：即Node.js用来运行Hexo（下一节会介绍）   我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。 0. Note!o.O">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
 <meta property="article:published_time" content="2023-05-07T04:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T15:53:42.278Z">
+<meta property="article:modified_time" content="2024-02-08T16:00:42.675Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="node">
@@ -431,7 +431,7 @@
                 <!-- # Github & SSH & node 基本配置
 
 - 本文编辑时间：2023.05.07 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
+<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">o.O</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>想要制作一个个人博客网站，我们需要这些东西的帮助：</p>
 <blockquote>
@@ -442,14 +442,14 @@
 </ul>
 </blockquote>
 <p>我们将会在这一节中介绍如何使用对以上的3个工具进行基本配置。</p>
-<h1 id="0-Note">0. Note!<a class="header-anchor" href="#0-Note">  &gt;_&lt;</a></h1>
+<h1 id="0-Note">0. Note!<a class="header-anchor" href="#0-Note">o.O</a></h1>
 <p>我会用<code>&lt;&lt;&gt;&gt;</code>来表示每个人情况不同的内容。（如每个人的路径与邮箱）</p>
-<h1 id="1-Prerequirements">1. Prerequirements<a class="header-anchor" href="#1-Prerequirements">  &gt;_&lt;</a></h1>
+<h1 id="1-Prerequirements">1. Prerequirements<a class="header-anchor" href="#1-Prerequirements">o.O</a></h1>
 <p>确保你已经在你的电脑上安装了<code>git</code>和<code>ssh</code>。</p>
 <p>在你的终端中运行<code>git</code>和<code>ssh</code>。如果出现<code>command not found</code>之类的内容的话说明你还没有安装它们。对于我的系统（<code>Linux Mint 21.1</code>），我可以使用以下命令来安装它们：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h1 id="2-定义git的用户名和邮箱与生成SSH密钥">2. 定义git的用户名和邮箱与生成SSH密钥<a class="header-anchor" href="#2-定义git的用户名和邮箱与生成SSH密钥">  &gt;_&lt;</a></h1>
-<h2 id="2-1-定义git的用户名和邮箱">2.1 定义git的用户名和邮箱<a class="header-anchor" href="#2-1-定义git的用户名和邮箱">  &gt;_&lt;</a></h2>
+<h1 id="2-定义git的用户名和邮箱与生成SSH密钥">2. 定义git的用户名和邮箱与生成SSH密钥<a class="header-anchor" href="#2-定义git的用户名和邮箱与生成SSH密钥">o.O</a></h1>
+<h2 id="2-1-定义git的用户名和邮箱">2.1 定义git的用户名和邮箱<a class="header-anchor" href="#2-1-定义git的用户名和邮箱">o.O</a></h2>
 <p>在terminal中运行以下命令来定义你的用户名和邮箱：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token operator">&lt;&lt;</span>你的用户名<span class="token operator">>></span>
 <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token operator">&lt;&lt;</span>你的邮箱<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
@@ -464,7 +464,7 @@ Run
 
 to <span class="token builtin class-name">set</span> your account's default identity.
 Omit <span class="token parameter variable">--global</span> to <span class="token builtin class-name">set</span> the identity only <span class="token keyword">in</span> this repository.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<h2 id="2-2-生成SSH密钥">2.2 生成SSH密钥<a class="header-anchor" href="#2-2-生成SSH密钥">  &gt;_&lt;</a></h2>
+<h2 id="2-2-生成SSH密钥">2.2 生成SSH密钥<a class="header-anchor" href="#2-2-生成SSH密钥">o.O</a></h2>
 <ul>
 <li>SSH密钥用于连接你的电脑和<code>Github</code>。</li>
 </ul>
@@ -480,17 +480,17 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 </ul>
 <p>然后按照提示来生成你的SSH密钥。（为了方便，你可以直接按<code>Enter</code>来使用默认值。但你也可以指定你的SSH密钥的路径、名称和密码。但一定要你记下来。）</p>
 <p>之后你会得到两个文件：<code>id_rsa</code>和<code>id_rsa.pub</code>，它们分别代表你的私钥和公钥。你可以在你指定的路径中找到它们。（默认路径是<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>）</p>
-<h1 id="3-将SSH密钥添加到Github">3. 将SSH密钥添加到Github<a class="header-anchor" href="#3-将SSH密钥添加到Github">  &gt;_&lt;</a></h1>
+<h1 id="3-将SSH密钥添加到Github">3. 将SSH密钥添加到Github<a class="header-anchor" href="#3-将SSH密钥添加到Github">o.O</a></h1>
 <ul>
 <li>添加SSH密钥到Github的目的是为了让你的电脑和Github之间可以互相认证。</li>
 </ul>
-<h2 id="3-1-复制你的公钥">3.1 复制你的公钥<a class="header-anchor" href="#3-1-复制你的公钥">  &gt;_&lt;</a></h2>
+<h2 id="3-1-复制你的公钥">3.1 复制你的公钥<a class="header-anchor" href="#3-1-复制你的公钥">o.O</a></h2>
 <p>在terminal中运行以下命令：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> <span class="token operator">&lt;&lt;</span>你的公钥的路径<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>然后你会看到你的公钥的内容。复制它。</p>
-<h2 id="3-2-将你的公钥添加到Github">3.2 将你的公钥添加到Github<a class="header-anchor" href="#3-2-将你的公钥添加到Github">  &gt;_&lt;</a></h2>
+<h2 id="3-2-将你的公钥添加到Github">3.2 将你的公钥添加到Github<a class="header-anchor" href="#3-2-将你的公钥添加到Github">o.O</a></h2>
 <p>进入<code>Github</code> -&gt; <code>Settings</code> -&gt; <code>SSH and GPG keys</code> -&gt; <code>New SSH key</code>并粘贴你的公钥以添加它。</p>
-<h1 id="4-测试你的SSH密钥">4. 测试你的SSH密钥<a class="header-anchor" href="#4-测试你的SSH密钥">  &gt;_&lt;</a></h1>
+<h1 id="4-测试你的SSH密钥">4. 测试你的SSH密钥<a class="header-anchor" href="#4-测试你的SSH密钥">o.O</a></h1>
 <p>在terminal中运行以下命令：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> <span class="token operator">&lt;&lt;</span>你的邮箱<span class="token operator">>></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>如果你看到类似<code>Hi &lt;&lt;你的用户名&gt;&gt;! You've successfully authenticated, but GitHub does not provide shell access.</code>的内容，那么你已经成功地将你的SSH密钥添加到了Github。</p>
@@ -502,7 +502,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 <p>不需要一直等下去，鬼知道网络什么时候能好。只要不报错，建议直接跳到下一步。</p>
 </li>
 </ul>
-<h1 id="5-创建一个新的仓库（有特殊命名要求）">5. 创建一个新的仓库（有特殊命名要求）<a class="header-anchor" href="#5-创建一个新的仓库（有特殊命名要求）">  &gt;_&lt;</a></h1>
+<h1 id="5-创建一个新的仓库（有特殊命名要求）">5. 创建一个新的仓库（有特殊命名要求）<a class="header-anchor" href="#5-创建一个新的仓库（有特殊命名要求）">o.O</a></h1>
 <p>让我们在<code>Github</code>上创建一个新的仓库并将它命名为<code>&lt;&lt;你的用户名&gt;&gt;.github.io</code>。（建议先勾选<code>Add a README file</code>，之后的<code>hexo deploy</code>的流程会自动删除它的。）</p>
 <ul>
 <li><strong>非常重要</strong>：我们需要使用<code>Github Page</code>，所以
@@ -513,7 +513,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 </ol>
 </li>
 </ul>
-<h1 id="6-安装node">6. 安装node<a class="header-anchor" href="#6-安装node">  &gt;_&lt;</a></h1>
+<h1 id="6-安装node">6. 安装node<a class="header-anchor" href="#6-安装node">o.O</a></h1>
 <ul>
 <li><code>node</code>用于运行<code>Hexo</code>。</li>
 </ul>
@@ -540,7 +540,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 </tbody>
 </table>
 <p>如果只是想简单地使用<code>Hexo</code>的话，直接安装<code>node</code>即可。</p>
-<h2 id="6-1-直接安装node">6.1 直接安装<code>node</code><a class="header-anchor" href="#6-1-直接安装node">  &gt;_&lt;</a></h2>
+<h2 id="6-1-直接安装node">6.1 直接安装<code>node</code><a class="header-anchor" href="#6-1-直接安装node">o.O</a></h2>
 <p>在terminal中运行以下命令：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> nodejs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <ul>
@@ -548,7 +548,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 </ul>
 <p>然后运行以下命令来，根据是否输出版本号来判断是否安装成功：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="6-2-使用nvm安装node">6.2 使用<code>nvm</code>安装<code>node</code><a class="header-anchor" href="#6-2-使用nvm安装node">  &gt;_&lt;</a></h2>
+<h2 id="6-2-使用nvm安装node">6.2 使用<code>nvm</code>安装<code>node</code><a class="header-anchor" href="#6-2-使用nvm安装node">o.O</a></h2>
 <ul>
 <li><code>nvm</code>即<code>node version manager</code>，用于管理<code>node</code>的版本。</li>
 </ul>
@@ -556,7 +556,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 <p>我们可以按照<code>nvm</code>的<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">官方文档</a>来安装它。</p>
 </blockquote>
 <p>大致过程是<code>下载nvm</code> -&gt; <code>安装nvm</code> -&gt; <code>安装node</code>。</p>
-<h3 id="6-2-1-下载与安装nvm">6.2.1. 下载与安装<code>nvm</code><a class="header-anchor" href="#6-2-1-下载与安装nvm">  &gt;_&lt;</a></h3>
+<h3 id="6-2-1-下载与安装nvm">6.2.1. 下载与安装<code>nvm</code><a class="header-anchor" href="#6-2-1-下载与安装nvm">o.O</a></h3>
 <blockquote>
 <p>见官方文档中<code>Install &amp; Update Script</code>一节。</p>
 </blockquote>
@@ -567,7 +567,7 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>或者</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h3 id="6-2-2-安装node">6.2.2. 安装<code>node</code><a class="header-anchor" href="#6-2-2-安装node">  &gt;_&lt;</a></h3>
+<h3 id="6-2-2-安装node">6.2.2. 安装<code>node</code><a class="header-anchor" href="#6-2-2-安装node">o.O</a></h3>
 <blockquote>
 <p>见官方文档中<code>Usage</code>一节。</p>
 </blockquote>
@@ -576,9 +576,9 @@ Omit <span class="token parameter variable">--global</span> to <span class="toke
 <p>安装完成后，运行以下命令来判断是否安装成功：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">node</span> <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p>如果输出了版本号，那么说明安装成功。</p>
-<h3 id="6-2-3-补充">6.2.3. 补充<a class="header-anchor" href="#6-2-3-补充">  &gt;_&lt;</a></h3>
+<h3 id="6-2-3-补充">6.2.3. 补充<a class="header-anchor" href="#6-2-3-补充">o.O</a></h3>
 <p>如有需要，请参考官方文档来使用<code>nvm</code>。（<em>Recommend</em>）</p>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">o.O</a></h1>
 <p>做到这里，我们已经完成了“基础设施建设”。</p>
 <p>下一步我们就要开始使用<code>Hexo</code>来建立我们的博客网站啦！</p>
 <p>Have fun! 😉</p>

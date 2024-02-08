@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="简介  &gt;_&lt; 简单介绍了一下2D变换的基本概念，以及一些基本的变换矩阵。 文末有一个源于 Computer Vision: Algorithms and Applications - Richard Szeliski 的表格，总结了2D变换的一些特性。  import numpy as np from matplotlib import pyplot as plt from Shap">
+    <meta name="description" content="简介o.O 简单介绍了一下2D变换的基本概念，以及一些基本的变换矩阵。 文末有一个源于 Computer Vision: Algorithms and Applications - Richard Szeliski 的表格，总结了2D变换的一些特性。  import numpy as np from matplotlib import pyplot as plt from Shape import">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「N-CG」杂记 01">
 <meta property="og:url" content="https://siriusahu.github.io.git/2024/02/05/N-CG-Misc01/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="简介  &gt;_&lt; 简单介绍了一下2D变换的基本概念，以及一些基本的变换矩阵。 文末有一个源于 Computer Vision: Algorithms and Applications - Richard Szeliski 的表格，总结了2D变换的一些特性。  import numpy as np from matplotlib import pyplot as plt from Shap">
+<meta property="og:description" content="简介o.O 简单介绍了一下2D变换的基本概念，以及一些基本的变换矩阵。 文末有一个源于 Computer Vision: Algorithms and Applications - Richard Szeliski 的表格，总结了2D变换的一些特性。  import numpy as np from matplotlib import pyplot as plt from Shape import">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/NCG/ncg.png">
 <meta property="article:published_time" content="2024-02-04T17:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T15:53:42.278Z">
+<meta property="article:modified_time" content="2024-02-08T16:00:42.675Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Computer Graphics">
 <meta name="twitter:card" content="summary_large_image">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          484 words
+          457 words
         
       </span>
     
@@ -368,7 +368,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="简介">简介<a class="header-anchor" href="#简介">  &gt;_&lt;</a></h1>
+                <h1 id="简介">简介<a class="header-anchor" href="#简介">o.O</a></h1>
 <p>简单介绍了一下2D变换的基本概念，以及一些基本的变换矩阵。</p>
 <p>文末有一个源于 <a target="_blank" rel="noopener" href="http://szeliski.org/Book/">Computer Vision:<br>
 Algorithms and Applications - Richard Szeliski</a> 的表格，总结了2D变换的一些特性。</p>
@@ -376,18 +376,18 @@ Algorithms and Applications - Richard Szeliski</a> 的表格，总结了2D变换
 <figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
 <span class="token keyword">from</span> matplotlib <span class="token keyword">import</span> pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">from</span> Shape <span class="token keyword">import</span> <span class="token operator">*</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
-<h2 id="0-Base">0. Base<a class="header-anchor" href="#0-Base">  &gt;_&lt;</a></h2>
-<h3 id="Note-It’s-a-2D-base-shape">Note: It’s a <strong>2D</strong> base shape.<a class="header-anchor" href="#Note-It’s-a-2D-base-shape">  &gt;_&lt;</a></h3>
+<h2 id="0-Base">0. Base<a class="header-anchor" href="#0-Base">o.O</a></h2>
+<h3 id="Note-It’s-a-2D-base-shape">Note: It’s a <strong>2D</strong> base shape.<a class="header-anchor" href="#Note-It’s-a-2D-base-shape">o.O</a></h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python">shape_base <span class="token operator">=</span> Shape<span class="token punctuation">(</span><span class="token punctuation">[</span>d<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Base"</span><span class="token punctuation">)</span>
 fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span>FIG_SIZE<span class="token punctuation">)</span>
 plot_shape_on_ax<span class="token punctuation">(</span>ax<span class="token punctuation">,</span> shape_base<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_2_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="1-Transition">1. Transition<a class="header-anchor" href="#1-Transition">  &gt;_&lt;</a></h2>
+<h2 id="1-Transition">1. Transition<a class="header-anchor" href="#1-Transition">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 0, 4],
 [0, 1, 2],
 [0, 0, 1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
 <p>Move the point (x, y) to (x+4, y+2)</p>
-<h3 id="Note-For-transition-we-need-to-expand-the-base-shape-to-3D-and-apply-a-3D-transition-matrix">Note: For transition, we need to expand the base shape to 3D, and apply a 3D transition matrix.<a class="header-anchor" href="#Note-For-transition-we-need-to-expand-the-base-shape-to-3D-and-apply-a-3D-transition-matrix">  &gt;_&lt;</a></h3>
+<h3 id="Note-For-transition-we-need-to-expand-the-base-shape-to-3D-and-apply-a-3D-transition-matrix">Note: For transition, we need to expand the base shape to 3D, and apply a 3D transition matrix.<a class="header-anchor" href="#Note-For-transition-we-need-to-expand-the-base-shape-to-3D-and-apply-a-3D-transition-matrix">o.O</a></h3>
 <figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python">T_transition <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -397,7 +397,7 @@ plot_shape_on_ax<span class="token punctuation">(</span>ax<span class="token pun
 shape_transition <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_transition<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Transition +4, +2"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_transition<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_4_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="2-Rotation">2. Rotation<a class="header-anchor" href="#2-Rotation">  &gt;_&lt;</a></h2>
+<h2 id="2-Rotation">2. Rotation<a class="header-anchor" href="#2-Rotation">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">theta &#x3D; np.pi&#x2F;2
 
     [cos(theta), -sin(theta)],
@@ -412,7 +412,7 @@ T_rigid <span class="token operator">=</span> np<span class="token punctuation">
 shape_rigid <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_rigid<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"R -90°"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_rigid<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_6_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="3-Scaling">3. Scaling<a class="header-anchor" href="#3-Scaling">  &gt;_&lt;</a></h2>
+<h2 id="3-Scaling">3. Scaling<a class="header-anchor" href="#3-Scaling">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[2, 0],
 [0, 3]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>Scale the point (x, y) by 2 in the x direction and by 3 in the y direction.</p>
@@ -424,7 +424,7 @@ plot_shapes<span class="token punctuation">(</span><span class="token punctuatio
 shape_scale <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_scale<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Scale 2, 3"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_scale<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_8_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="4-Shearing">4. Shearing<a class="header-anchor" href="#4-Shearing">  &gt;_&lt;</a></h2>
+<h2 id="4-Shearing">4. Shearing<a class="header-anchor" href="#4-Shearing">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 2],
 [0, 1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>e.g.1: Shear the point (x, y) by 2 in the x direction.</p>
@@ -434,7 +434,7 @@ plot_shapes<span class="token punctuation">(</span><span class="token punctuatio
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 2],
 [2, 1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>e.g.3: Shear the point (x, y) by 2 in the x and y direction.</p>
-<h3 id="Note-This-method-is-a-little-bit-weried-try-understand-by-calculating-the-matrix-multiplication">Note: This method is a little bit weried, try understand by calculating the matrix multiplication.<a class="header-anchor" href="#Note-This-method-is-a-little-bit-weried-try-understand-by-calculating-the-matrix-multiplication">  &gt;_&lt;</a></h3>
+<h3 id="Note-This-method-is-a-little-bit-weried-try-understand-by-calculating-the-matrix-multiplication">Note: This method is a little bit weried, try understand by calculating the matrix multiplication.<a class="header-anchor" href="#Note-This-method-is-a-little-bit-weried-try-understand-by-calculating-the-matrix-multiplication">o.O</a></h3>
 <blockquote>
 <p>e.g. for T_shear_2, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mo stretchy="false">[</mo><mn>2</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo>∗</mo><mo stretchy="false">[</mo><mn>4</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">]</mo><mo>=</mo><mo stretchy="false">[</mo><mn>4</mn><mo separator="true">,</mo><mn>8</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[[1, 0], [2, 1]] * [4, 0] = [4, 8]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">[</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">8</span><span class="mclose">]</span></span></span></span></p>
 </blockquote>
@@ -458,7 +458,7 @@ shape_shear_2 <span class="token operator">=</span> shape_base<span class="token
 shape_shear_3 <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_shear_3<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Shear x=2, y=2"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_shear_1<span class="token punctuation">,</span> shape_shear_2<span class="token punctuation">,</span> shape_shear_3<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_10_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="5-Reflection">5. Reflection<a class="header-anchor" href="#5-Reflection">  &gt;_&lt;</a></h2>
+<h2 id="5-Reflection">5. Reflection<a class="header-anchor" href="#5-Reflection">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 0],
 [0, -1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>Reflect the point (x, y) over the x-axis.</p>
@@ -481,7 +481,7 @@ shape_reflection_1 <span class="token operator">=</span> shape_base<span class="
 shape_reflection_2 <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_reflection_2<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Reflect y"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_reflection_1<span class="token punctuation">,</span> shape_reflection_2<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_12_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="6-Projection">6. Projection<a class="header-anchor" href="#6-Projection">  &gt;_&lt;</a></h2>
+<h2 id="6-Projection">6. Projection<a class="header-anchor" href="#6-Projection">o.O</a></h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">[1, 0],
 [0, 0]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p>Project the point (x, y) onto the x-axis.</p>
@@ -502,7 +502,7 @@ shape_projection_1 <span class="token operator">=</span> shape_base<span class="
 shape_projection_2 <span class="token operator">=</span> shape_base<span class="token punctuation">.</span>be_dotted<span class="token punctuation">(</span>T_projection_2<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"Project y"</span><span class="token punctuation">)</span>
 plot_shapes<span class="token punctuation">(</span><span class="token punctuation">[</span>shape_base<span class="token punctuation">,</span> shape_projection_1<span class="token punctuation">,</span> shape_projection_2<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/NCG/note01_files/note01_14_0.png" srcset="/img/loading.gif" lazyload alt="png"></p>
-<h2 id="Conclusion">Conclusion<a class="header-anchor" href="#Conclusion">  &gt;_&lt;</a></h2>
+<h2 id="Conclusion">Conclusion<a class="header-anchor" href="#Conclusion">o.O</a></h2>
 <p><img src="/img/NCG/note01_files/appendix01.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>For 2D transformation:</p>
 <table>

@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同">
+    <meta name="description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高度定制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「LUT」01 Grub-电脑启动引导">
 <meta property="og:url" content="https://siriusahu.github.io.git/2023/05/12/LUT-01-grub/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  &gt;_&lt; Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同">
+<meta property="og:description" content="Greetings!o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ 如果你是双系统用户，那么你一定遇到过这样一个问题我该如何选择启动哪个系统呢？。 虽然说可以直接通过BIOS来选择启动哪个系统，但是这样做真是太麻烦了！ 那么！我将在这里向大家推荐一个我的解决方案：Grub！  Grub是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高度定制">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/LUT/grub-starrail.png">
 <meta property="article:published_time" content="2023-05-12T09:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T15:53:42.278Z">
+<meta property="article:modified_time" content="2024-02-08T16:00:42.675Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="tricks">
@@ -369,7 +369,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  &gt;_&lt;</a></h1>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">o.O</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <p>如果你是双系统用户，那么你一定遇到过这样一个问题<code>我该如何选择启动哪个系统呢？</code>。</p>
 <p>虽然说可以直接通过<code>BIOS</code>来选择启动哪个系统，但是这样做真是太麻烦了！</p>
@@ -377,14 +377,14 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.gnu.org/software/grub/"><code>Grub</code></a>是一款开源的多操作系统启动引导程序，它可以帮助我们在开机时选择启动哪个系统，同时还可以高度定制。</p>
 </blockquote>
-<h1 id="Install-Grub（with-grub-customizer）">Install <code>Grub</code>（with <code>grub-customizer</code>）<a class="header-anchor" href="#Install-Grub（with-grub-customizer）">  &gt;_&lt;</a></h1>
-<h2 id="Grub"><code>Grub</code><a class="header-anchor" href="#Grub">  &gt;_&lt;</a></h2>
+<h1 id="Install-Grub（with-grub-customizer）">Install <code>Grub</code>（with <code>grub-customizer</code>）<a class="header-anchor" href="#Install-Grub（with-grub-customizer）">o.O</a></h1>
+<h2 id="Grub"><code>Grub</code><a class="header-anchor" href="#Grub">o.O</a></h2>
 <p>首先，我们需要使用自己的<code>Linux</code>发行版所提供的包管理器来安装<code>grub</code>。</p>
 <p><code>Ubuntu</code>:</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> grub <span class="token comment"># 安装grub</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p><code>Arch</code>:</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> grub <span class="token comment"># 安装grub</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="grub-customizer"><code>grub-customizer</code><a class="header-anchor" href="#grub-customizer">  &gt;_&lt;</a></h2>
+<h2 id="grub-customizer"><code>grub-customizer</code><a class="header-anchor" href="#grub-customizer">o.O</a></h2>
 <p><code>grub-customizer</code>是一个可以帮助我们定制<code>Grub</code>的工具，我们可以通过它来<u>更轻松地</u>修改<code>Grub</code>的各种设置。</p>
 <blockquote>
 <p>Note: 对于<code>Ubuntu</code>用户来说，下载<code>grub-customizer</code>很可能需要添加下载源。因为其默认的下载源内不一定包含<code>grub-customizer</code>。</p>
@@ -396,18 +396,18 @@
 <p>然而<code>Arch</code>用户由于有强大的<code>AUR</code>支持，所以不必担心这个问题。</p>
 </blockquote>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay <span class="token parameter variable">-S</span> grub-customizer <span class="token comment"># 安装grub-customizer，以yay为例</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h1 id="Config-Grub">Config <code>Grub</code><a class="header-anchor" href="#Config-Grub">  &gt;_&lt;</a></h1>
+<h1 id="Config-Grub">Config <code>Grub</code><a class="header-anchor" href="#Config-Grub">o.O</a></h1>
 <p><code>grub</code>的配置中有一个默认参数<code>GRUB_DISABLE_OS_PROBER=false</code>，它在被设为<code>true</code>时会导致<code>grub</code>不会自动检测其他系统。</p>
 <p>而这个参数在配置文件中被注释掉了，因此<code>grub</code>使用的值是<code>true</code>。</p>
 <p>我们需要打开<code>/etc/default/grub</code>文件，然后取消这一行注释并将其值改为<code>false</code>。</p>
 <p>（这一行一般位于文件的末尾）</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">GRUB_DISABLE_OS_PROBER=false # 取消注释并将值改为false<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h1 id="Beautify-Grub">Beautify <code>Grub</code><a class="header-anchor" href="#Beautify-Grub">  &gt;_&lt;</a></h1>
+<h1 id="Beautify-Grub">Beautify <code>Grub</code><a class="header-anchor" href="#Beautify-Grub">o.O</a></h1>
 <p>我们可以直接在<code>grub-customizer</code>中修改<code>Grub</code>的各种设置，也可以通过安装主题来美化<code>Grub</code>。</p>
 <p>我们只需要打开<code>grub-customizer</code>，然后到<code>Appearance settings</code>中单独修改<code>Grub</code>的各种设置。</p>
 <p>唯一需要注意的就是请在进行任何修改后点击<code>save</code>保存设置，否则你的修改将不会生效。</p>
 <p>这里就不具体演示单独修改了。</p>
-<h2 id="安装主题">安装主题<a class="header-anchor" href="#安装主题">  &gt;_&lt;</a></h2>
+<h2 id="安装主题">安装主题<a class="header-anchor" href="#安装主题">o.O</a></h2>
 <p><code>Gnome-look</code>上有很多<code>Grub</code>主题，我们可以到<a target="_blank" rel="noopener" href="https://www.gnome-look.org/browse?cat=109&amp;ord=latest">这个网站</a>里寻找自己喜欢的主题进行安装。</p>
 <ul>
 <li>注意：每个主题的安装方法可能不同，有一些提供了安装脚本，而另一些必须要手动安装，所以<strong>请仔细阅读主题自身的安装文档</strong>。</li>
@@ -418,8 +418,8 @@
 <li><a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/1482847">Gnome-look: Distro Grub Themes</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/AdisonCavani/distro-grub-themes">Github: Distro Grub Themes</a></li>
 </ul>
-<h2 id="安装Distro-Grub-Themes">安装<code>Distro Grub Themes</code><a class="header-anchor" href="#安装Distro-Grub-Themes">  &gt;_&lt;</a></h2>
-<h3 id="下载主题">下载主题<a class="header-anchor" href="#下载主题">  &gt;_&lt;</a></h3>
+<h2 id="安装Distro-Grub-Themes">安装<code>Distro Grub Themes</code><a class="header-anchor" href="#安装Distro-Grub-Themes">o.O</a></h2>
+<h3 id="下载主题">下载主题<a class="header-anchor" href="#下载主题">o.O</a></h3>
 <p>根据其<code>github</code>上的<code>readme</code>文件，我们跳转到了其<a target="_blank" rel="noopener" href="https://k1ng.dev/distro-grub-themes/installation#install-a-pre-made-theme-with-grub-customizer">安装文档</a>（一般来说，主题的安装文档都会在其<code>github</code>上，这是个例外）。</p>
 <p>首先，克隆<code>github</code>上的<code>repo</code>到本地（注意：这里的<code>&lt;path&gt;</code>是你想要克隆到的本地目录，不填写则默认为当前目录）。</p>
 <ul>
@@ -427,15 +427,15 @@
 <li>如果<code>git clone</code>失败或者网速太慢，那么你可以直接下载这个<code>repo</code>的压缩包，然后解压到本地。</li>
 </ul>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/AdisonCavani/distro-grub-themes.git <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment"># 克隆repo到本地&lt;path>目录</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h3 id="应用主题">应用主题<a class="header-anchor" href="#应用主题">  &gt;_&lt;</a></h3>
+<h3 id="应用主题">应用主题<a class="header-anchor" href="#应用主题">o.O</a></h3>
 <p>打开<code>grub-customizer</code>，在<code>Appearance settings</code>中选择<code>custom resolution</code>，并输入你的屏幕分辨率（这里我输入的是<code>1920x1080</code>）。（虽然我的屏幕分辨率是<code>2560x1440</code>，但是适当地降低分辨率可以让<code>Grub</code>的字体更大更清晰）</p>
 <p>然后点击加号，将右下角的<code>Archieve files</code>改为<code>All files</code>，然后找到我们之前克隆到本地的<code>repo</code>（默认打开时的路径可能在<code>/root</code>目录下，你或许需要手动切换到<code>/home</code>下去找到你的<code>repo</code>）。</p>
 <p><img src="/img/LUT/01-02.png" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
 <p>在这个<code>repo</code>中有一个<code>themes</code>文件夹，里面存放了所有的主题，我们选择一个主题文件（比如<code>mint.tar</code>）双击它即可。</p>
 <p>之后在<code>grub-customizer</code>中点击<code>save</code>保存设置，然后重启电脑即可看到新的<code>Grub</code>主题了。</p>
-<h3 id="效果展示">效果展示<a class="header-anchor" href="#效果展示">  &gt;_&lt;</a></h3>
+<h3 id="效果展示">效果展示<a class="header-anchor" href="#效果展示">o.O</a></h3>
 <p><img src="/img/LUT/01-03.jpg" srcset="/img/loading.gif" lazyload alt="Mint Grub"></p>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">  &gt;_&lt;</a></h1>
+<h1 id="Summary">Summary<a class="header-anchor" href="#Summary">o.O</a></h1>
 <p>Congratulations! 有用的知识又增加了一点点！</p>
 <p>如果你还不满足于此，那么你可以试试<code>Gnome-look</code>寻找更多的<code>Grub</code>主题，甚至尝试自己制作主题！</p>
 <p>Have fun! 😉</p>
