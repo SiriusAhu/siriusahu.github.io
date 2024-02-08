@@ -18,16 +18,16 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings!  o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ # hello.py print(&quot;Hello, World!&quot;) 这或许是你在学习Python时运行的第一个程序。 你还记得当时是怎么运行这个程序的吗？是点击IDE的Run按钮吗？还是在Terminal中输入python hello.py呢？  IDE：即Integrated Development En">
+    <meta name="description" content="Greetings! ¶ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ # hello.py print(&quot;Hello, World!&quot;) 这或许是你在学习Python时运行的第一个程序。 你还记得当时是怎么运行这个程序的吗？是点击IDE的Run按钮吗？还是在Terminal中输入python hello.py呢？  IDE：即Integrated Development Envir">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「EP」01 如何运行Python">
 <meta property="og:url" content="https://siriusahu.github.io.git/2024/02/04/EP-01-How-to-run-Python/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings!  o.O Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ # hello.py print(&quot;Hello, World!&quot;) 这或许是你在学习Python时运行的第一个程序。 你还记得当时是怎么运行这个程序的吗？是点击IDE的Run按钮吗？还是在Terminal中输入python hello.py呢？  IDE：即Integrated Development En">
+<meta property="og:description" content="Greetings! ¶ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ # hello.py print(&quot;Hello, World!&quot;) 这或许是你在学习Python时运行的第一个程序。 你还记得当时是怎么运行这个程序的吗？是点击IDE的Run按钮吗？还是在Terminal中输入python hello.py呢？  IDE：即Integrated Development Envir">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://siriusahu.github.io.git/img/EP/python.png">
 <meta property="article:published_time" content="2024-02-04T12:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-08T16:11:25.678Z">
+<meta property="article:modified_time" content="2024-02-08T16:14:14.282Z">
 <meta property="article:author" content="Sirius Ahu">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          977 words
+          974 words
         
       </span>
     
@@ -368,7 +368,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings">  o.O</a></h1>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
 <p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># hello.py</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
@@ -379,7 +379,7 @@
 <code>Terminal</code>: 终端，如<code>Windows</code>的<code>cmd</code>、<code>PowerShell</code>，<code>Linux</code>的<code>Terminal</code>，等等。</p>
 </blockquote>
 <p>为什么电脑知道要用<code>Python</code>而不是其他语言来运行这个程序呢？</p>
-<h1 id="1-解释器：Interpreter">1. 解释器：Interpreter<a class="header-anchor" href="#1-解释器：Interpreter">  o.O</a></h1>
+<h1 id="1-解释器：Interpreter">1. 解释器：Interpreter<a class="header-anchor" href="#1-解释器：Interpreter"> ¶</a></h1>
 <p>无论是使用<code>IDE</code>自带的按钮，还是在<code>Terminal</code>中输入命令，都是在<strong>调用<code>Python</code>的解释器</strong>来运行这个程序。</p>
 <p>那么，什么是<code>解释器</code>呢？</p>
 <p><img src="/img/EP/01/01-01.PNG" srcset="/img/loading.gif" lazyload alt="vscode can't find a valid interpreter"></p>
@@ -387,28 +387,28 @@
 <p>举个例子，如果我们在<code>Windows</code>的<code>cmd</code>中输入<code>python</code>，那么我们就会根据之前在环境变量中设置的<code>Python</code>的路径，找到<code>Python</code>的解释器（<code>python.exe</code>），然后运行这个解释器。</p>
 <p>那么在<code>cmd</code>中输入<code>python hello.py</code>就是说：<strong>“使用<code>Python</code>的解释器来运行<code>hello.py</code>这个文件”</strong>，也就是我们常说的**“运行<code>hello.py</code>这个程序”**。</p>
 <p>再比如说，如果你在使用虚拟环境，那么每个环境的目录下都会有一个<code>Python</code>的解释器这也解释了为什么我们可以在不同的虚拟环境中使用不同版本的<code>Python</code>。（下面会有一个相关的例子）</p>
-<h1 id="2-使用IDE和Terminal的区别">2. 使用IDE和Terminal的区别<a class="header-anchor" href="#2-使用IDE和Terminal的区别">  o.O</a></h1>
+<h1 id="2-使用IDE和Terminal的区别">2. 使用IDE和Terminal的区别<a class="header-anchor" href="#2-使用IDE和Terminal的区别"> ¶</a></h1>
 <p>对于大多数<code>IDE</code>来说，其内部内置了一个集成终端（<code>Integrated Terminal</code>），在点击<code>Run</code>按钮时，<code>IDE</code>会自动在这个终端中输入相应的命令来运行程序。</p>
 <p>而在<code>Terminal</code>中，我们需要手动指定想要使用的<code>Python</code>解释器路径。</p>
-<h2 id="2-1-Terminal中手动运行程序">2.1 Terminal中手动运行程序<a class="header-anchor" href="#2-1-Terminal中手动运行程序">  o.O</a></h2>
+<h2 id="2-1-Terminal中手动运行程序">2.1 Terminal中手动运行程序<a class="header-anchor" href="#2-1-Terminal中手动运行程序"> ¶</a></h2>
 <p>我直接使用<code>Vscode</code>的<code>Integrated Terminal</code>来运行程序，输入<code>python hello.py</code>，这样会使用在系统注册的<strong>默认</strong>解释器，即<code>/bin/python</code>来运行程序。</p>
 <p><img src="/img/EP/01/01-02.PNG" srcset="/img/loading.gif" lazyload alt="vscode run"></p>
-<h2 id="2-2-Vscode下点击按钮运行程序">2.2 Vscode下点击按钮运行程序<a class="header-anchor" href="#2-2-Vscode下点击按钮运行程序">  o.O</a></h2>
+<h2 id="2-2-Vscode下点击按钮运行程序">2.2 Vscode下点击按钮运行程序<a class="header-anchor" href="#2-2-Vscode下点击按钮运行程序"> ¶</a></h2>
 <p>以我的<code>Linux</code>系统为例，我在<code>Vscode</code>中点击<code>Run</code>按钮，<code>Vscode</code>会选择位于<code>/bin/python</code>的<code>Python</code>解释器来运行程序。</p>
 <p><img src="/img/EP/01/01-03.PNG" srcset="/img/loading.gif" lazyload alt="terminal run"></p>
-<h1 id="3-虚拟环境：Virtual-Environment">3. 虚拟环境：Virtual Environment<a class="header-anchor" href="#3-虚拟环境：Virtual-Environment">  o.O</a></h1>
+<h1 id="3-虚拟环境：Virtual-Environment">3. 虚拟环境：Virtual Environment<a class="header-anchor" href="#3-虚拟环境：Virtual-Environment"> ¶</a></h1>
 <p>如果你在使用多个虚拟环境，那么你会在每个虚拟环境的目录下都发现一个<code>Python</code>的解释器。</p>
 <p>如果使用的是<code>Anaconda</code>，那么可以使用以下命令来查看自己拥有的虚拟环境：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda info <span class="token parameter variable">--envs</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <p><img src="/img/EP/01/01-04.PNG" srcset="/img/loading.gif" lazyload alt="conda envs"></p>
 <p>除了<code>base</code>环境是在<code>Anaconda</code>的安装目录下，其他的环境都是在<code>Anaconda</code>的<code>envs</code>目录下。</p>
-<h2 id="3-1-Terminal下使用虚拟环境">3.1 Terminal下使用虚拟环境<a class="header-anchor" href="#3-1-Terminal下使用虚拟环境">  o.O</a></h2>
+<h2 id="3-1-Terminal下使用虚拟环境">3.1 Terminal下使用虚拟环境<a class="header-anchor" href="#3-1-Terminal下使用虚拟环境"> ¶</a></h2>
 <p>如果你想在<code>Terminal</code>中使用某个虚拟环境，那么一般需要手动切换虚拟环境。</p>
 <p>以<code>base</code>环境为例，我们需要先激活<code>base</code>环境，然后再运行程序。</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda activate base
 python hello.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 <p><img src="/img/EP/01/01-05.PNG" srcset="/img/loading.gif" lazyload alt="terminal venv"></p>
-<h2 id="3-2-Vscode下使用虚拟环境">3.2 Vscode下使用虚拟环境<a class="header-anchor" href="#3-2-Vscode下使用虚拟环境">  o.O</a></h2>
+<h2 id="3-2-Vscode下使用虚拟环境">3.2 Vscode下使用虚拟环境<a class="header-anchor" href="#3-2-Vscode下使用虚拟环境"> ¶</a></h2>
 <p>在<code>Vscode</code>中，我们可以使用手动选择解释器的方式来选择虚拟环境中的<code>Python</code>解释器。</p>
 <p>在打开<code>hello.py</code>文件后，你可以点击右下角的按钮来选择解释器。</p>
 <p><img src="/img/EP/01/01-06-0.PNG" srcset="/img/loading.gif" lazyload alt="vscode select interpreter 0"></p>
@@ -416,7 +416,7 @@ python hello.py<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <p>然后点击<code>Run</code>按钮，你会发现：<strong><code>Vscode</code>并没有先激活虚拟环境（没有使用<code>conda activate base</code>），而是直接使用了虚拟环境中的<code>Python</code>解释器来运行程序</strong>。</p>
 <p><img src="/img/EP/01/01-06.PNG" srcset="/img/loading.gif" lazyload alt="vscode select interpreter 2"></p>
 <p>换句话说，所谓的切换虚拟环境，也就是切换了<code>Python</code>解释器。</p>
-<h1 id="4-总结">4. 总结<a class="header-anchor" href="#4-总结">  o.O</a></h1>
+<h1 id="4-总结">4. 总结<a class="header-anchor" href="#4-总结"> ¶</a></h1>
 <ul>
 <li>无论是使用<code>IDE</code>的<code>Run</code>按钮，还是在<code>Terminal</code>中输入命令，都是在<strong>调用<code>Python</code>的解释器</strong>来运行程序。</li>
 <li>对于<code>Anaconda</code>用户来说，考虑到便捷性，还是推荐使用<code>conda activate</code>来切换虚拟环境。（毕竟还总需要使用<code>pip</code>来安装一些包）</li>
