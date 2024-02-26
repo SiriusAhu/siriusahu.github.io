@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>「ALI」04 AUR(Arch User Repository)</title>
+    <link href="/2024/02/26/ALI-04-AUR/"/>
+    <url>/2024/02/26/ALI-04-AUR/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1><p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p><p><code>pacman</code>是<code>Arch Linux</code>的包管理器（对于<code>Ubuntu</code>系来说则是<code>apt</code>/<code>apt-get</code>）。</p><p>如果你曾使用过<code>Ubuntu</code>系的<code>apt</code>/<code>apt-get</code>，那么或许会发现在安装某些特定软件时，你需要为包管理器添加下载源。</p><p>以<code>gurb-customizer</code>为例，你需要使用以下指令添加并下载这个软件：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> add-apt-repository ppa:danielrichter2007/grub-customizer<span class="token function">sudo</span> <span class="token function">apt-get</span> update<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> grub-customizer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure><p>而在<code>Arch Linux</code>中，一些大佬将这些软件打包并上传到了<code>AUR</code>（Arch User Repository）中，我们可以从这个强大的仓库中下载到我们所需要的源码并进行编译以安装软件。</p><p>当然，也有一些如<code>yay</code>这样的包管理器可以帮助我们省去这些繁琐的步骤。直接通过类似于包管理器的方式来安装应用。</p><h1 id="1-AUR-with-makepkg">1. AUR with <code>makepkg</code><a class="header-anchor" href="#1-AUR-with-makepkg"> ¶</a></h1><p>我们从安装<code>yay</code>开始。由于<code>yay</code>的软件包并不包含在<code>pacman</code>的官方仓库中，我们需要从<code>AUR</code>中下载源码并进行编译。</p><p>首先访问<code>yay</code>的<code>AUR</code>页面：<a href="https://aur.archlinux.org/packages/yay/">yay</a></p><blockquote><p>你可以在<code>AUR</code>的搜索框中输入想要安装的软件名称，然后点击搜索按钮，即可找到对应的软件。</p></blockquote><p>使用<code>git</code>下载<code>yay</code>的源码：</p><blockquote><p>注意：直接运行以下命令会将仓库克隆到当前路径，你或许需要先<code>cd</code>到你想要的路径。</p></blockquote><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://aur.archlinux.org/yay.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>然后进入<code>yay</code>的目录并使用<code>makepkg</code>进行编译：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> yaymakepkg <span class="token parameter variable">-si</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure><blockquote><p>注意：请确保你的命令行环境可以访问如<code>google</code>等网站。因为编译过程需要下载一些依赖。（请尝试打开代理）</p></blockquote><p>之后等待编译完成，<code>yay</code>就会被安装到你的系统中。</p><h1 id="2-AUR-with-yay">2. AUR with <code>yay</code><a class="header-anchor" href="#2-AUR-with-yay"> ¶</a></h1><p>有了<code>yay</code>，我们就可以直接使用<code>yay</code>来更简便地安装<code>AUR</code>中的软件。</p><ul><li>假如你已经知道了你想要安装的软件全称：</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay <span class="token parameter variable">-S</span> <span class="token operator">&lt;</span>package_name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><ul><li>假如你不知道你想要安装的软件全称，那么你可以搜索关键词，之后（如果没有特殊需求的话）一路回车即可安装：</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay <span class="token operator">&lt;</span>keyword<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><ul><li>清理所有已安装软件包的缓存以及所有未安装软件包的缓存</li></ul><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay <span class="token parameter variable">-Sc</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><blockquote><p>附：<a href="https://devhints.io/pacman">Pacman cheatsheet</a></p></blockquote><h1 id="Summary">Summary<a class="header-anchor" href="#Summary"> ¶</a></h1><p>Have fun! 😉</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Arch Linux Installation</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>Linux Installation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器</title>
     <link href="/2024/02/08/ALT-01-Vscode/"/>
     <url>/2024/02/08/ALT-01-Vscode/</url>
