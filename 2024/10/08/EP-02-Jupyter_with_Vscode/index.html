@@ -18,25 +18,24 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题简介 ¶  使用Arch Linux的包管理器sudo pacman -S code安装的Vscode没有登录功能。 Vscode在安装后覆盖了默认文件管理器。  解决方案 ¶ 问题1：Vscode没有登录功能 ¶ 在aur中安装visual-studio-code-bin即可解决。 yay -S visual-studio-code-bin 问题2：Vscode覆盖默认文件管理器 ¶  注意">
+    <meta name="description" content="Greetings! ¶ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ Jupyter Notebook是一个非常流行的Python交互式环境，它允许用户将代码、文本、图像等内容整合在一个文档中，甚至分段（分为多个cell）运行代码，查看运行结果。Even better，其可以保存每一个cell的运行结果，并且导出为多种格式如.html、.pdf，以便展示你的思考过程。 传统的Jup">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器">
-<meta property="og:url" content="https://siriusahu.github.io.git/2024/02/08/ALT-01-Vscode/index.html">
+<meta property="og:title" content="「EP」02 Jupyter Notebook with Vscode">
+<meta property="og:url" content="https://siriusahu.github.io.git/2024/10/08/EP-02-Jupyter_with_Vscode/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="问题简介 ¶  使用Arch Linux的包管理器sudo pacman -S code安装的Vscode没有登录功能。 Vscode在安装后覆盖了默认文件管理器。  解决方案 ¶ 问题1：Vscode没有登录功能 ¶ 在aur中安装visual-studio-code-bin即可解决。 yay -S visual-studio-code-bin 问题2：Vscode覆盖默认文件管理器 ¶  注意">
+<meta property="og:description" content="Greetings! ¶ Yaho~ ふちゃんです！(&gt; ▽ &lt;) &#x2F;~ Jupyter Notebook是一个非常流行的Python交互式环境，它允许用户将代码、文本、图像等内容整合在一个文档中，甚至分段（分为多个cell）运行代码，查看运行结果。Even better，其可以保存每一个cell的运行结果，并且导出为多种格式如.html、.pdf，以便展示你的思考过程。 传统的Jup">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
-<meta property="article:published_time" content="2024-02-08T07:30:00.000Z">
-<meta property="article:modified_time" content="2024-10-18T02:27:25.274Z">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/EP/python.png">
+<meta property="article:published_time" content="2024-10-08T02:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-18T02:27:25.276Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Linux Troubleshooting">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/EP/python.png">
   
   
   
-  <title>「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器 - Ahu Blog</title>
+  <title>「EP」02 Jupyter Notebook with Vscode - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,13 +226,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/EP/banner.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器"></span>
+            <span id="subtitle" data-typed-text="「EP」02 Jupyter Notebook with Vscode"></span>
           
         </div>
 
@@ -244,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-08 15:30" pubdate>
-          February 8, 2024 pm
+        <time datetime="2024-10-08 10:00" pubdate>
+          October 8, 2024 am
         </time>
       </span>
     
@@ -256,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          238 words
+          1k words
         
       </span>
     
@@ -311,17 +310,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Arch Linux Troubleshooting"
-        id="heading-aa2ed0a38214f5874669e7cd43285e9f" role="tab" data-toggle="collapse" href="#collapse-aa2ed0a38214f5874669e7cd43285e9f"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Easy Python"
+        id="heading-c27f162e8be06ed6b3ef6f6d0d9986a2" role="tab" data-toggle="collapse" href="#collapse-c27f162e8be06ed6b3ef6f6d0d9986a2"
         aria-expanded="true"
       >
-        Arch Linux Troubleshooting
-        <span class="list-group-count">(2)</span>
+        Easy Python
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-aa2ed0a38214f5874669e7cd43285e9f"
-           role="tabpanel" aria-labelledby="heading-aa2ed0a38214f5874669e7cd43285e9f">
+      <div class="category-collapse collapse show" id="collapse-c27f162e8be06ed6b3ef6f6d0d9986a2"
+           role="tabpanel" aria-labelledby="heading-c27f162e8be06ed6b3ef6f6d0d9986a2">
         
         
           
@@ -330,19 +329,28 @@
     
       
       
-        <a href="/2024/02/08/ALT-00-Introduction/" title="「ALT」00 系列介绍"
+        <a href="/2024/02/03/EP-00-Installation-and-Introduction/" title="「EP」00 Python简介与安装"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">「ALT」00 系列介绍</span>
+          <span class="category-post">「EP」00 Python简介与安装</span>
         </a>
       
     
       
       
-        <a href="/2024/02/08/ALT-01-Vscode/" title="「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器"
+        <a href="/2024/02/04/EP-01-How-to-run-Python/" title="「EP」01 如何运行Python"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「EP」01 如何运行Python</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/10/08/EP-02-Jupyter_with_Vscode/" title="「EP」02 Jupyter Notebook with Vscode"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器</span>
+          <span class="category-post">「EP」02 Jupyter Notebook with Vscode</span>
         </a>
       
     
@@ -364,30 +372,65 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器</h1>
+            <h1 id="seo-header">「EP」02 Jupyter Notebook with Vscode</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="问题简介">问题简介<a class="header-anchor" href="#问题简介"> ¶</a></h1>
-<ol>
-<li>使用<code>Arch Linux</code>的包管理器<code>sudo pacman -S code</code>安装的<code>Vscode</code>没有登录功能。</li>
-<li><code>Vscode</code>在安装后覆盖了默认文件管理器。</li>
-</ol>
-<h1 id="解决方案">解决方案<a class="header-anchor" href="#解决方案"> ¶</a></h1>
-<h2 id="问题1：Vscode没有登录功能">问题1：Vscode没有登录功能<a class="header-anchor" href="#问题1：Vscode没有登录功能"> ¶</a></h2>
-<p>在<code>aur</code>中安装<code>visual-studio-code-bin</code>即可解决。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yay <span class="token parameter variable">-S</span> visual-studio-code-bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="问题2：Vscode覆盖默认文件管理器">问题2：Vscode覆盖默认文件管理器<a class="header-anchor" href="#问题2：Vscode覆盖默认文件管理器"> ¶</a></h2>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
+<p>Yaho~ ふちゃんです！(&gt; ▽ &lt;) /~</p>
+<p><code>Jupyter Notebook</code>是一个非常流行的<code>Python</code>交互式环境，它允许用户将<code>代码</code>、<code>文本</code>、<code>图像</code>等内容整合在一个文档中，甚至分段（分为多个<code>cell</code>）运行代码，查看运行结果。Even better，其可以保存每一个<code>cell</code>的运行结果，并且导出为多种格式如<code>.html</code>、<code>.pdf</code>，以便展示你的思考过程。</p>
+<p>传统的<code>Jupyter Notebook</code>是在浏览器中运行的，不过其后端需要一直运行着一个终端，其启动会稍显卡顿并且没有可拓展性。</p>
+<p>于是，使用其他编辑器来运行<code>Jupyter Notebook</code>就成为了一个很好的选择，比如说<code>Vscode</code>。</p>
+<h2 id="1-安装Jupyter插件">1. 安装<code>Jupyter</code>插件<a class="header-anchor" href="#1-安装Jupyter插件"> ¶</a></h2>
+<p>打开<code>Vscode</code>，点击左侧的<code>Extensions</code>，搜索<code>Jupyter</code>，安装第一个即可。它会同时自动下载其它所需要的插件。</p>
+<ul>
+<li>如果你担心一个插件不够用，那么可以将搜索结果中由<code>Microsoft</code>开发的<code>Jupyter</code>插件也安装上。这些插件的安全性是有保障的。</li>
+</ul>
+<p><img src="/img/EP/03/extensions.png" srcset="/img/loading.gif" lazyload alt="Extensions"></p>
+<h2 id="2-创建一个Jupyter-Notebook">2. 创建一个<code>Jupyter Notebook</code><a class="header-anchor" href="#2-创建一个Jupyter-Notebook"> ¶</a></h2>
+<p><code>Jupyter Notebook</code>的文件后缀名为<code>.ipynb</code>，新建任意一个文件，然后将其后缀名改为<code>.ipynb</code>即可。</p>
+<p>将其使用<code>Vscode</code>打开，你会看到这样的界面：</p>
+<p><img src="/img/EP/03/jupyter_notebook.png" srcset="/img/loading.gif" lazyload alt="Jupyter Notebook"></p>
+<p>其中，<code>+ code</code>和<code>+ markdown</code>分别代表了新建一个代码块和一个文本块，<code>Run All</code>表示运行所有的代码块。</p>
+<p>而最重要的是<code>Select Kernel</code>（或者说<code>Select Jypyter Server</code>），这是用于指定<code>Jupyter Notebook</code>的运行环境的。</p>
 <blockquote>
-<p>注意：该解决方法适用于<code>Gnome</code>桌面环境。</p>
+<p>也正是上一章节中提到的<code>Python</code>解释器。</p>
 </blockquote>
-<p>打开<code>/etc/share/applications/mimeinfo.cache</code>文件，我们发现有关文件管理器的设置中有两个值，分别是<code>vscode.desktop</code>和<code>org.gnome.Nautilus.desktop</code>。</p>
-<p>其中前者代表<code>Vscode</code>，后者代表Gnome默认的文件管理器<code>Nautilus</code>。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">inode/directory<span class="token operator">=</span>code.desktop<span class="token punctuation">;</span>org.gnome.Nautilus.desktop<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>也就是说在安装<code>Vscode</code>后，<code>Vscode</code>将自己添加到了文件管理器的默认应用程序列表中，并且设置在了第一位。</p>
-<p>为了永久修改这个问题，我们需要使用<code>xdg-mime</code>命令来修改默认文件管理器。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">xdg-mime default org.gnome.Nautilus.desktop inode&#x2F;directory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>点击<code>Select Kernel</code>，可以看到我们需要从<code>Python Environment</code>（<code>Python</code>环境）和<code>Existing Jupyter Server</code>（已有的<code>Jupyter</code>服务器）中选择一个。接下来我们以<code>Python Environment</code>为例。</p>
+<p><img src="/img/EP/03/select_kernel.png" srcset="/img/loading.gif" lazyload alt="Select Kernel"></p>
+<h2 id="3-准备运行环境">3. 准备运行环境<a class="header-anchor" href="#3-准备运行环境"> ¶</a></h2>
+<p>此处的<code>Python Environment</code>即为上一张提到的<code>Virtual Environment</code>（虚拟环境）。</p>
+<blockquote>
+<p>也就是说，<code>.py</code>文件和<code>.ipynb</code>文件可以使用相同的虚拟环境。</p>
+</blockquote>
+<p>只不过要注意的是，运行<code>Jupyter Notebook</code>之前，需要为虚拟环境安装内核（即一个依赖库）。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 首先激活虚拟环境，之后再安装内核</span>
+pip <span class="token function">install</span> ipykernel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<h2 id="4-运行Jupyter-Notebook">4. 运行<code>Jupyter Notebook</code><a class="header-anchor" href="#4-运行Jupyter-Notebook"> ¶</a></h2>
+<p>现在，你可以在<code>Jupyter Notebook</code>中愉快地写代码了。</p>
+<p>让我们新建一个<code>code</code>块，尝试运行一段简单的代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>点击左侧的小三角形，即单独运行这个<code>code</code>块。</p>
+<p><img src="/img/EP/03/code-01.png" srcset="/img/loading.gif" lazyload alt="Run Code"></p>
+<p>左侧的数字表示了运行的顺序，此处的<code>[1]</code>表示这是第一个运行的<code>code</code>块。</p>
+<p>由于<code>Jupyter Notebook</code>的机制，每一个<code>code</code>块都会保存其运行结果（包括变量的值，函数的定义等等）。</p>
+<p>以下例子可以很好地解释这种机制：</p>
+<p><img src="/img/EP/03/code-02.png" srcset="/img/loading.gif" lazyload alt="Run Code"></p>
+<h2 id="5-一些使用场景">5. 一些使用场景<a class="header-anchor" href="#5-一些使用场景"> ¶</a></h2>
+<p>相较于<code>.py</code>，<code>.ipynb</code>文件更适合于一些交互式、实验性的代码，以及需要展示的场景。</p>
+<h3 id="5-1-数据分析">5.1 数据分析<a class="header-anchor" href="#5-1-数据分析"> ¶</a></h3>
+<p>假如，我需要写一个绘图函数来分析一些<strong>需要加载很久的数据</strong>。如果使用<code>.py</code>文件，那么每次修改代码后都需要重新运行，这就导致重复地加载数据，重复地浪费时间。</p>
+<p>然而<code>.ipynb</code>文件可以保存每一个<code>code</code>块的运行结果，也就是说在第一次加载数据后，该数据会一直保存在内存中，直到你关闭或者重启<code>Jupyter Notebook</code>。</p>
+<p><img src="/img/EP/03/code-03.png" srcset="/img/loading.gif" lazyload alt="Data Analysis"></p>
+<h3 id="5-2-分段展示代码结果">5.2 分段展示代码结果<a class="header-anchor" href="#5-2-分段展示代码结果"> ¶</a></h3>
+<p>假如，我需要分段地展示一段代码的运行结果，那么<code>.ipynb</code>文件就是一个很好的选择。（尤其是对初学者来说）</p>
+<p>比如此处，我需要先分析数据，之后再进行计算。如果使用<code>.py</code>文件，那么我需要将这两个过程分开（写两个文件，两次导入数据），而使用<code>.ipynb</code>文件，我可以直接在同一个文件中完成这两个过程。</p>
+<p><img src="/img/EP/03/code-04.png" srcset="/img/loading.gif" lazyload alt="Data Analysis"></p>
+<h2 id="6-总结">6. 总结<a class="header-anchor" href="#6-总结"> ¶</a></h2>
+<p>无论是<code>.py</code>文件还是<code>.ipynb</code>文件，都是<code>Python</code>的代码文件，只不过后者更适合于交互式、实验性的代码。请不要一味地使用<code>.ipynb</code>，而是根据具体的场景选择更合适的文件类型！</p>
+<p>Fin.</p>
+
                 
               </div>
             
@@ -405,7 +448,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Arch-Linux-Troubleshooting/" class="category-chain-item">Arch Linux Troubleshooting</a>
+  <a href="/categories/Easy-Python/" class="category-chain-item">Easy Python</a>
   
   
 
@@ -420,9 +463,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
-      
-        <a href="/tags/Linux-Troubleshooting/" class="print-no-link">#Linux Troubleshooting</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
       
     </div>
   
@@ -434,8 +475,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「ALT」01 Vscode安装 &amp; Vscode覆盖默认文件管理器</div>
-      <div>https://siriusahu.github.io.git/2024/02/08/ALT-01-Vscode/</div>
+      <div>「EP」02 Jupyter Notebook with Vscode</div>
+      <div>https://siriusahu.github.io.git/2024/10/08/EP-02-Jupyter_with_Vscode/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +488,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 8, 2024</div>
+          <div>October 8, 2024</div>
         </div>
       
       
@@ -479,18 +520,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/26/ALI-04-AUR/" title="「ALI」04 AUR(Arch User Repository)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「ALI」04 AUR(Arch User Repository)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/08/ALT-00-Introduction/" title="「ALT」00 系列介绍">
-                        <span class="hidden-mobile">「ALT」00 系列介绍</span>
+                      <a href="/2024/06/19/LUT-03-Gnome_Beautify/" title="「LUT」03 Gnome Beautify">
+                        <span class="hidden-mobile">「LUT」03 Gnome Beautify</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
