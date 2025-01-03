@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>「CB」00 系列简介</title>
+    <link href="/2025/01/03/CB-01-Conda-Startup/"/>
+    <url>/2025/01/03/CB-01-Conda-Startup/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1><p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p><p>这是一个有关通过<code>Conda</code>管理Python虚拟环境的系列：<code>Conda Beginner</code>。</p><p>主要面向的读者是刚刚接触<code>Conda</code>的朋友，以及记不清楚<code>Conda</code>命令的朋友。</p><p>在这个系列中我会从最基础的概念开始，一步一步地向你展示如何使用<code>Conda</code>。（仅针对<code>Python</code>方面的使用）</p><p>在学习这一部分内容时最重要的是：</p><p><strong>不要看到代码框就复制粘贴运行！！！</strong><br><strong>不要看到代码框就复制粘贴运行！！！</strong><br><strong>不要看到代码框就复制粘贴运行！！！</strong></p><p>请务必认真阅读每个代码框中的内容，理解每一步的操作！不要做“CV工程师”！</p><h1 id="结语">结语<a class="header-anchor" href="#结语"> ¶</a></h1><p>祝你接下来的学习一切顺利！</p><p>Have fun! 😉</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Conda Beginner</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>Conda</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>「EP」02 在Vscode中使用Jupyter Notebook（重制）</title>
     <link href="/2025/01/03/EP-02-Jupyter_with_Vscode/"/>
     <url>/2025/01/03/EP-02-Jupyter_with_Vscode/</url>

@@ -18,24 +18,25 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings! ¶ 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在， Hi，欢迎来到我的博客！😉 Introduction ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有很多关于Windows的">
+    <meta name="description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这是一个有关通过Conda管理Python虚拟环境的系列：Conda Beginner。 主要面向的读者是刚刚接触Conda的朋友，以及记不清楚Conda命令的朋友。 在这个系列中我会从最基础的概念开始，一步一步地向你展示如何使用Conda。（仅针对Python方面的使用） 在学习这一部分内容时最重要的是： 不要看到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「建站」01 准备工作 - 建立自己的博客网站">
-<meta property="og:url" content="https://siriusahu.github.io.git/2023/05/06/R-EB-01-Prerequirements/index.html">
+<meta property="og:title" content="「CB」00 系列简介">
+<meta property="og:url" content="https://siriusahu.github.io.git/2025/01/03/CB-01-Conda-Startup/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings! ¶ 你，有想过建立一个自己的博客网站吗？ 🤔 我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢 但是现在， Hi，欢迎来到我的博客！😉 Introduction ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这是一个记录了我在Linux上使用Github Page和Hexo建立自己博客网站的系列。（网上也有很多关于Windows的">
+<meta property="og:description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这是一个有关通过Conda管理Python虚拟环境的系列：Conda Beginner。 主要面向的读者是刚刚接触Conda的朋友，以及记不清楚Conda命令的朋友。 在这个系列中我会从最基础的概念开始，一步一步地向你展示如何使用Conda。（仅针对Python方面的使用） 在学习这一部分内容时最重要的是： 不要看到">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
-<meta property="article:published_time" content="2023-05-06T04:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-03T09:55:37.961Z">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
+<meta property="article:published_time" content="2025-01-03T09:40:00.000Z">
+<meta property="article:modified_time" content="2025-01-03T09:55:37.955Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="introduction">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Conda">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/R_BE/index.jpg">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
   
   
   
-  <title>「建站」01 准备工作 - 建立自己的博客网站 - Ahu Blog</title>
+  <title>「CB」00 系列简介 - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,13 +227,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/CB/banner.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「建站」01 准备工作 - 建立自己的博客网站"></span>
+            <span id="subtitle" data-typed-text="「CB」00 系列简介"></span>
           
         </div>
 
@@ -243,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-06 12:00" pubdate>
-          May 6, 2023 pm
+        <time datetime="2025-01-03 17:40" pubdate>
+          January 3, 2025 pm
         </time>
       </span>
     
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          526 words
+          202 words
         
       </span>
     
@@ -310,44 +311,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Tutorial"
-        id="heading-368fe771261fcb18f7988833c9294a20" role="tab" data-toggle="collapse" href="#collapse-368fe771261fcb18f7988833c9294a20"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Conda Beginner"
+        id="heading-f95d65c859168efce7f06eacff5d4e23" role="tab" data-toggle="collapse" href="#collapse-f95d65c859168efce7f06eacff5d4e23"
         aria-expanded="true"
       >
-        Tutorial
-        <span class="list-group-count">(5)</span>
+        Conda Beginner
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-368fe771261fcb18f7988833c9294a20"
-           role="tabpanel" aria-labelledby="heading-368fe771261fcb18f7988833c9294a20">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Blog"
-        id="heading-be8df1f28c0abc85a0ed0c6860e5d832" role="tab" data-toggle="collapse" href="#collapse-be8df1f28c0abc85a0ed0c6860e5d832"
-        aria-expanded="true"
-      >
-        Blog
-        <span class="list-group-count">(5)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse show" id="collapse-be8df1f28c0abc85a0ed0c6860e5d832"
-           role="tabpanel" aria-labelledby="heading-be8df1f28c0abc85a0ed0c6860e5d832">
+      <div class="category-collapse collapse show" id="collapse-f95d65c859168efce7f06eacff5d4e23"
+           role="tabpanel" aria-labelledby="heading-f95d65c859168efce7f06eacff5d4e23">
         
         
           
@@ -356,55 +330,15 @@
     
       
       
-        <a href="/2023/05/06/R-EB-01-Prerequirements/" title="「建站」01 准备工作 - 建立自己的博客网站"
+        <a href="/2025/01/03/CB-01-Conda-Startup/" title="「CB」00 系列简介"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">「建站」01 准备工作 - 建立自己的博客网站</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「建站」02 Github &amp; SSH &amp; node 基本配置</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/07/R-EB-03-Hexo-init/" title="「建站」03 使用Hexo初步创建博客网站与本地预览"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「建站」03 使用Hexo初步创建博客网站与本地预览</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/07/R-EB-04-Push-to-github/" title="「建站」04 将Hexo部署到Github Page"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「建站」04 将Hexo部署到Github Page</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2023/05/08/R-EB-05-Hexo-Markdown/" title="「建站」05 Hexo中的Markdown特殊用法"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「建站」05 Hexo中的Markdown特殊用法</span>
+          <span class="category-post">「CB」00 系列简介</span>
         </a>
       
     
   </div>
 
-        
-      </div>
-    </div>
-  
         
       </div>
     </div>
@@ -421,45 +355,24 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「建站」01 准备工作 - 建立自己的博客网站</h1>
+            <h1 id="seo-header">「CB」00 系列简介</h1>
             
             
               <div class="markdown-body">
                 
-                <!-- # 准备工作 - 建立自己的博客网站 -->
-<!-- - 本文编辑时间：2023.05.06 -->
-<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
-<p>你，有想过建立一个自己的博客网站吗？ 🤔</p>
-<p>我在几年前就有了这个想法，但是碍于时间与技术的原因，一直没有实现… 😢</p>
-<p>但是现在，</p>
-<p>Hi，欢迎来到我的博客！😉</p>
-<h1 id="Introduction">Introduction<a class="header-anchor" href="#Introduction"> ¶</a></h1>
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
 <p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p>
-<p>这是一个记录了我在<code>Linux</code>上使用<code>Github Page</code>和<code>Hexo</code>建立自己博客网站的系列。（网上也有很多关于<code>Windows</code>的教程。无论是哪个系统，它们的原理都是基本相同的。）</p>
-<p><img src="/img/R_BE/01-1.png" srcset="/img/loading.gif" lazyload alt="My Mint"></p>
-<p><span></span></p>
-<p>这个系列既是我建站过程的记录，也是一份<strong>粗略的</strong>建站教程（或许最需要看的是未来的我自己？毕竟自己搭的时候也是看了许多不同的教程，我可能最需要的是一篇我自己总结的）。</p>
-<p>我并不专业，很多地方可能只是依葫芦画瓢，内容大多也仅供参考。但同时，如果你也想建立一个博客网站的话，我希望我的博客能帮到你。❤️</p>
-<h1 id="What-do-we-need">What do we need<a class="header-anchor" href="#What-do-we-need"> ¶</a></h1>
-<p>建立一个简单的博客并不难。</p>
-<p>在正式开始之前，我们需要：</p>
-<ul>
-<li>一个<code>Github</code>账号</li>
-<li>如果你会用“魔法”的话那就更好了（你懂我的意思，对吧）</li>
-<li>一个<code>域名</code>（optional|如果你希望不用输入繁琐的<code>github.io</code>域名就能访问你的博客的话，那么推荐你购买一个域名）</li>
-</ul>
-<p>最重要的是，你需要有：</p>
-<ul>
-<li><code>耐心</code>：建站的过程不大可能一帆风顺，我们可能会遇到各种各样的问题（网络、配置、代码等等）</li>
-<li><code>热情</code>：如果缺少热情，那么简单的问题或许也会让你觉得很烦躁</li>
-<li><code>查阅资料的能力</code>：遇到问题时，我们需要学会自己去查阅资料，而不是一味的等待别人的回答。我们使用的大部分工具都是开源的，所以我们完全可以通过查阅资料来解决我们的问题</li>
-</ul>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary"> ¶</a></h1>
-<p>那么，让我们开启建站之旅吧！🎉</p>
+<p>这是一个有关通过<code>Conda</code>管理Python虚拟环境的系列：<code>Conda Beginner</code>。</p>
+<p>主要面向的读者是刚刚接触<code>Conda</code>的朋友，以及记不清楚<code>Conda</code>命令的朋友。</p>
+<p>在这个系列中我会从最基础的概念开始，一步一步地向你展示如何使用<code>Conda</code>。（仅针对<code>Python</code>方面的使用）</p>
+<p>在学习这一部分内容时最重要的是：</p>
+<p><strong>不要看到代码框就复制粘贴运行！！！</strong><br>
+<strong>不要看到代码框就复制粘贴运行！！！</strong><br>
+<strong>不要看到代码框就复制粘贴运行！！！</strong></p>
+<p>请务必认真阅读每个代码框中的内容，理解每一步的操作！不要做“CV工程师”！</p>
+<h1 id="结语">结语<a class="header-anchor" href="#结语"> ¶</a></h1>
+<p>祝你接下来的学习一切顺利！</p>
 <p>Have fun! 😉</p>
-<blockquote>
-<p>下一节： <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">「建站」02 Github &amp; SSH &amp; node 基本配置</a></p>
-</blockquote>
 
                 
               </div>
@@ -478,15 +391,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Tutorial/" class="category-chain-item">Tutorial</a>
+  <a href="/categories/Conda-Beginner/" class="category-chain-item">Conda Beginner</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/Tutorial/Blog/" class="category-chain-item">Blog</a>
-  
-  
-
   
 
       </span>
@@ -500,7 +406,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/introduction/" class="print-no-link">#introduction</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/Conda/" class="print-no-link">#Conda</a>
       
     </div>
   
@@ -512,8 +420,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「建站」01 准备工作 - 建立自己的博客网站</div>
-      <div>https://siriusahu.github.io.git/2023/05/06/R-EB-01-Prerequirements/</div>
+      <div>「CB」00 系列简介</div>
+      <div>https://siriusahu.github.io.git/2025/01/03/CB-01-Conda-Startup/</div>
     </div>
     <div class="license-meta">
       
@@ -525,7 +433,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>May 6, 2023</div>
+          <div>January 3, 2025</div>
         </div>
       
       
@@ -557,15 +465,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/05/07/R-EB-02-Github-SSH-node-basic/" title="「建站」02 Github &amp; SSH &amp; node 基本配置">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「建站」02 Github &amp; SSH &amp; node 基本配置</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/01/03/EP-02-Jupyter_with_Vscode/" title="「EP」02 在Vscode中使用Jupyter Notebook（重制）">
+                        <span class="hidden-mobile">「EP」02 在Vscode中使用Jupyter Notebook（重制）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
