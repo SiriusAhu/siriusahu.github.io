@@ -18,24 +18,25 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings! ¶ 嗨！你有没有觉得安装R语言的过程有些麻烦？你有没有觉得为了安装R语言来安装R-Studio很耗空间和时间？或者说你是否觉得需要运行一整个文件来查看一个简单的R语言代码实在太不方便了？ 那么，这篇文章就是为你准备的！ 我们将通过VS Code来使用Jupyter Notebook来运行R语言代码，而且我们将使用Conda来创建R语言环境。 0. Why do so? ¶">
+    <meta name="description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 本章我们将结合Minecraft介绍什么是Conda，为什么不选择更为熟知的Anaconda，以及如何安装Miniconda。 1. What’s Conda? ¶ 1.1. What to be managed? - Libraries ¶ 在Python的使用中，库（library）或者说包（package）是一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境">
-<meta property="og:url" content="https://siriusahu.github.io.git/2025/02/19/RB-01-R-Env_Setup/index.html">
+<meta property="og:title" content="「CB」01 安装 Miniconda">
+<meta property="og:url" content="https://siriusahu.github.io.git/2025/03/07/CB-01-Miniconda-Installation/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings! ¶ 嗨！你有没有觉得安装R语言的过程有些麻烦？你有没有觉得为了安装R语言来安装R-Studio很耗空间和时间？或者说你是否觉得需要运行一整个文件来查看一个简单的R语言代码实在太不方便了？ 那么，这篇文章就是为你准备的！ 我们将通过VS Code来使用Jupyter Notebook来运行R语言代码，而且我们将使用Conda来创建R语言环境。 0. Why do so? ¶">
+<meta property="og:description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 本章我们将结合Minecraft介绍什么是Conda，为什么不选择更为熟知的Anaconda，以及如何安装Miniconda。 1. What’s Conda? ¶ 1.1. What to be managed? - Libraries ¶ 在Python的使用中，库（library）或者说包（package）是一">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/RB/banner.png">
-<meta property="article:published_time" content="2025-02-19T13:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-07T12:04:29.701Z">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
+<meta property="article:published_time" content="2025-03-07T10:40:00.000Z">
+<meta property="article:modified_time" content="2025-03-07T12:04:29.627Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="R">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Conda">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/RB/banner.png">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
   
   
   
-  <title>「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境 - Ahu Blog</title>
+  <title>「CB」01 安装 Miniconda - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,13 +227,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/RB/banner.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/CB/banner.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境"></span>
+            <span id="subtitle" data-typed-text="「CB」01 安装 Miniconda"></span>
           
         </div>
 
@@ -243,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-19 21:00" pubdate>
-          February 19, 2025 pm
+        <time datetime="2025-03-07 18:40" pubdate>
+          March 7, 2025 pm
         </time>
       </span>
     
@@ -255,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1.4k words
         
       </span>
     
@@ -310,17 +311,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="R Beginner"
-        id="heading-58700e7ed7592db7e4544b08d80f7213" role="tab" data-toggle="collapse" href="#collapse-58700e7ed7592db7e4544b08d80f7213"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Conda Beginner"
+        id="heading-f95d65c859168efce7f06eacff5d4e23" role="tab" data-toggle="collapse" href="#collapse-f95d65c859168efce7f06eacff5d4e23"
         aria-expanded="true"
       >
-        R Beginner
-        <span class="list-group-count">(1)</span>
+        Conda Beginner
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-58700e7ed7592db7e4544b08d80f7213"
-           role="tabpanel" aria-labelledby="heading-58700e7ed7592db7e4544b08d80f7213">
+      <div class="category-collapse collapse show" id="collapse-f95d65c859168efce7f06eacff5d4e23"
+           role="tabpanel" aria-labelledby="heading-f95d65c859168efce7f06eacff5d4e23">
         
         
           
@@ -329,10 +330,28 @@
     
       
       
-        <a href="/2025/02/19/RB-01-R-Env_Setup/" title="「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境"
+        <a href="/2025/01/03/CB-01-Conda-Startup/" title="「CB」00 系列简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「CB」00 系列简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/01/03/CB-00-Conda-Startup/" title="「CB」00 系列简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「CB」00 系列简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/03/07/CB-01-Miniconda-Installation/" title="「CB」01 安装 Miniconda"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境</span>
+          <span class="category-post">「CB」01 安装 Miniconda</span>
         </a>
       
     
@@ -354,96 +373,105 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境</h1>
+            <h1 id="seo-header">「CB」01 安装 Miniconda</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
-<p>嗨！你有没有觉得安装<code>R</code>语言的过程有些麻烦？你有没有觉得为了安装<code>R</code>语言来安装<code>R-Studio</code>很耗空间和时间？或者说你是否觉得需要运行一整个文件来查看一个简单的<code>R</code>语言代码实在太不方便了？</p>
-<p>那么，这篇文章就是为你准备的！</p>
-<p>我们将通过<code>VS Code</code>来使用<code>Jupyter Notebook</code>来运行<code>R</code>语言代码，而且我们将使用<code>Conda</code>来创建<code>R</code>语言环境。</p>
-<h1 id="0-Why-do-so">0. Why do so?<a class="header-anchor" href="#0-Why-do-so"> ¶</a></h1>
-<ol>
-<li>相比于<code>R-Studio</code>，<code>VS Code</code>更加轻量级，更加灵活。我相信一部分同学已经在使用<code>VS Code</code>来编写<code>Python</code>代码了，那么使用相同的<code>IDE</code>来编写<code>R</code>语言代码也是一个不错的选择。</li>
-<li><code>Jupyter Notebook</code>是一个非常方便的工具，可以让我们一边写代码一边查看结果（可以反复运行一小部分代码），<strong>而不是一次性运行整个文件</strong>。这样既可以节省时间，又可以直观地看到代码的运行结果，对于学习一门新的语言来说是非常有帮助的！</li>
-<li><code>Conda</code>是一个非常方便的虚拟环境管理工具。既然我们已经在使用<code>Conda</code>来管理<code>Python</code>的虚拟环境，那么我们也可以使用<code>Conda</code>来管理<code>R</code>语言的虚拟环境。</li>
-</ol>
-<h1 id="1-安装R语言环境">1. 安装<code>R</code>语言环境<a class="header-anchor" href="#1-安装R语言环境"> ¶</a></h1>
-<h2 id="1-1-确认Conda是否已经安装">1.1 确认<code>Conda</code>是否已经安装<a class="header-anchor" href="#1-1-确认Conda是否已经安装"> ¶</a></h2>
-<p>首先，确定你已经安装了<code>Anaconda</code>或者<code>Miniconda</code>。你可以通过以下命令来检查：</p>
+<p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p>
+<p>本章我们将结合<code>Minecraft</code>介绍什么是<code>Conda</code>，为什么不选择更为熟知的<code>Anaconda</code>，以及如何安装<code>Miniconda</code>。</p>
+<h1 id="1-What’s-Conda">1. What’s Conda?<a class="header-anchor" href="#1-What’s-Conda"> ¶</a></h1>
+<h2 id="1-1-What-to-be-managed-Libraries">1.1. What to be managed? - <code>Libraries</code><a class="header-anchor" href="#1-1-What-to-be-managed-Libraries"> ¶</a></h2>
+<p>在<code>Python</code>的使用中，<code>库</code>（<code>library</code>）或者说<code>包</code>（<code>package</code>）是一种常有的使用非原生工具的方式。</p>
+<p>如果我们用<code>Minecraft</code>与之相比，<code>库</code>就像是<code>Minecraft</code>中的<code>mod</code>，为原版游戏提供了更多的方块、物品和功能。</p>
+<p>比如说，原版中的动物非常有限，<a target="_blank" rel="noopener" href="https://gamerant.com/minecraft-raccoon-mob-cute-good/">即便是高版本也只有20种左右</a>。</p>
+<p><img src="/img/CB/02/minecraft-animal-mobs.png" srcset="/img/loading.gif" lazyload alt="Limited Animals in Minecraft"></p>
+<p>然而，通过<code>mod</code>我们可以添加更多的动物。比如说经典的<a target="_blank" rel="noopener" href="https://modrinth.com/mod/alexs-mobs"><code>Alex's Mobs</code></a>，为游戏提供了<strong>上百种</strong>新的动物！</p>
+<p><img src="/img/CB/02/alexs_mobs.png" srcset="/img/loading.gif" lazyload alt="Alex's Mobs"></p>
+<p><code>库</code>正如同<code>mod</code>，以<code>matplotlib</code>为例，它能够为我们提供更为丰富的图表绘制功能，如<a target="_blank" rel="noopener" href="https://coding-blocks.github.io/DS-NOTES/1.2%20Introduction%20to%20Matplotlib.html">下图</a>所示：</p>
+<p><img src="/img/CB/02/matplotlib_examples.png" srcset="/img/loading.gif" lazyload alt="Matplotlib Examples"></p>
+<p>简单来说，<code>库</code>就是一些可以提供额外功能的代码，安装后即能快速使用原版<code>Python</code>无法提供的功能。</p>
+<h2 id="1-2-Why-to-manage">1.2. Why to manage?<a class="header-anchor" href="#1-2-Why-to-manage"> ¶</a></h2>
+<p>虽然<code>库</code>非常方便，但是在安装时我们总会遇到一些问题，其中最大的其对的<code>Python版本</code>的<strong>依赖</strong>以及<code>库</code>之间的<strong>冲突</strong>。</p>
+<!-- 版本冲突 -->
+<h3 id="1-2-1-Version-Dependency">1.2.1. Version Dependency<a class="header-anchor" href="#1-2-1-Version-Dependency"> ¶</a></h3>
+<p>和<code>Minecraft</code>一样，一些<code>mod</code>只能在特定的版本中使用，这主要取决于作者是否发布了对应版本的<code>mod</code>。</p>
+<p>如图所示，即便是有着<strong>1.49M</strong>下载量（数字还在不断增加）的<code>Alex's Mobs</code>，其支持的最低版本也仅为<code>1.16.5</code>。而如果你同时想在游戏中游玩另一个经典的模组<code>Industrial Craft II</code>（<code>工业时代2</code>）</p>
+<p><img src="/img/CB/02/ver_alex.png" srcset="/img/loading.gif" lazyload alt="Version of Alex's Mobs"></p>
+<p><img src="/img/CB/02/ic2.png" srcset="/img/loading.gif" lazyload alt="Version of Industrial Craft II"></p>
+<!-- 库冲突 -->
+<h3 id="1-2-2-Library-Conflict">1.2.2. Library Conflict<a class="header-anchor" href="#1-2-2-Library-Conflict"> ¶</a></h3>
+<p><code>库</code>版本的冲突也是<code>Python</code>和<code>Minecraft</code>中存在的问题，不过并不会特别频繁地出现。</p>
+<p>个人遇到这种问题主要是因为急于使用最新版本的<code>库</code>或<code>模组</code>，而一些<code>库</code>或<code>模组</code>中却限制了其依赖的最高版本。（比如说，<code>A</code>作为<code>B</code>的依赖库，<code>B</code>限制了<code>A</code>的版本为<code>&lt;=1.0.0</code>，而我们安装了<code>A</code>的最新版本<code>1.0.1</code>，这时会导致安装<code>B</code>的时候出现错误）</p>
+<h2 id="1-3-How-to-manage-Conda">1.3 How to manage? - <code>Conda</code><a class="header-anchor" href="#1-3-How-to-manage-Conda"> ¶</a></h2>
+<p><code>Conda</code>拥有着强大的功能——创建并管理<code>虚拟环境</code>（<code>virtual environment</code>），它可以让我们在同一台设备上安装多个版本的<code>Python</code>和<code>库</code>，并且互不干扰。</p>
+<p>其类似于<code>Minecraft</code>中的一些常见启动器，比如说<code>MultiMC</code>，<code>PCLauncher</code>和<code>HMCL</code>等，你只需安装一个启动器便可以安装并管理多个<strong>不同版本</strong>，分别装有<strong>不同模组</strong>的<code>Minecraft</code>。</p>
+<h1 id="2-Why-not-Anaconda">2. Why not <code>Anaconda</code>?<a class="header-anchor" href="#2-Why-not-Anaconda"> ¶</a></h1>
+<p>然而，相比与本系列中使用的<code>Miniconda</code>，<code>Anaconda</code>是一个更广为人知的选择。下表简要对比了两者的区别：</p>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>Anaconda</th>
+<th>Miniconda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预装包数量</td>
+<td>大量（NumPy、Pandas、Jupyter 等）</td>
+<td>仅基本的 conda 和 Python</td>
+</tr>
+<tr>
+<td>体积</td>
+<td>951MB</td>
+<td>89MB</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>预装大量工具，可能不全用得上</td>
+<td>只安装需要的包，自由定制</td>
+</tr>
+</tbody>
+</table>
+<p>其实在我自己看来，大部分需要使用<code>Conda</code>的用户都不需要<code>Anaconda</code>提供的额外功能。</p>
+<p>正如玩家在下载启动器玩MC的时候一定是想安装一个自己想要玩的模组，而不是下载一个已经包含一些你很可能不会游玩的整合包的巨大压缩包。</p>
+<ul>
+<li>Note：<code>Anaconda</code>不仅安装包体积非常大，而且安装后会占用更多的存储空间！</li>
+</ul>
+<h1 id="3-Installation-of-Miniconda">3. Installation of <code>Miniconda</code><a class="header-anchor" href="#3-Installation-of-Miniconda"> ¶</a></h1>
+<h2 id="3-1-Download-Installer">3.1. Download Installer<a class="header-anchor" href="#3-1-Download-Installer"> ¶</a></h2>
+<p>让我们跳过一堆烦人的点击，直击安装包下载的网页：<br>
+<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">Miniconda Download</a></p>
+<p>⚠️注意：这个页面提供了两种不同的安装包，分别是<code>Anaconda</code>和<code>Miniconda</code>，请确保下载靠下方的<code>Miniconda</code>安装包。</p>
+<p><img src="/img/CB/02/installer.png" srcset="/img/loading.gif" lazyload alt="Miniconda Download Page"></p>
+<h2 id="3-2-Install-Miniconda">3.2. Install Miniconda<a class="header-anchor" href="#3-2-Install-Miniconda"> ¶</a></h2>
+<p>这里我们只探讨<code>Windows</code>的安装方式，其他系统的安装方式也能在网络中找到其他的教程。</p>
+<p>打开安装程序（一般叫做<code>Miniconda3-latest-Windows-x86_64.exe</code>，<code>exe</code>指<code>executable</code>，是<code>Windows</code>下的可执行文件，即双击后可以运行的文件），之后会弹出一个安装向导。</p>
+<p>对于大部分选项，默认即可，但是仍有一两个很重要的地方要注意：</p>
+<ul>
+<li><strong>选择安装路径</strong>：这个路径决定了你的<code>Conda</code>以及未来安装的<code>库</code>和<code>虚拟环境</code>的存放位置。建议选择一个空间足够的地方，比如说<code>D:\Miniconda3</code>。（所以说，在这个高速固态硬盘时代，这个笔记本电脑没有必要分<code>C</code>、<code>D</code>盘的时代，纯使用<code>C</code>盘真的可以省去很多麻烦！）
+<ul>
+<li>虽然未来也可以进行更改<code>库</code>和<code>虚拟环境</code>的存放位置，但是你也不想再花时间去修改吧？</li>
+</ul>
+</li>
+<li><strong>添加到环境变量</strong>：这个选项决定了你是否可以在命令行中直接使用<code>conda</code>命令。
+<ul>
+<li>虽然<code>Conda</code>提供了一个<code>Anaconda Prompt</code>的命令行工具（无论是<code>Anaconda</code>还是<code>Miniconda</code>都会安装这个工具），但是我仍然建议你选择这个选项。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/CB/02/option.png" srcset="/img/loading.gif" lazyload alt="Add PATH env variable"></p>
+<h2 id="3-3-Verify-Installation">3.3. Verify Installation<a class="header-anchor" href="#3-3-Verify-Installation"> ¶</a></h2>
+<p>安装完成后，我们可以打开任意终端，如<code>cmd</code>、<code>PowerShell</code>，并输入以下命令来验证<code>Conda</code>是否安装成功：</p>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token parameter variable">--version</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>只要有版本信息输出，就说明你已经满足了这个条件。</p>
-<h2 id="1-2-创建R语言环境">1.2 创建<code>R</code>语言环境<a class="header-anchor" href="#1-2-创建R语言环境"> ¶</a></h2>
-<p>接下来，我们需要创建一个<code>R</code>语言环境。我们可以通过以下命令来创建：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda create <span class="token parameter variable">-n</span> r-env r-essentials<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>这个命令会创建一个名为<code>r-env</code>的环境，并且会安装<code>R</code>语言的必要组件。</p>
-<blockquote>
-<p>注意：名字是可以自己定义的，比如说我可以把<code>r-env</code>改成<code>my-r-env</code>来创建一个名为<code>my-r-env</code>的环墿。</p>
-</blockquote>
-<p>当安装完成后，我们可以通过以下命令来激活这个环境：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda activate r-env <span class="token comment"># r-env是环境的名字</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>创建完毕后，输出大概如下：</p>
-<p><img src="/img/RB/01-create_env_done.png" srcset="/img/loading.gif" lazyload alt="01-create_env_done"></p>
-<h2 id="1-3-为虚拟环境安装一系列依赖">1.3 为虚拟环境安装一系列依赖<a class="header-anchor" href="#1-3-为虚拟环境安装一系列依赖"> ¶</a></h2>
-<p>接下来还需要安装一些依赖。请在激活环境后运行以下命令：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">install</span> <span class="token parameter variable">-c</span> conda-forge jupyter r-irkernel<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>因为镜像源的不同，这个过程的时间可能会有所不同。请耐心等待。</p>
-<p>安装完成后，输出大概如下：</p>
-<p><img src="/img/RB/01-req_install_done.png" srcset="/img/loading.gif" lazyload alt="01-req_install_done"></p>
-<h2 id="1-4-可能出现的问题">1.4 可能出现的问题<a class="header-anchor" href="#1-4-可能出现的问题"> ¶</a></h2>
-<p>如果在<code>Jupyter Notebook</code>中出现使用的问题，可以尝试在<code>R</code>语言的交互式环境中进行以下操作：</p>
-<ol>
-<li>进入<code>R</code>语言的交互式环境：</li>
-</ol>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">R<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<ol start="2">
-<li>安装<code>IRkernel</code>：</li>
-</ol>
-<figure><div class="code-wrapper"><pre class="line-numbers language-R" data-language="R"><code class="language-R">install.packages(&#39;IRkernel&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<ol start="3">
-<li>注册<code>IRkernel</code>内核：</li>
-</ol>
-<figure><div class="code-wrapper"><pre class="line-numbers language-R" data-language="R"><code class="language-R">IRkernel::installspec(user &#x3D; FALSE)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<ol start="4">
-<li>检测是否安装成功：</li>
-</ol>
-<figure><div class="code-wrapper"><pre class="line-numbers language-R" data-language="R"><code class="language-R">jupyter kernelspec list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>如果有类似以下输出，则说明安装成功：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Available kernels:
-  python3    /path/to/python3
-  ir         /path/to/R<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
-<h1 id="2-在VS-Code中使用Jupyter-Notebook">2. 在<code>VS Code</code>中使用<code>Jupyter Notebook</code><a class="header-anchor" href="#2-在VS-Code中使用Jupyter-Notebook"> ¶</a></h1>
-<h2 id="2-1-安装Jupyter插件">2.1 安装<code>Jupyter</code>插件<a class="header-anchor" href="#2-1-安装Jupyter插件"> ¶</a></h2>
-<p>首先，打开<code>VS Code</code>，通过左侧按钮打开<code>Extensions</code>并搜索<code>Jupyter</code>，然后安装<code>Jupyter</code>插件。</p>
-<p><img src="/img/RB/01-vsc_extension.png" srcset="/img/loading.gif" lazyload alt="01-vsc_extension"></p>
-<h2 id="2-2-创建一个Jupyter-Notebook">2.2 创建一个<code>Jupyter Notebook</code><a class="header-anchor" href="#2-2-创建一个Jupyter-Notebook"> ¶</a></h2>
-<p><code>Jupyter Notebook</code>的文件后缀名是<code>.ipynb</code>，随意创建一个文件并将后缀名改为<code>.ipynb</code>即可。</p>
-<h2 id="2-3-通过Jupyter-Notebook打开R语言环境并选择内核">2.3 通过<code>Jupyter Notebook</code>打开<code>R</code>语言环境并选择内核<a class="header-anchor" href="#2-3-通过Jupyter-Notebook打开R语言环境并选择内核"> ¶</a></h2>
-<p>当你打开<code>ipynb</code>文件后，右上角会出现一个<code>Select Kernel</code>的按钮。点击其既即可以选择<code>R</code>语言的内核。</p>
-<p><img src="/img/RB/01-select_kernel.png" srcset="/img/loading.gif" lazyload alt="01-select_kernel"></p>
-<p>之后选择<code>Jupyter Kernel</code>，然后选择刚才创建的<code>R</code>语言环境即可。（比如说我创建的叫做<code>test_r</code>，图中另外两个内核，一个是由<code>conda</code>创建的名为<code>r</code>的环境，另一个则是系统范围内安装的R）</p>
-<p><img src="/img/RB/01-select_r_env.png" srcset="/img/loading.gif" lazyload alt="01-select_r_env"></p>
-<h1 id="3-运行R语言代码">3. 运行<code>R</code>语言代码<a class="header-anchor" href="#3-运行R语言代码"> ¶</a></h1>
-<p>现在，你可以在<code>Jupyter Notebook</code>中运行<code>R</code>语言代码了！</p>
-<p>比如说，添加一个<code>code cell</code>（通过点击中间的&quot;+ Code&quot;按钮），然后输入以下代码：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- 1:10
-y &lt;- x^2
-plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
-<p>然后点击左侧的三角形按钮即可运行代码。（或者使用<code>Shift + Enter</code>）</p>
-<p><img src="/img/RB/01-run_code.png" srcset="/img/loading.gif" lazyload alt="01-run_code"></p>
-<blockquote>
-<p>⚠️注意：<code>plot</code>函数绘制的图像默认为透明背景。<br>
-如果想要用白色作为背景色，可以在<code>plot</code>函数之前添加<code>par(bg = &quot;white&quot;)</code></p>
-</blockquote>
-<figure><div class="code-wrapper"><pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- 1:10
-y &lt;- x^2
-par(bg &#x3D; &quot;white&quot;)
-plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<p><img src="/img/RB/01-plot_white_bg.png" srcset="/img/loading.gif" lazyload alt="01-plot_white_bg"></p>
-<h1 id="4-结语">4. 结语<a class="header-anchor" href="#4-结语"> ¶</a></h1>
-<p>通过<code>VS Code</code>和<code>Jupyter Notebook</code>，我们可以更加方便地运行<code>R</code>语言代码了！</p>
-<p>希望这篇文章对你有所帮助！</p>
+<p>如果安装成功，你应该能看到类似于下面的输出：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token number">25.1</span>.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>如果报错<code>'conda' is not recognized as an internal or external command, operable program or batch file.</code>，说明<code>Conda</code>没有添加到环境变量中。你可以尝试重启电脑来重新加载环境变量，之后再试一次。</p>
+<p>如果还是不行，或许是你在安装时没有选择添加到环境变量中。你可以手动添加或干脆卸载<code>Miniconda</code>，并重新安装。</p>
+<h1 id="结语">结语<a class="header-anchor" href="#结语"> ¶</a></h1>
+<p>祝你接下来的学习一切顺利！</p>
 <p>Have fun! 😉</p>
 
                 
@@ -463,7 +491,7 @@ plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
     
       <span class="category-chain">
         
-  <a href="/categories/R-Beginner/" class="category-chain-item">R Beginner</a>
+  <a href="/categories/Conda-Beginner/" class="category-chain-item">Conda Beginner</a>
   
   
 
@@ -478,7 +506,9 @@ plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/R/" class="print-no-link">#R</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/Conda/" class="print-no-link">#Conda</a>
       
     </div>
   
@@ -490,8 +520,8 @@ plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「RB」01 在VS Code中通过Jupyter Notebook使用由Conda创建的R语言环境</div>
-      <div>https://siriusahu.github.io.git/2025/02/19/RB-01-R-Env_Setup/</div>
+      <div>「CB」01 安装 Miniconda</div>
+      <div>https://siriusahu.github.io.git/2025/03/07/CB-01-Miniconda-Installation/</div>
     </div>
     <div class="license-meta">
       
@@ -503,7 +533,7 @@ plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 19, 2025</div>
+          <div>March 7, 2025</div>
         </div>
       
       
@@ -535,18 +565,12 @@ plot(x, y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/22/CELN-01-Ollama_HTML_en/" title="[CELN] 01 Deploying Large Models Locally + Simple HTML Interactive Interface">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[CELN] 01 Deploying Large Models Locally + Simple HTML Interactive Interface</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/03/CB-01-Conda-Startup/" title="「CB」00 系列简介">
-                        <span class="hidden-mobile">「CB」00 系列简介</span>
+                      <a href="/2025/02/22/CELN-01-Ollama_HTML/" title="[CELN] 01 本地部署大模型 + 简单 HTML 交互界面">
+                        <span class="hidden-mobile">[CELN] 01 本地部署大模型 + 简单 HTML 交互界面</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
