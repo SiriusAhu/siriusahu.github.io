@@ -18,25 +18,25 @@
   <meta name="author" content="Sirius Ahu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这一节中我会介绍一些我自己喜欢的配置，包括快捷键，输入法，zsh, grub等等。 1. 快捷键 ¶ 由于早起使用Pop!_OS的缘故，我习惯了一些其自带的快捷键，因此我在Arch Linux中也使用了这些快捷键。  Super + Q：关闭当前窗口 Super + F：打开默认文件管理器 Super + B：打开默">
+    <meta name="description" content="Hello again! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 今天我们一口气完成这几件事：  创建一个 Conda 虚拟环境 启用 &#x2F; 查看 &#x2F; 退出 环境 安装简单的 Python 库（你不一定会用到，但练习很重要！） 删除环境（练习完毕后清理环境）   1. What is a Virtual Environment? ¶ 我们继续用 Minecraft 做比喻： “虚">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「ALI」03 更好的体验">
-<meta property="og:url" content="https://siriusahu.github.io.git/2024/01/14/ALI-03-Better-Experience/index.html">
+<meta property="og:title" content="「CB」02 创建并使用 Conda 虚拟环境">
+<meta property="og:url" content="https://siriusahu.github.io.git/2025/06/10/CB-02-Play-with-Conda/index.html">
 <meta property="og:site_name" content="Ahu Blog">
-<meta property="og:description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 这一节中我会介绍一些我自己喜欢的配置，包括快捷键，输入法，zsh, grub等等。 1. 快捷键 ¶ 由于早起使用Pop!_OS的缘故，我习惯了一些其自带的快捷键，因此我在Arch Linux中也使用了这些快捷键。  Super + Q：关闭当前窗口 Super + F：打开默认文件管理器 Super + B：打开默">
+<meta property="og:description" content="Hello again! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 今天我们一口气完成这几件事：  创建一个 Conda 虚拟环境 启用 &#x2F; 查看 &#x2F; 退出 环境 安装简单的 Python 库（你不一定会用到，但练习很重要！） 删除环境（练习完毕后清理环境）   1. What is a Virtual Environment? ¶ 我们继续用 Minecraft 做比喻： “虚">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
-<meta property="article:published_time" content="2024-01-14T15:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-15T12:51:07.243Z">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
+<meta property="article:published_time" content="2025-06-09T22:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-15T12:51:07.252Z">
 <meta property="article:author" content="Sirius Ahu">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Linux Installation">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Conda">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://siriusahu.github.io.git/img/ALI/archlinux.jpg">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/CB/banner.png">
   
   
   
-  <title>「ALI」03 更好的体验 - Ahu Blog</title>
+  <title>「CB」02 创建并使用 Conda 虚拟环境 - Ahu Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,13 +227,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/bg/Immortality-Made-in-Abyss.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/CB/banner.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="「ALI」03 更好的体验"></span>
+            <span id="subtitle" data-typed-text="「CB」02 创建并使用 Conda 虚拟环境"></span>
           
         </div>
 
@@ -244,8 +244,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-14 23:00" pubdate>
-          January 14, 2024 pm
+        <time datetime="2025-06-10 06:00" pubdate>
+          June 10, 2025 am
         </time>
       </span>
     
@@ -256,7 +256,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          501 words
+          773 words
         
       </span>
     
@@ -311,17 +311,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Arch Linux Installation"
-        id="heading-bd84b5f96e1b349d41b30b856a6e6199" role="tab" data-toggle="collapse" href="#collapse-bd84b5f96e1b349d41b30b856a6e6199"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Conda Beginner"
+        id="heading-f95d65c859168efce7f06eacff5d4e23" role="tab" data-toggle="collapse" href="#collapse-f95d65c859168efce7f06eacff5d4e23"
         aria-expanded="true"
       >
-        Arch Linux Installation
-        <span class="list-group-count">(5)</span>
+        Conda Beginner
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-bd84b5f96e1b349d41b30b856a6e6199"
-           role="tabpanel" aria-labelledby="heading-bd84b5f96e1b349d41b30b856a6e6199">
+      <div class="category-collapse collapse show" id="collapse-f95d65c859168efce7f06eacff5d4e23"
+           role="tabpanel" aria-labelledby="heading-f95d65c859168efce7f06eacff5d4e23">
         
         
           
@@ -330,46 +330,28 @@
     
       
       
-        <a href="/2024/01/14/ALI-00-preparation/" title="「ALI」00 准备工作"
+        <a href="/2025/01/03/CB-00-Conda-Startup/" title="「CB」00 系列简介"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">「ALI」00 准备工作</span>
+          <span class="category-post">「CB」00 系列简介</span>
         </a>
       
     
       
       
-        <a href="/2024/01/14/ALI-01-Installation/" title="「ALI」01 开始安装！"
+        <a href="/2025/03/07/CB-01-Miniconda-Installation/" title="「CB」01 安装 Miniconda"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">「ALI」01 开始安装！</span>
+          <span class="category-post">「CB」01 安装 Miniconda</span>
         </a>
       
     
       
       
-        <a href="/2024/01/14/ALI-02-After_Installation/" title="「ALI」02 安装之后..."
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「ALI」02 安装之后...</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/01/14/ALI-03-Better-Experience/" title="「ALI」03 更好的体验"
+        <a href="/2025/06/10/CB-02-Play-with-Conda/" title="「CB」02 创建并使用 Conda 虚拟环境"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">「ALI」03 更好的体验</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2024/02/26/ALI-04-AUR/" title="「ALI」04 AUR(Arch User Repository)"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">「ALI」04 AUR(Arch User Repository)</span>
+          <span class="category-post">「CB」02 创建并使用 Conda 虚拟环境</span>
         </a>
       
     
@@ -391,81 +373,122 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">「ALI」03 更好的体验</h1>
+            <h1 id="seo-header">「CB」02 创建并使用 Conda 虚拟环境</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
+                <h1 id="Hello-again">Hello again!<a class="header-anchor" href="#Hello-again"> ¶</a></h1>
 <p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p>
-<p>这一节中我会介绍一些<strong>我自己</strong>喜欢的配置，包括<code>快捷键</code>，<code>输入法</code>，<code>zsh</code>, <code>grub</code>等等。</p>
-<h1 id="1-快捷键">1. 快捷键<a class="header-anchor" href="#1-快捷键"> ¶</a></h1>
-<p>由于早起使用<code>Pop!_OS</code>的缘故，我习惯了一些其自带的快捷键，因此我在<code>Arch Linux</code>中也使用了这些快捷键。</p>
-<ul>
-<li><code>Super</code> + <code>Q</code>：关闭当前窗口</li>
-<li><code>Super</code> + <code>F</code>：打开默认文件管理器</li>
-<li><code>Super</code> + <code>B</code>：打开默认浏览器</li>
-<li><code>Super</code> + <code>T</code>：打开终端</li>
-</ul>
-<p>其中，我将终端设置为<code>gnome-terminal</code>，我们可以通过以下命令来获取其位置：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">which</span> gnome-terminal<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>其一般在<code>/usr/bin/gnome-terminal</code>。</p>
-<h1 id="2-输入法">2. 输入法<a class="header-anchor" href="#2-输入法"> ¶</a></h1>
-<p>（详见上一篇的末端）</p>
-<p>我使用的输入方式是<code>小鹤双拼</code>。</p>
-<p>进入<code>fcitx5 configuration</code>（通过按下<code>Super</code>键并输入<code>fcitx5</code>来搜索）后，我们可以在右侧搜索<code>shuangpin</code>来添加双拼输入法。</p>
-<p><img src="/img/ALI/03/ali01.PNG" srcset="/img/loading.gif" lazyload alt="fcitx5 configuration"></p>
-<p>对双拼单独配置：</p>
-<p><img src="/img/ALI/03/ali02.PNG" srcset="/img/loading.gif" lazyload alt="fcitx5 configuration"></p>
-<p><img src="/img/ALI/03/ali03.PNG" srcset="/img/loading.gif" lazyload alt="fcitx5 configuration"></p>
-<p><img src="/img/ALI/03/ali03-1.PNG" srcset="/img/loading.gif" lazyload alt="fcitx5 configuration"></p>
-<p>更改其他快捷键：</p>
-<p><img src="/img/ALI/03/ali04.PNG" srcset="/img/loading.gif" lazyload alt="fcitx5 configuration"></p>
-<h1 id="3-zsh">3. zsh<a class="header-anchor" href="#3-zsh"> ¶</a></h1>
-<p>我喜欢使用<code>zsh</code>来替代<code>bash</code>，并且使用<code>oh-my-zsh</code>来管理<code>zsh</code>的配置。</p>
-<p>具体操作请参考</p>
-<blockquote>
-<p>这篇博客 <a href="/2023/06/14/LUT-02-zsh/" title="「LUT」02 zsh-更漂亮的terminal">「LUT」02 zsh-更漂亮的terminal</a></p>
-</blockquote>
-<p>简而言之：</p>
+<p>今天我们一口气完成这几件事：</p>
 <ol>
-<li>安装<code>zsh</code>与<code>oh-my-zsh</code>（<code>sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code>）</li>
-<li>安装插件、主题与字体（<a target="_blank" rel="noopener" href="https://www.github.com/SiriusAhu/zsh-script">我的脚本</a>）</li>
-<li>安装字体</li>
-<li>安装颜色主题<code>Aura</code>（通过<code>Gogh</code>: <code>bash -c &quot;$(wget -qO- https://git.io/vQgMr)&quot;</code>）
+<li>创建一个 Conda 虚拟环境</li>
+<li>启用 / 查看 / 退出 环境</li>
+<li>安装简单的 Python 库（你不一定会用到，但练习很重要！）</li>
+<li>删除环境（练习完毕后清理环境）</li>
+</ol>
+<hr>
+<h1 id="1-What-is-a-Virtual-Environment">1. What is a Virtual Environment?<a class="header-anchor" href="#1-What-is-a-Virtual-Environment"> ¶</a></h1>
+<p>我们继续用 Minecraft 做比喻：</p>
+<p>“虚拟环境”就像是你在 MC 启动器中创建的一个<strong>游戏实例（Instance）</strong>，每个实例有独立的 Minecraft 版本和 mod 配置，互不干扰。</p>
+<p>在 Conda 中，虚拟环境就是让你为每个项目创建一个独立的 Python 配置，避免各种“版本地狱”和“删库重装”的悲剧发生。</p>
+<hr>
+<h1 id="2-Create-a-Virtual-Environment">2. Create a Virtual Environment<a class="header-anchor" href="#2-Create-a-Virtual-Environment"> ¶</a></h1>
+<p>打开命令行，输入：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda create <span class="token parameter variable">-n</span> my_first_env <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.12</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <ul>
-<li>注意：如果出现<code>enviroment: line: command not found</code>之类的错误，可以尝试先新建一个<code>gnome-terminal</code>的<code>profile</code>，然后再运行<code>Gogh</code>。</li>
+<li><code>-n my_first_env</code>：创建一个名为 <code>my_first_env</code> 的虚拟环境</li>
+<li><code>python=3.12</code>：指定使用 Python 3.12 版本</li>
 </ul>
+<blockquote>
+<p>Note:</p>
+<ol>
+<li>如果不写 <code>python=...</code>，则默认使用 Conda 当前最新版本</li>
+<li>没写 <code>python</code> 的话，甚至不会自动装 Python！（这和空 Minecraft 一样，啥都跑不了）</li>
+</ol>
+</blockquote>
+<p>Conda 会提示：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Proceed <span class="token punctuation">(</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span>/n<span class="token punctuation">)</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>输入 <code>y</code>（或直接回车）即可。</p>
+<hr>
+<h1 id="3-Activate-the-Environment">3. Activate the Environment<a class="header-anchor" href="#3-Activate-the-Environment"> ¶</a></h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda activate my_first_env<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>你会看到命令行提示符变成：（如果你使用的是 Windows）</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>my_first_env<span class="token punctuation">)</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>YourName<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>这代表你已经“进入”这个虚拟环境。</p>
+<blockquote>
+<p>⚠️ 重点提示：在激活的环境下运行 <code>python</code> 或 <code>pip</code>，都会默认作用于该环境！</p>
+</blockquote>
+<p>退出环境：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>查看所有环境：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">env</span> list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>或</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda info <span class="token parameter variable">--envs</span> <span class="token comment"># 我个人更习惯这个</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<hr>
+<h1 id="4-Install-Some-Libraries">4. Install Some Libraries<a class="header-anchor" href="#4-Install-Some-Libraries"> ¶</a></h1>
+<p>可以使用 <code>conda</code> 或 <code>pip</code> 安装常见的第三方库：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">install</span> numpy pandas matplotlib<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>或者：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> numpy pandas matplotlib <span class="token comment"># 个人更习惯这个</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>这些是数据分析最基础的三大件：</p>
+<ul>
+<li><code>numpy</code>, <code>pandas</code>：数据处理工具</li>
+<li><code>matplotlib</code>：绘图工具</li>
+</ul>
+<p>你可以随便装点什么来练练手，比如：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">install</span> rich<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>这是一个超漂亮的终端输出美化库！</p>
+<hr>
+<h1 id="5-Delete-Remove-your-Environment😈">5. Delete (Remove) your Environment😈<a class="header-anchor" href="#5-Delete-Remove-your-Environment😈"> ¶</a></h1>
+<p>不想要某个环境时，可以直接删除它：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda remove <span class="token parameter variable">-n</span> my_first_env <span class="token parameter variable">--all</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<blockquote>
+<p>Note：这个命令不会有“回收站”，而是直接删除环境及其所有内容！请确保你真的不需要它了。</p>
+</blockquote>
+<hr>
+<h1 id="6-Practice-Can-you-do-it">6. Practice: Can you do it?<a class="header-anchor" href="#6-Practice-Can-you-do-it"> ¶</a></h1>
+<p>现在你已经会：</p>
+<ul>
+<li>创建 / 激活 / 查看 / 退出 环境</li>
+<li>安装简单的库</li>
+<li>删除环境</li>
+</ul>
+<p>试试看：</p>
+<ol>
+<li>
+<p>创建一个叫做 <code>practice</code> 的新环境，使用 Python 3.10</p>
+</li>
+<li>
+<p>激活它并安装 <code>numpy</code> 和 <code>rich</code></p>
+</li>
+<li>
+<p>在安装这些库后，运行一个简单的 Python 脚本，打印出“Hello, Conda!”并使用 <code>rich</code> 美化输出</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> rich <span class="token keyword">import</span> <span class="token keyword">print</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"(Regular) Hello, Conda!"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"(Bold Green) [bold green]Hello, Conda![/bold green]"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+</li>
+<li>
+<p>在确保激活这个脚本的情况下，运行它：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python your_script.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>如果你看到如下图的输出，那么恭喜你成功了！（我的终端自定义了颜色方案，因此色彩可能与你的不同）<br>
+<img src="/img/CB/03/rich_output.png" srcset="/img/loading.gif" lazyload alt="Rich Output Example"></p>
+</li>
+<li>
+<p>最后，删除它吧，毕竟练习后就用不到这个单独的环境啦。</p>
+</li>
+<li>
+<p>检查自己的环境列表确定它已被删除。</p>
 </li>
 </ol>
 <blockquote>
-<p>设置<code>zsh</code>为默认<code>shell</code>: <code>chsh -s /bin/zsh</code></p>
+<p>Tips: 如果你在运行脚本时发现以下报错，请检查自己是否激活了环境：<br>
+<img src="/img/CB/03/error.png" srcset="/img/loading.gif" lazyload alt="Error Example"></p>
 </blockquote>
-<p><img src="/img/ALI/03/ali05.PNG" srcset="/img/loading.gif" lazyload alt="zsh"></p>
-<h1 id="4-grub">4. grub<a class="header-anchor" href="#4-grub"> ¶</a></h1>
-<p>我自己习惯更改默认的<code>grub</code>配置，使其更加美观。</p>
-<p>具体参考：</p>
-<blockquote>
-<p>我的这篇博客： <a href="/2023/05/12/LUT-01-grub/" title="「LUT」01 Grub-电脑启动引导">「LUT」01 Grub-电脑启动引导</a></p>
-</blockquote>
-<p>简而言之：</p>
-<ol>
-<li>安装<code>grub-customizer</code></li>
-<li>下载心仪的<code>grub</code>主题</li>
-<li>应用主题</li>
-</ol>
-<p><img src="/img/ALI/03/joker.png" srcset="/img/loading.gif" lazyload alt="grub"></p>
-<blockquote>
-<p>此处展示的是我自己的<code>grub</code>主题，你可以在<a target="_blank" rel="noopener" href="https://www.gnome-look.org/p/2122684">这个网站</a>找到它。</p>
-</blockquote>
-<h1 id="5-GNOME-Extensions">5. GNOME Extensions<a class="header-anchor" href="#5-GNOME-Extensions"> ¶</a></h1>
-<p>如果你使用的是<code>Gnome</code>桌面环境，那么你可以尝试安装一些<code>Gnome Extensions</code>来增强你的桌面体验。</p>
-<p>详见：</p>
-<blockquote>
-<p>我的这篇博客： <a href="/2024/06/19/LUT-03-Gnome_Beautify/" title="「LUT」03 Gnome Beautify">「LUT」03 Gnome Beautify</a></p>
-</blockquote>
-<h1 id="Summary">Summary<a class="header-anchor" href="#Summary"> ¶</a></h1>
-<p>Have fun! 😉</p>
+<h1 id="结语">结语<a class="header-anchor" href="#结语"> ¶</a></h1>
+<p>你，已经入门啦！🎉</p>
+<p>未来等待你的是各种环境变量错误和没见过的bug，但是，只要不当“CV工程师”，相信你能通过善用搜索工具解决它们！</p>
+<p>Have fun, see you next time!</p>
 
                 
               </div>
@@ -484,7 +507,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Arch-Linux-Installation/" class="category-chain-item">Arch Linux Installation</a>
+  <a href="/categories/Conda-Beginner/" class="category-chain-item">Conda Beginner</a>
   
   
 
@@ -499,9 +522,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
       
-        <a href="/tags/Linux-Installation/" class="print-no-link">#Linux Installation</a>
+        <a href="/tags/Conda/" class="print-no-link">#Conda</a>
       
     </div>
   
@@ -513,8 +536,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>「ALI」03 更好的体验</div>
-      <div>https://siriusahu.github.io.git/2024/01/14/ALI-03-Better-Experience/</div>
+      <div>「CB」02 创建并使用 Conda 虚拟环境</div>
+      <div>https://siriusahu.github.io.git/2025/06/10/CB-02-Play-with-Conda/</div>
     </div>
     <div class="license-meta">
       
@@ -526,7 +549,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>January 14, 2024</div>
+          <div>June 10, 2025</div>
         </div>
       
       
@@ -558,18 +581,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/08/ALT-00-Introduction/" title="「ALT」00 系列介绍">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">「ALT」00 系列介绍</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/14/ALI-02-After_Installation/" title="「ALI」02 安装之后...">
-                        <span class="hidden-mobile">「ALI」02 安装之后...</span>
+                      <a href="/2025/03/07/CB-01-Miniconda-Installation/" title="「CB」01 安装 Miniconda">
+                        <span class="hidden-mobile">「CB」01 安装 Miniconda</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
