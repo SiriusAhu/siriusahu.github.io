@@ -1,0 +1,965 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/misc/nanachi_sign.jpg">
+  <link rel="icon" href="/img/misc/nanachi_sign.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirius Ahu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 今天我们来介绍一下uv，这个被称为“下一代Python包管理器”的工具。 1. What is uv? ¶ 根据官网的介绍，uv是&quot;An extremely fast Python package and project manager, written in Rust.&quot;，即“一个用Rust编写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「TF」01 uv - “下一代Python包管理器”">
+<meta property="og:url" content="https://siriusahu.github.io.git/2025/06/17/TF-01-UV/index.html">
+<meta property="og:site_name" content="Ahu Blog">
+<meta property="og:description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 今天我们来介绍一下uv，这个被称为“下一代Python包管理器”的工具。 1. What is uv? ¶ 根据官网的介绍，uv是&quot;An extremely fast Python package and project manager, written in Rust.&quot;，即“一个用Rust编写">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/TF/uv.png">
+<meta property="article:published_time" content="2025-06-16T18:15:00.000Z">
+<meta property="article:modified_time" content="2025-06-16T20:20:54.206Z">
+<meta property="article:author" content="Sirius Ahu">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="uv">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/TF/uv.png">
+  
+  
+  
+  <title>「TF」01 uv - “下一代Python包管理器” - Ahu Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ahu Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/TF/uv.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="「TF」01 uv - “下一代Python包管理器”"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-17 02:15" pubdate>
+          June 17, 2025 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k words
+        
+      </span>
+    
+
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Towards Future"
+        id="heading-f2089915c045a18b9227ee1ced1f5633" role="tab" data-toggle="collapse" href="#collapse-f2089915c045a18b9227ee1ced1f5633"
+        aria-expanded="true"
+      >
+        Towards Future
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f2089915c045a18b9227ee1ced1f5633"
+           role="tabpanel" aria-labelledby="heading-f2089915c045a18b9227ee1ced1f5633">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/06/17/TF-00-Introduction/" title="「TF」00 Towards Future 系列简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「TF」00 Towards Future 系列简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/06/17/TF-01-UV/" title="「TF」01 uv - “下一代Python包管理器”"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">「TF」01 uv - “下一代Python包管理器”</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">「TF」01 uv - “下一代Python包管理器”</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
+<p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p>
+<p>今天我们来介绍一下<code>uv</code>，这个被称为“下一代Python包管理器”的工具。</p>
+<h1 id="1-What-is-uv">1. What is <code>uv</code>?<a class="header-anchor" href="#1-What-is-uv"> ¶</a></h1>
+<p>根据官网的介绍，<code>uv</code>是&quot;An extremely fast Python package and project manager, written in Rust.&quot;，即“一个用<code>Rust</code>编写的极快的Python包和项目管理器”。</p>
+<blockquote>
+<p><code>Rust</code>是一个近年来兴起的新一代系统编程语言，以强调“<strong>内存安全+高性能</strong>”的而著称。<br>
+自 Linux 6.1（2022年12月）起，<code>Rust</code> 被首次合并进主线内核，用于处理实验性代码和驱动。尽管目前代码比例很小，但它确实是 Linux 内核迈向“下一代 C 系列”语言方向的一大步。</p>
+</blockquote>
+<p>下图是官网介绍的<code>uv</code>的亮点：<br>
+<img src="/img/TF/01/highlights.png" srcset="/img/loading.gif" lazyload alt="Highlights of uv"></p>
+<h1 id="2-Why-uv">2. Why <code>uv</code>?<a class="header-anchor" href="#2-Why-uv"> ¶</a></h1>
+<p>至少对我来说，<code>uv</code>实在是非常让人惊艳！</p>
+<h2 id="2-1-Speed">2.1. Speed<a class="header-anchor" href="#2-1-Speed"> ¶</a></h2>
+<p>我认识<code>Rust</code>比认识<code>uv</code>要早。当时<code>Rust</code>一直饱受争议——一个被很多人鼓吹很强的语言却并没有很多实际应用，即便是部分放入Linux内核的行为也并非能让人信服。</p>
+<p>然而，<code>uv</code>的出现却让我真正认识到<code>Rust</code>的强大。<br>
+<img src="/img/TF/01/speed.png" srcset="/img/loading.gif" lazyload alt="Installing Trio's dependencies with a warm cache"></p>
+<blockquote>
+<p>Installing Trio’s dependencies with a warm cache</p>
+</blockquote>
+<p>上图是<code>uv</code>在安装<code>Trio</code>库时的速度对比。可以看到，<code>uv</code>的速度远超其他传统工具！按官方的说法，“10-100x faster than pip”（比pip快10-100倍）！</p>
+<h2 id="2-2-All-in-one">2.2. All in one<a class="header-anchor" href="#2-2-All-in-one"> ¶</a></h2>
+<p>uv的另一个亮点是它的“全能”，一个工具替代一堆工具（参考 GitHub：<a target="_blank" rel="noopener" href="https://github.com/astral-sh/uv%EF%BC%89%EF%BC%9A">https://github.com/astral-sh/uv）：</a></p>
+<ul>
+<li>
+<p><code>pip</code>：<code>uv pip install ...</code></p>
+</li>
+<li>
+<p><code>virtualenv</code>：创建 <code>.venv</code> 等当前目录下的虚拟环境（<code>uv venv</code>）</p>
+</li>
+<li>
+<p><code>pip-tools</code>：生成 <code>.lock</code> 文件并确保依赖一致性（<code>uv lock</code>, <code>uv sync</code>）</p>
+</li>
+<li>
+<p><code>poetry</code> / <code>pdm</code>：项目初始化、添加/移除依赖、运行脚本和工具等</p>
+</li>
+<li>
+<p><code>pipx</code>：用 <code>uv tool</code> 和 <code>uvx</code> 快速执行 CLI 工具（如 <code>ruff、black</code>）</p>
+</li>
+</ul>
+<h1 id="3-How-to-play-with-uv">3. How to play with <code>uv</code>?<a class="header-anchor" href="#3-How-to-play-with-uv"> ¶</a></h1>
+<p>具体的使用方法可以参考<a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/">官网的文档</a>，但我会简单介绍一下基本用法。</p>
+<h2 id="3-1-Install-uv">3.1. Install <code>uv</code><a class="header-anchor" href="#3-1-Install-uv"> ¶</a></h2>
+<p>安装<code>uv</code>有两种主要方法：</p>
+<ul>
+<li>使用<code>pip</code>安装
+<ul>
+<li><code>pip install uv</code></li>
+</ul>
+</li>
+<li>系统级安装
+<ul>
+<li>Windows:<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">powershell <span class="token parameter variable">-ExecutionPolicy</span> ByPass <span class="token parameter variable">-c</span> <span class="token string">"irm https://astral.sh/uv/install.ps1 | iex"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+<li>MacOS and Linux:<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-sSfL</span> https://astral.sh/uv/install.sh <span class="token operator">|</span> <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️注意：由于信息时效性，以上命令不一定长期有效。<br>
+建议参考<a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/getting-started/installation/">官网的安装说明</a>获取最新的安装方法。</p>
+</blockquote>
+<p>卸载详见<a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/getting-started/installation/#uninstallation">官网的卸载说明</a>。</p>
+<h2 id="3-2-Update-uv">3.2. Update <code>uv</code><a class="header-anchor" href="#3-2-Update-uv"> ¶</a></h2>
+<p>更新<code>uv</code>非常简单，只需运行以下命令：</p>
+<ul>
+<li>如果是使用<code>pip</code>安装的：<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> uv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+<li>如果是系统级安装的：<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv self update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+</ul>
+<h2 id="3-3-uv-and-virtual-environments">3.3. <code>uv</code> and virtual environments<a class="header-anchor" href="#3-3-uv-and-virtual-environments"> ¶</a></h2>
+<h3 id="uv的对于Python的管理"><code>uv</code>的对于Python的管理<a class="header-anchor" href="#uv的对于Python的管理"> ¶</a></h3>
+<p>与<code>Conda</code>不同，<code>uv</code>是“<strong>枪弹分离</strong>”式地管理Python可执行文件和包依赖的。</p>
+<p><code>Conda</code>的每个虚拟环境都是一个独立的封闭空间，包含：</p>
+<ul>
+<li>独立的一套 Python 可执行文件（如Windows上的<code>python.exe</code>）</li>
+<li>所有依赖库（包括 Python 和非 Python 包）</li>
+</ul>
+<p>uv 的管理方式则是“分层”结构：</p>
+<ul>
+<li>Python 各版本只需 全局缓存一份（<code>~/.cache/uv/pythons</code>）</li>
+<li>每个项目只在 <code>.venv</code> 中保存当前项目需要的依赖（库文件），</li>
+<li>Python 是从全局引用（软链接/绑定），而不是复制一份</li>
+</ul>
+<blockquote>
+<p>这种特别的方式有效地减少了磁盘空间的占用！让我这样有“磁盘洁癖”的人感到非常舒适！</p>
+</blockquote>
+<h3 id="创建虚拟环境">创建虚拟环境<a class="header-anchor" href="#创建虚拟环境"> ¶</a></h3>
+<p>你只需要在你的项目目录下运行以下命令即可创建一个虚拟环境：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv venv <span class="token comment"># 在当前目录下的.venv创建一个虚拟环境（没有名字）</span>
+uv venv myenv <span class="token comment"># 在当前目录下的myenv创建一个叫做myenv的虚拟环境（位置为./myenv）</span>
+uv venv <span class="token parameter variable">--python</span> <span class="token number">3.11</span> <span class="token comment"># 指定Python版本创建虚拟环境（默认使用全局最新版本）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>举个例子，以下代码会在当前目录下创建一个名为<code>tmp_env</code>的虚拟环境，并使用Python 3.11版本：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv venv tmp_env <span class="token parameter variable">--python</span> <span class="token number">3.11</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<blockquote>
+<p>注意：如果指定的版本并没有安装，<code>uv</code>会自动下载并安装对应版本的Python。</p>
+</blockquote>
+<h3 id="激活-退出虚拟环境">激活&amp;退出虚拟环境<a class="header-anchor" href="#激活-退出虚拟环境"> ¶</a></h3>
+<ol>
+<li>如果使用的是默认的<code>.venv</code>目录（通过<code>uv venv</code>命令创建），那么之后的任意<code>uv</code>命令都会自动激活这个虚拟环境。</li>
+<li>还有一种<strong>通用</strong>方法，即使用创建虚拟环境时自动生成的激活脚本<code>&lt;env_name&gt;/Scripts/activate</code></li>
+</ol>
+<ul>
+<li>举个例子，在Windows上，你可以运行以下命令来激活名为<code>tmp_env</code>的虚拟环境：</li>
+</ul>
+  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.<span class="token punctuation">\</span>tmp_env<span class="token punctuation">\</span>Scripts<span class="token punctuation">\</span>activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<ul>
+<li>在Linux或MacOS上，你可以运行以下命令：</li>
+</ul>
+  <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./tmp_env/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>退出虚拟环境倒是比较方便，无论是哪一个系统，你只需运行以下命令即可：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h2 id="3-4-Install-packages">3.4. Install packages<a class="header-anchor" href="#3-4-Install-packages"> ¶</a></h2>
+<p>在说明如何安装包之前，我们必须得了解一个东西：<code>pyproject.toml</code></p>
+<p>它是 Python 官方（PEP 518）定义的项目配置文件，类似于：</p>
+<ul>
+<li>JavaScript 项目的 <code>package.json</code></li>
+<li>Rust 的 <code>Cargo.toml</code></li>
+<li>或者 Conda 的 <code>environment.yml</code></li>
+</ul>
+<p><code>pyproject.toml</code> 文件包含了项目的元数据（如项目名称、版本、作者等。是的，项目其实是应该有名称的！）、依赖关系和构建配置等信息。</p>
+<p>与虚拟环境的概念不同，它是项目级别的配置文件。（当然，它也会用于管理虚拟环境的依赖，即该文件中的<code>dependencies</code>字段）</p>
+<p>通过<code>uv</code>有两种方法来安装包：</p>
+<ol>
+<li><strong>pip</strong>法：（不推荐）<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv pip <span class="token function">install</span> <span class="token operator">&lt;</span>package_name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+这种方式类似于传统的<code>pip</code>，但它并不会写入<code>pyproject.toml</code>文件。</li>
+<li><strong>uv add</strong>法：（推荐）<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv <span class="token function">add</span> <span class="token operator">&lt;</span>package_name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+这种方式会自动将包添加到<code>pyproject.toml</code>文件中，并且会处理依赖关系。</li>
+</ol>
+<p>同时，当使用<strong>uv add</strong>法安装包时，<code>uv</code>还会更新一个名为<code>uv.lock</code>的文件，这个文件类似于<code>npm</code>的<code>package-lock.json</code>，用于锁定依赖版本，记录了项目所有依赖的精确版本（包括递归依赖）。</p>
+<blockquote>
+<p><code>uv sync</code>命令会根据<code>uv.lock</code>文件将 <code>.venv</code> 环境中的安装状态完全调整成 lockfile 中记录的内容。</p>
+</blockquote>
+<h2 id="3-5-Summary">3.5. Summary<a class="header-anchor" href="#3-5-Summary"> ¶</a></h2>
+<p>简单总结一下<code>uv</code>的基本用法：</p>
+<ul>
+<li>创建虚拟环境：<code>uv venv</code> 或 <code>uv venv &lt;env_name&gt;</code>，可以用<code>--python</code>指定Python版本。</li>
+<li>激活虚拟环境：通过<code>&lt;env_name&gt;/Scripts/activate</code>的脚本</li>
+<li>退出虚拟环境：<code>deactivate</code></li>
+<li>安装包：
+<ul>
+<li>使用<code>uv pip install &lt;package_name&gt;</code>（不推荐）</li>
+<li>使用<code>uv add &lt;package_name&gt;</code>（推荐）</li>
+</ul>
+</li>
+</ul>
+<h1 id="4-Use-uv-in-your-projects">4. Use <code>uv</code> in your projects<a class="header-anchor" href="#4-Use-uv-in-your-projects"> ¶</a></h1>
+<h2 id="4-1-Initialize-a-project">4.1. Initialize a project<a class="header-anchor" href="#4-1-Initialize-a-project"> ¶</a></h2>
+<p>实际上，我们还有一个<code>uv init</code>命令可以用来初始化一个新的项目，这个命令会自动创建<code>pyproject.toml</code>等关键文件，让你的新项目更加规范。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv init my_project<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>这个命令会在当前目录下创建一个名为<code>my_project</code>的目录，并在其中生成所有项目基本文件：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">my_project/
+├── .gitignore <span class="token comment"># git 忽略文件</span>
+├── .python-version <span class="token comment"># 记录 Python 版本的文件，以明文记录该项目使用的 Python 版本</span>
+├── main.py <span class="token comment"># 主程序文件</span>
+├── pyproject.toml <span class="token comment"># 项目配置文件</span>
+└── README.md <span class="token comment"># 项目说明文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>此时，初始化<strong>并未</strong>完成！</p>
+<p>接下来我们可以使用<code>uv run main.py</code>来运行项目的主程序。<br>
+在此之后项目的目录结构会变成这样：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">my_project/
+├── .venv <span class="token comment"># 虚拟环境目录</span>
+├── .gitignore
+├── .python-version
+├── main.py
+├── pyproject.toml
+├── README.md
+└── uv.lock <span class="token comment"># 锁定依赖版本的文件</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>也就是说：在第一次通过<code>uv</code>运行项目后，<code>uv</code>会自动创建一个虚拟环境，并将其与项目关联起来。</p>
+<h2 id="4-2-Add-dependencies">4.2. Add dependencies<a class="header-anchor" href="#4-2-Add-dependencies"> ¶</a></h2>
+<p>之后我们就可以使用<code>uv add &lt;package_name&gt;</code>来安装项目所需的依赖包了。</p>
+<blockquote>
+<p>现在，检查一下你的<code>pyproject.toml</code>文件和<code>uv.lock</code>文件。或许可以考虑截图便于之后对比。</p>
+</blockquote>
+<p>让我们以<code>rich</code>库为例</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv <span class="token function">add</span> rich<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>之后可以观察到：</p>
+<ol>
+<li><code>pyproject.toml</code> 文件中会自动添加 <code>rich</code> 于 <code>dependencies</code> 字段中</li>
+<li><code>uv.lock</code> 文件中会记录 <code>rich</code> 的具体版本和依赖关系（会有很多递归依赖，比如说<code>rich</code> 依赖于 <code>pygments</code>、<code>mdurl</code> 等等）</li>
+<li><code>.venv</code> 目录中会安装 <code>rich</code> 及其所有依赖</li>
+</ol>
+<p>让我们修改一下<code>main.py</code> 文件，添加一些使用 <code>rich</code> 的代码：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> rich <span class="token keyword">import</span> <span class="token keyword">print</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, uv!"</span><span class="token punctuation">)</span> <span class="token comment"># 不使用 rich 美化输出</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[bold green]Hello, uv![/bold green]"</span><span class="token punctuation">)</span>  <span class="token comment"># 使用 rich 美化输出</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>之后再运行这个项目：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">uv run main.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>那么你就可以看到两种颜色的输出了：<br>
+<img src="/img/TF/01/output.png" srcset="/img/loading.gif" lazyload alt="Output with rich"></p>
+<h1 id="5-结语">5. 结语<a class="header-anchor" href="#5-结语"> ¶</a></h1>
+<p>我在写这篇文章的时候，还并没有很多的<code>uv</code>使用经验（毕竟<code>conda</code>和<code>pip</code>已经用三四年了，没有第一时间尝试<code>uv</code>），但我意识到越来越多的项目开始使用<code>uv</code>作为包管理器。因此第一时间写下这篇文章，分享给大家。</p>
+<p>希望能帮到大家！</p>
+<p>Have fun! 😉</p>
+<h1 id="Reference">Reference<a class="header-anchor" href="#Reference"> ¶</a></h1>
+<p><code>uv</code>官网: <a target="_blank" rel="noopener" href="https://docs.astral.sh/uv/">https://docs.astral.sh/uv/</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Towards-Future/" class="category-chain-item">Towards Future</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/uv/" class="print-no-link">#uv</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>「TF」01 uv - “下一代Python包管理器”</div>
+      <div>https://siriusahu.github.io.git/2025/06/17/TF-01-UV/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirius Ahu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 17, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/17/TF-00-Introduction/" title="「TF」00 Towards Future 系列简介">
+                        <span class="hidden-mobile">「TF」00 Towards Future 系列简介</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
