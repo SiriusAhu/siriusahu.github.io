@@ -1,0 +1,871 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/misc/nanachi_sign.jpg">
+  <link rel="icon" href="/img/misc/nanachi_sign.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Sirius Ahu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 平时装Python项目的依赖基本都是无脑：pip install -r requirements.txt。但在探索一些 GitHub 仓库时，常会遇到几个很像的东西：python -m pip install ... 和 pip install -e .。 它们究竟是什么？和普通的 pip install 又有什么区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「EP」04 &#96;pip install -e .&#96;？&#96;python -m pip&#96;？你们究竟是什么？">
+<meta property="og:url" content="https://siriusahu.github.io.git/2025/10/06/EP-03-Special-commands/index.html">
+<meta property="og:site_name" content="Ahu Blog">
+<meta property="og:description" content="Greetings! ¶ 嗨！这里是阿乎的博客！(&gt; ▽ &lt;) &#x2F;~ 平时装Python项目的依赖基本都是无脑：pip install -r requirements.txt。但在探索一些 GitHub 仓库时，常会遇到几个很像的东西：python -m pip install ... 和 pip install -e .。 它们究竟是什么？和普通的 pip install 又有什么区">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://siriusahu.github.io.git/img/EP/python.png">
+<meta property="article:published_time" content="2025-10-06T07:50:00.000Z">
+<meta property="article:modified_time" content="2025-10-06T12:09:08.256Z">
+<meta property="article:author" content="Sirius Ahu">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="pip">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siriusahu.github.io.git/img/EP/python.png">
+  
+  
+  
+  <title>「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？ - Ahu Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"siriusahu.github.io.git","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":30,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"sHH9YtUlztS05TPwmatkpHHv-MdYXbMMI","app_key":"trPyjvGIoU3h5w13xIhfltUs","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ahu Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/EP/banner.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-06 15:50" pubdate>
+          October 6, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          805 words
+        
+      </span>
+    
+
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Easy Python"
+        id="heading-c27f162e8be06ed6b3ef6f6d0d9986a2" role="tab" data-toggle="collapse" href="#collapse-c27f162e8be06ed6b3ef6f6d0d9986a2"
+        aria-expanded="true"
+      >
+        Easy Python
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-c27f162e8be06ed6b3ef6f6d0d9986a2"
+           role="tabpanel" aria-labelledby="heading-c27f162e8be06ed6b3ef6f6d0d9986a2">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="简单Python"
+        id="heading-36df4ff78ed5011507199d433d69d610" role="tab" data-toggle="collapse" href="#collapse-36df4ff78ed5011507199d433d69d610"
+        aria-expanded="true"
+      >
+        简单Python
+        <span class="list-group-count">(4)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-36df4ff78ed5011507199d433d69d610"
+           role="tabpanel" aria-labelledby="heading-36df4ff78ed5011507199d433d69d610">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2025/01/03/EP-00-Installation-and-Introduction/" title="「EP」00 系列简介 &amp; Python简介与安装（重制）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「EP」00 系列简介 &amp; Python简介与安装（重制）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/01/03/EP-01-How-to-run-Python/" title="「EP」01 Python是如何运行的？（重制）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「EP」01 Python是如何运行的？（重制）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/01/03/EP-02-Jupyter_with_Vscode/" title="「EP」02 在Vscode中使用Jupyter Notebook（重制）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">「EP」02 在Vscode中使用Jupyter Notebook（重制）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2025/10/06/EP-03-Special-commands/" title="「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1>
+<p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p>
+<p>平时装Python项目的依赖基本都是无脑：<code>pip install -r requirements.txt</code>。但在探索一些 GitHub 仓库时，常会遇到几个很像的东西：<strong><code>python -m pip install ...</code></strong> 和 <strong><code>pip install -e .</code></strong>。</p>
+<p>它们究竟是什么？和普通的 <code>pip install</code> 又有什么区别？🤔让我们一起来看看吧！</p>
+<h1 id="1-pip-install-r-requirements-txt">1 <code>pip install -r requirements.txt</code><a class="header-anchor" href="#1-pip-install-r-requirements-txt"> ¶</a></h1>
+<p>首先我们重新看看最为熟悉的：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">-r</span> requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>在一个需要依赖的Python项目中，通常会有一个<code>requirements.txt</code>文件，里面列出了项目所需的所有依赖包及其版本。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">my_project/
+├── requirements.txt
+├── main.py
+└── <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>那么<code>pip install -r requirements.txt</code>的作用就是：<strong>读取<code>requirements.txt</code>文件中的依赖列表，并安装这些依赖包</strong><u>到当前环境</u>中。</p>
+<h1 id="2-python-m-pip-install">2 <code>python -m pip install ...</code><a class="header-anchor" href="#2-python-m-pip-install"> ¶</a></h1>
+<p><code>python -m pip install ...</code>指令相较于我们熟悉的<code>pip install ...</code>，多了一个<code>python -m</code>。</p>
+<p>其含意也很简单，即<strong>使用指定的 Python 解释器来运行 pip 模块，并安装依赖包</strong>。</p>
+<blockquote>
+<p>如果你不熟悉Python解释器，可以参考本系列的这一节： <a href="/2025/01/03/EP-01-How-to-run-Python/" title="「EP」01 Python是如何运行的？（重制）">「EP」01 Python是如何运行的？（重制）</a></p>
+</blockquote>
+<p>由于许多用户通常会使用多个Python版本（如我既用Python 3.8又用Python 3.12），因此在<u>没有使用虚拟环境</u>的情况下，直接使用<code>pip install ...</code>可能会导致依赖包被安装到错误的Python版本中。</p>
+<p>那么<code>python -m</code>作为一个前缀，允许用户去指定要将包安装到哪个Python解释器的环境下。</p>
+<blockquote>
+<p>由于目前有conda、uv甚至Python原生的venv一系列虚拟环境工具，且在使用它们的时候通常会“activate”到对应环境中，因此这个命令的使用频率相对较低。</p>
+</blockquote>
+<h2 id="例子">例子<a class="header-anchor" href="#例子"> ¶</a></h2>
+<p>比如说，我在Windows端安装了Python 3.8和Python 3.12，并且它们的安装路径分别是：</p>
+<ul>
+<li>Python 3.8: <code>C:\Python38\python.exe</code></li>
+<li>Python 3.12: <code>C:\Python312\python.exe</code></li>
+</ul>
+<p>那么如果我想要将<code>requests</code>包安装到Python 3.8的环境中，我可以使用以下命令：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Python38<span class="token punctuation">\</span>python.exe <span class="token parameter variable">-m</span> pip <span class="token function">install</span> requests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h1 id="3-pip-install-e">3. <code>pip install -e .</code><a class="header-anchor" href="#3-pip-install-e"> ¶</a></h1>
+<p>还有一些情况，在使用<code>pip</code>安装依赖前后，还会要求执行：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">-e</span> <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p><code>-e</code>指的是“editable”，即“可编辑的”安装方式。</p>
+<p><code>.</code>代表当前目录，表示将当前项目以“可编辑”的方式安装到当前环境中。</p>
+<p>这条命令常在开发一个Python包时使用。它告诉<code>pip</code>：<strong>将不要把我当前这个项目复制到 site-packages 里，而是创建一个指向我项目文件夹的链接。</strong>。</p>
+<blockquote>
+<p>site-packages 即 Python 环境中存放第三方包的目录。</p>
+</blockquote>
+<p>这样的话，当你在开发过程中修改了项目代码时，不需要重新安装包，修改会立即生效。（要是每次做了一小个修改，测试的时候还等重新输指令、等待运行的话，那也太痛苦了😅）</p>
+<h1 id="4-总结">4. 总结<a class="header-anchor" href="#4-总结"> ¶</a></h1>
+<p>OK，总之以上就是这三个命令的区别和作用。简单来说，大部分情况下<code>pip install ...</code>就够了，不过认识其他长得相似的指令也是一件很有意思的事情捏。</p>
+<h1 id="Reference">Reference<a class="header-anchor" href="#Reference"> ¶</a></h1>
+<ul>
+<li>Python 文档 — 命令行选项（<code>-m</code>）<br>
+<a target="_blank" rel="noopener" href="https://docs.python.org/3/using/cmdline.html#cmdoption-m">https://docs.python.org/3/using/cmdline.html#cmdoption-m</a></li>
+<li>pip 用户指南 — <code>pip install</code> 与 <code>-r</code><br>
+<a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/cli/pip_install/">https://pip.pypa.io/en/stable/cli/pip_install/</a></li>
+<li>Packaging 官方 — 可编辑安装（editable / <code>-e</code>）<br>
+<a target="_blank" rel="noopener" href="https://packaging.python.org/en/latest/discussions/install-requires/#editable-installs">https://packaging.python.org/en/latest/discussions/install-requires/#editable-installs</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Easy-Python/" class="category-chain-item">Easy Python</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Easy-Python/%E7%AE%80%E5%8D%95Python/" class="category-chain-item">简单Python</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/pip/" class="print-no-link">#pip</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？</div>
+      <div>https://siriusahu.github.io.git/2025/10/06/EP-03-Special-commands/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Sirius Ahu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 6, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/09/15/TF-03-TOML/" title="「TF」03 TOML：面向未来的配置语言">
+                        <span class="hidden-mobile">「TF」03 TOML：面向未来的配置语言</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://ahublog.xyz" target="_blank" rel="nofollow noopener"><span><b>Ahu Blog</b></span></a> <i class="iconfont icon-love"></i> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span><b>Hexo</b></span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span><b>Fluid</b></span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

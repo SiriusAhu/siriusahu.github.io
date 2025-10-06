@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>「EP」04 `pip install -e .`？`python -m pip`？你们究竟是什么？</title>
+    <link href="/2025/10/06/EP-03-Special-commands/"/>
+    <url>/2025/10/06/EP-03-Special-commands/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Greetings">Greetings!<a class="header-anchor" href="#Greetings"> ¶</a></h1><p>嗨！这里是阿乎的博客！(&gt; ▽ &lt;) /~</p><p>平时装Python项目的依赖基本都是无脑：<code>pip install -r requirements.txt</code>。但在探索一些 GitHub 仓库时，常会遇到几个很像的东西：<strong><code>python -m pip install ...</code></strong> 和 <strong><code>pip install -e .</code></strong>。</p><p>它们究竟是什么？和普通的 <code>pip install</code> 又有什么区别？🤔让我们一起来看看吧！</p><h1 id="1-pip-install-r-requirements-txt">1 <code>pip install -r requirements.txt</code><a class="header-anchor" href="#1-pip-install-r-requirements-txt"> ¶</a></h1><p>首先我们重新看看最为熟悉的：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">-r</span> requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>在一个需要依赖的Python项目中，通常会有一个<code>requirements.txt</code>文件，里面列出了项目所需的所有依赖包及其版本。</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">my_project/├── requirements.txt├── main.py└── <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>那么<code>pip install -r requirements.txt</code>的作用就是：<strong>读取<code>requirements.txt</code>文件中的依赖列表，并安装这些依赖包</strong><u>到当前环境</u>中。</p><h1 id="2-python-m-pip-install">2 <code>python -m pip install ...</code><a class="header-anchor" href="#2-python-m-pip-install"> ¶</a></h1><p><code>python -m pip install ...</code>指令相较于我们熟悉的<code>pip install ...</code>，多了一个<code>python -m</code>。</p><p>其含意也很简单，即<strong>使用指定的 Python 解释器来运行 pip 模块，并安装依赖包</strong>。</p><blockquote><p>如果你不熟悉Python解释器，可以参考本系列的这一节： <a href="/2025/01/03/EP-01-How-to-run-Python/" title="「EP」01 Python是如何运行的？（重制）">「EP」01 Python是如何运行的？（重制）</a></p></blockquote><p>由于许多用户通常会使用多个Python版本（如我既用Python 3.8又用Python 3.12），因此在<u>没有使用虚拟环境</u>的情况下，直接使用<code>pip install ...</code>可能会导致依赖包被安装到错误的Python版本中。</p><p>那么<code>python -m</code>作为一个前缀，允许用户去指定要将包安装到哪个Python解释器的环境下。</p><blockquote><p>由于目前有conda、uv甚至Python原生的venv一系列虚拟环境工具，且在使用它们的时候通常会“activate”到对应环境中，因此这个命令的使用频率相对较低。</p></blockquote><h2 id="例子">例子<a class="header-anchor" href="#例子"> ¶</a></h2><p>比如说，我在Windows端安装了Python 3.8和Python 3.12，并且它们的安装路径分别是：</p><ul><li>Python 3.8: <code>C:\Python38\python.exe</code></li><li>Python 3.12: <code>C:\Python312\python.exe</code></li></ul><p>那么如果我想要将<code>requests</code>包安装到Python 3.8的环境中，我可以使用以下命令：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Python38<span class="token punctuation">\</span>python.exe <span class="token parameter variable">-m</span> pip <span class="token function">install</span> requests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h1 id="3-pip-install-e">3. <code>pip install -e .</code><a class="header-anchor" href="#3-pip-install-e"> ¶</a></h1><p>还有一些情况，在使用<code>pip</code>安装依赖前后，还会要求执行：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token parameter variable">-e</span> <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p><code>-e</code>指的是“editable”，即“可编辑的”安装方式。</p><p><code>.</code>代表当前目录，表示将当前项目以“可编辑”的方式安装到当前环境中。</p><p>这条命令常在开发一个Python包时使用。它告诉<code>pip</code>：<strong>将不要把我当前这个项目复制到 site-packages 里，而是创建一个指向我项目文件夹的链接。</strong>。</p><blockquote><p>site-packages 即 Python 环境中存放第三方包的目录。</p></blockquote><p>这样的话，当你在开发过程中修改了项目代码时，不需要重新安装包，修改会立即生效。（要是每次做了一小个修改，测试的时候还等重新输指令、等待运行的话，那也太痛苦了😅）</p><h1 id="4-总结">4. 总结<a class="header-anchor" href="#4-总结"> ¶</a></h1><p>OK，总之以上就是这三个命令的区别和作用。简单来说，大部分情况下<code>pip install ...</code>就够了，不过认识其他长得相似的指令也是一件很有意思的事情捏。</p><h1 id="Reference">Reference<a class="header-anchor" href="#Reference"> ¶</a></h1><ul><li>Python 文档 — 命令行选项（<code>-m</code>）<br><a href="https://docs.python.org/3/using/cmdline.html#cmdoption-m">https://docs.python.org/3/using/cmdline.html#cmdoption-m</a></li><li>pip 用户指南 — <code>pip install</code> 与 <code>-r</code><br><a href="https://pip.pypa.io/en/stable/cli/pip_install/">https://pip.pypa.io/en/stable/cli/pip_install/</a></li><li>Packaging 官方 — 可编辑安装（editable / <code>-e</code>）<br><a href="https://packaging.python.org/en/latest/discussions/install-requires/#editable-installs">https://packaging.python.org/en/latest/discussions/install-requires/#editable-installs</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Easy Python</category>
+      
+      <category>简单Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>pip</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>「TF」03 TOML：面向未来的配置语言</title>
     <link href="/2025/09/15/TF-03-TOML/"/>
     <url>/2025/09/15/TF-03-TOML/</url>
